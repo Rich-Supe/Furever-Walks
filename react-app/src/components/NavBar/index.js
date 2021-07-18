@@ -5,41 +5,45 @@ import { useSelector } from 'react-redux';
 import LogoutButton from './LogoutButton';
 import LoginFormModal from '../Splash/LoginFormModal';
 import SignupFormModal from '../Splash/SignupFormModal';
+import DemoFormModal from '../Splash/DemoFormModal'
 import './NavBar.css'
 
 function NavBar() {
-  const user = useSelector(state => state.session.user);
+const user = useSelector(state => state.session.user);
 
-  return (
+return (
     <nav className='navbar-container'>
-      {user ? (
+    {user ? (
         <ul>
-          <li>
+        <li>
             <NavLink to='/' exact={true} className='navbar-container__navlink' activeClassName='active'>
-              Home
+            Home
             </NavLink>
-          </li>
-          <li>
+        </li>
+        <li>
             <LogoutButton />
-          </li>
-          {/* <li>
+        </li>
+        {/* <li>
             <NavLink to='/users' exact={true} activeClassName='active'>
-              Users
+            Users
             </NavLink>
-          </li> */}
+        </li> */}
         </ul>
-      ) : (
+    ) : (
         <ul>
-          <li>
-            <LoginFormModal />
-          </li>
-          <li>
-            <SignupFormModal />
-          </li>
+            <li>
+                <DemoFormModal />
+            </li>
+            <li>
+                <LoginFormModal />
+            </li>
+            <li>
+                <SignupFormModal />
+            </li>
         </ul>
-      )}
+    )}
     </nav>
-  );
+);
 }
 
 export default NavBar;
