@@ -9,30 +9,30 @@ export function ModalProvider({ children }) {
     const [value, setValue] = useState();
 
     useEffect(() => {
-    setValue(modalRef.current);
+        setValue(modalRef.current);
     }, [])
 
     return (
-    <>
-        <ModalContext.Provider value={value}>
-        {children}
-        </ModalContext.Provider>
-        <div ref={modalRef} />
-    </>
+        <>
+            <ModalContext.Provider value={value}>
+                {children}
+            </ModalContext.Provider>
+            <div ref={modalRef} />
+        </>
     );
-    }
+}
 
-    export function Modal({ onClose, children }) {
+export function Modal({ onClose, children }) {
     const modalNode = useContext(ModalContext);
     if (!modalNode) return null;
 
     return ReactDOM.createPortal(
-    <div id="modal">
-        <div id="modal-background" onClick={onClose} />
-        <div id="modal-content">
-        {children}
-        </div>
-    </div>,
-    modalNode
+        <div id="modal">
+            <div id="modal-background" onClick={onClose} />
+            <div id="modal-content">
+                {children}
+            </div>
+        </div>,
+        modalNode
     );
 }
