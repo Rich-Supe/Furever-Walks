@@ -1,5 +1,6 @@
 Welcome to Furever Walks!
-This app is built with a Python backend and Javascript front-end.
+
+This app is built with a Python backend and Javascript frontend.
 Furever Walks follows RESTfulAPI conventions with most features including functional CRUD.
 Tech stack for this app: Postgres -> Docker -> SQLAlchemy/Alembic -> Redux -> React
 
