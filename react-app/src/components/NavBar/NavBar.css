@@ -1,0 +1,25 @@
+.navbar-container {
+    /* background-color: #fff8de; */
+    height: 5%;
+}
+
+.navbar-container ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.navbar-container li, 
+.navbar-container button {
+    border: none;
+    background-color: transparent;
+    text-decoration: none;
+    font-family: Dosis, Helvetica, sans-serif;
+    font-size: 1em;
+    transition: all .35s;
+}
+
+.navbar-container li:hover, 
+.navbar-container button:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
