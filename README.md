@@ -20,3 +20,14 @@ Tech stack for this app: Postgres -> Docker -> SQLAlchemy/Alembic -> Redux -> Re
 | Alembic | Google Maps API |
 | Docker | SwiperJs |
 | AWS S3 |  Heroku(deployment)  |
+
+# Stack Explanation:
+
+### Docker: 
+##### While using docker on a small scale app may seem like an unneccesary extravagance at first glance, We found it to be a great learning (and practice) opportunity to implement the following:
+* Dockerfiles
+* Images
+* Containers
+
+### Redux(with flux architecture): 
+##### Similar to Docker, Redux can be easily replaced with other methods such as modern react context. Our choice to go with Redux to manage our application's state is simply to continue to learn/practice how to create and maintain scalable applications
