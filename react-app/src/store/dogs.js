@@ -99,31 +99,34 @@ export const deleteDog = (dogId) => async (dispatch) => {
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
+    let newState;
     switch (action.type) {
         case SET_DOG:
-            const newState = {...state};
+            newState = {...state};
             newState[action.payload] = action.payload;
             return newState;
         case SET_DOGS:
-            const newState = {...state};
+            newState = {...state};
             action.payload.forEach((dog) => {
                 newState[dog.id] = dog;
             });
             return newState;
         case UPDATE_DOG:
-            const newState = {...state};
+            newState = {...state};
             newState[action.payload.id] = action.payload;
             return newState;
         case ADD_DOG:
-            const newState = {...state};
+            newState = {...state};
             newState[action.payload.id] = action.payload;
             return newState;
         case REMOVE_DOG:  
-            const newState = {...state};
+            newState = {...state};
             newState.dog = [...state.dog];
             const index = newState.dog.findIndex((dog) => dog.id === action.payload);
             newState.dog.splice(index, 1);
-            return newState;      
+            return newState; 
+        default:
+            return state;     
     }   
 }              
 
