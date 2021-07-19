@@ -12,6 +12,7 @@ def users():
     return {'users': [user.to_dict() for user in users]}
 
 
+# Get user info
 @user_routes.route('/<int:id>')
 @login_required
 def user(id):
