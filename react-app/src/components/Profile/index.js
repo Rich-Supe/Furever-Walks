@@ -1,8 +1,16 @@
 import styles from '../../css-modules/Profile.module.css'
+import UserInfo from './UserInfo';
+import DogCarousel from './DogCarousel';
+
 
 function Profile() {
     return (
-        <h1>Profile Page!</h1>
+        <div className={styles.profile}>
+            <h1>Profile Page!</h1>
+            <UserInfo />
+            <DogCarousel />
+        </div>
+
     );
 }
 
