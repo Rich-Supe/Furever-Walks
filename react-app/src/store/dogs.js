@@ -44,9 +44,10 @@ export const getDog = (dogId) => async (dispatch) => {
 }
 
 export const getDogs = (userId) => async (dispatch) => {
-    const response = await fetch(`/api/dogs/${userId}`)
+    const response = await fetch(`/api/dogs/all/${userId}`)
     
     if (response.ok) {
+        console.log(`Userid from getDog thunk____==-=-=--`, userId)
         const dogs = await response.json();
         dispatch(setDogs(dogs));
     }
@@ -126,6 +127,7 @@ export default function reducer(state = initialState, action) {
             newState.dog.splice(index, 1);
             return newState; 
         default:
+            console.log('HELLLOOOO from default')
             return state;     
     }   
 }              

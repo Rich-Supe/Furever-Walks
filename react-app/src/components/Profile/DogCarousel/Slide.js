@@ -1,4 +1,5 @@
 
+import styles from '../../../css-modules/Slide.module.css'
 
 function Slide({dog}){
     console.log(`Dog from dog slide`, dog)

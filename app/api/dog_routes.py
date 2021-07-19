@@ -25,6 +25,7 @@ def get_dog(dog_id):
 # Get dogs by userID
 @dog_routes.route('/all/<int:user_id>', methods=['GET'])
 def get_all_dogs(user_id):
+    print('UserId from get dog api route---------------------------------', user_id)
     dogs = Dog.query.filter_by(user_id=user_id)
     return {"dogs": [dog.to_dict() for dog in dogs]}
 
