@@ -1,4 +1,4 @@
-import './Profile.css'
+import styles from '../../css-modules/Profile.module.css'
 
 function Profile() {
     return (

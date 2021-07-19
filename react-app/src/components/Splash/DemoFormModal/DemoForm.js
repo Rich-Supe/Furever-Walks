@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { login } from '../../../store/session';
-import './DemoFormModal.css'
+import styles from '../../../css-modules/DemoFormModal.module.css'
 
 const DemoForm = () => {
     const dispatch = useDispatch();

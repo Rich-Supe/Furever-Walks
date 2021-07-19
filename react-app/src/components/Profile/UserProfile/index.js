@@ -1,0 +1,1 @@
+import styles from '../../../css-modules/UserProfile.module.css';

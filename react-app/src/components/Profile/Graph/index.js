@@ -1,0 +1,1 @@
+import styles from '../../../css-modules/Graph.module.css';
