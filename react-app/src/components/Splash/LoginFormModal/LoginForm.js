@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // import { Redirect } from 'react-router-dom';
 import { login } from '../../../store/session';
-import './LoginForm.css'
+import styles from '../../../css-modules/LoginForm.module.css'
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -32,7 +32,7 @@ const LoginForm = () => {
   // }
 
   return (
-    <form className='login-form-container' onSubmit={onLogin}>
+    <form className={styles.loginFormContainer} onSubmit={onLogin}>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>

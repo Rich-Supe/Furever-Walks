@@ -6,13 +6,13 @@ import LogoutButton from './LogoutButton';
 import LoginFormModal from '../Splash/LoginFormModal';
 import SignupFormModal from '../Splash/SignupFormModal';
 import DemoFormModal from '../Splash/DemoFormModal'
-import './NavBar.css'
+import styles from '../../css-modules/NavBar.module.css';
 
 function NavBar() {
 const user = useSelector(state => state.session.user);
 
 return (
-    <nav className='navbar-container'>
+    <nav className={styles.navbarContainer}>
     {user ? (
         <ul>
         <li>

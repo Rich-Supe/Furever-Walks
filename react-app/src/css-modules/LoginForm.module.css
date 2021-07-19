@@ -1,9 +1,9 @@
-.signup-form-container {
+.loginFormContainer {
     /* background-color: transparent; */
 
 }
 
-.signup-form-container input {
+.loginFormContainer input {
     border: none;
     width: 190px;
     height: 20px;
@@ -11,13 +11,13 @@
     margin: 10px 0;
 }
 
-.signup-form-container div .wrapper{
+.loginFormContainer div .wrapper{
     transform: translate(-50%, -50%);
     width: 210px;
     align-self: flex-end;
 }
 
-.signup-form-container button {
+.loginFormContainer button {
     display: block;
     width: 200px;
     height: 40px;
@@ -37,12 +37,12 @@
     font-weight: 1000;
     }
 
-    .signup-form-container button span{
+    .loginFormContainer button span{
     position: relative;
     z-index: 2;
     }
 
-    .signup-form-container button:after{
+    .loginFormContainer button:after{
     position: absolute;
     content: "";
     top: 0;
@@ -53,11 +53,11 @@
     transition: all .35s;
     }
 
-    .signup-form-container button:hover{
+    .loginFormContainer button:hover{
     color: #fff;
     cursor: pointer;
     }
 
-    .signup-form-container button:hover:after{
+    .loginFormContainer button:hover:after{
     width: 100%;
     }

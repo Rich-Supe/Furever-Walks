@@ -1,5 +1,5 @@
 
-.page-404 {
+.page404 {
     height: 100%;
     width: 100%;
     /* height: 1000px;
@@ -13,14 +13,14 @@
     flex-direction: column;
 }
 
-.page-404__header {
+.page404__header {
     font-size: 4em;
     margin-bottom: 50px;
     font-family: Dosis, Helvetica, sans-serif;
     
 }
 
-.page-404__404 {
+.page404__404 {
     height: 300px;
     width: 1000px;
     display: flex;
@@ -29,7 +29,7 @@
     flex-direction: row;
 }
 
-.page-404__4 {
+.page404__4 {
     height: 100%;
     width: 33%;
     display: flex;
@@ -41,14 +41,14 @@
     font-weight: 700;
 }
 
-.page-404__image {
+.page404__image {
     height: 100%;
     width: 33%;
     border: 3px solid rgb(0, 0, 0);
     border-radius: 50%;
 }
 
-.page-404__text {
+.page404__text {
     margin-top: 50px;
     height: 20%;
     /* width: 100%; */
@@ -59,7 +59,7 @@
     font-family: Dosis, Helvetica, sans-serif;
 }
 
-.page-404__text p {
+.page404__text p {
     margin: 0;
 }
 
@@ -68,7 +68,7 @@
     align-self: center;
 } */
 
-.page-404__text .wrapper{
+.page404__text .wrapper{
     /* position: fixed; */
     /* top: 50%;
     left: 50%; */
@@ -78,7 +78,7 @@
     align-self: flex-end;
 }
 
-.page-404__text button {
+.page404__text button {
     display: block;
     width: 200px;
     height: 40px;
@@ -98,12 +98,12 @@
     font-weight: 1000;
     }
 
-    .page-404__text button span{
+    .page404__text button span{
     position: relative;
     z-index: 2;
     }
 
-    .page-404__text button:after{
+    .page404__text button:after{
     position: absolute;
     content: "";
     top: 0;
@@ -114,11 +114,11 @@
     transition: all .35s;
     }
 
-    .page-404__text button:hover{
+    .page404__text button:hover{
     color: #fff;
     cursor: pointer;
     }
 
-    .page-404__text button:hover:after{
+    .page404__text button:hover:after{
     width: 100%;
     }

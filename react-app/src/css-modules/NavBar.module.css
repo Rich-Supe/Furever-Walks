@@ -1,15 +1,15 @@
-.navbar-container {
+.navbarContainer {
     /* background-color: #fff8de; */
     height: 5%;
 }
 
-.navbar-container ul {
+.navbarContainer ul {
     list-style-type: none;
     display: flex;
 }
 
-.navbar-container li, 
-.navbar-container button {
+.navbarContainer li, 
+.navbarContainer button {
     border: none;
     background-color: transparent;
     text-decoration: none;
@@ -18,8 +18,8 @@
     transition: all .35s;
 }
 
-.navbar-container li:hover, 
-.navbar-container button:hover {
+.navbarContainer li:hover, 
+.navbarContainer button:hover {
     cursor: pointer;
     text-decoration: underline;
 }
