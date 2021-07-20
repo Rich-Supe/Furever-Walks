@@ -10,6 +10,7 @@ import styles from '../../css-modules/NavBar.module.css';
 
 function NavBar() {
 const user = useSelector(state => state.session.user);
+let userId = user ? user.id : null;
 
 return (
     <nav className={styles.navbarContainer}>
@@ -18,6 +19,11 @@ return (
         <li>
             <NavLink to='/' exact={true} className='navbar-container__navlink' activeClassName='active'>
             Home
+            </NavLink>
+        </li>
+        <li>
+            <NavLink to={`/users/walks/${userId}`} exact={true} className='navbar-container__navlink' activeClassName='active'>
+            Walks
             </NavLink>
         </li>
         <li>
