@@ -1,4 +1,5 @@
 from .db import db
+from .dogwalk import dogwalks
 
 class Dog(db.Model):
     __tablename__ = 'dogs'
@@ -13,7 +14,9 @@ class Dog(db.Model):
     image_url = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
+    dogwalk = db.relationship('DogWalk', secondary=dogwalks, lazy='subquery', backref=db.backref('walks', lazy=True))
     # user = db.relationship('users', back_populates='dogs')
+
 
     def __repr__(self):
         print(self.name)
