@@ -33,7 +33,7 @@ def upgrade():
     )
     op.add_column('users', sa.Column('name', sa.String(length=40), nullable=False))
     op.add_column('users', sa.Column('bio', sa.String(), nullable=False))
-    op.add_column('users', sa.Column('image_url', sa.String(), nullable=False))
+    op.add_column('users', sa.Column('image_url', sa.String()))
     op.add_column('users', sa.Column('user_total_distance', sa.Integer(), nullable=True))
     op.add_column('users', sa.Column('user_total_walks', sa.Integer(), nullable=True))
     op.add_column('users', sa.Column('user_total_duration', sa.Integer(), nullable=True))

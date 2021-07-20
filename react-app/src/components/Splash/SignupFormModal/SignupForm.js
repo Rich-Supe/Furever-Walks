@@ -3,9 +3,11 @@ import { useSelector, useDispatch } from 'react-redux'
 // import { Redirect } from 'react-router-dom';
 import { signUp } from '../../../store/session';
 import styles from '../../../css-modules/SignupForm.module.css';
+import img_url from '../../../assets/img/default-user-profile-icon.png'
 
 const SignupForm = () => {
   const [errors, setErrors] = useState([]);
+  const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,11 +18,15 @@ const SignupForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(name, username, email, password, img_url));
       if (data) {
         setErrors(data)
       }
     }
+  };
+
+  const updateName = (e) => {
+    setName(e.target.value);
   };
 
   const updateUsername = (e) => {
@@ -49,6 +55,15 @@ const SignupForm = () => {
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
+      </div>
+      <div>
+        <input
+          type='text'
+          name='name'
+          placeholder='Name'
+          onChange={updateName}
+          value={name}
+        ></input>
       </div>
       <div>
         <input
