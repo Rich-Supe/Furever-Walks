@@ -20,17 +20,18 @@ function DogCarousel({userId}){
     }, [dispatch])
     
     const doggos = useSelector((state) => Object.values(state.dogs));
-    let newArr = []
-    doggos.forEach(obj => {
-        console.log('HOPEFULLY AN OBJECT:', obj.dogs)
-        newArr.push(obj.dogs)
-    })
+    // let newArr = []
+    // doggos.forEach(obj => {
+    //     console.log('HOPEFULLY AN OBJECT:', obj.dogs)
+    //     newArr.push(obj.dogs)
+    // })
 
-    let arrOfDogs = newArr[0]
+
+    // let arrOfDogs = newArr[0]
 
     const slides = [];
     let i = 0
-    arrOfDogs?.forEach((obj) => {
+    doggos?.forEach((obj) => {
         slides.push(
             <SwiperSlide key={`slide-${i}`}>
                 <Slide dog={obj}/>
@@ -51,7 +52,7 @@ function DogCarousel({userId}){
                     navigation 
                     pagination 
                     spaceBetween={0} 
-                    slidesPerView={2}
+                    slidesPerView={5}
                     // onInit={(swiper) => console.log('Swiper initialized', swiper)}
                     // onSlideChange={(swiper) => {
                     //     console.log('Swiper slide: ', swiper)
