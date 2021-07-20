@@ -18,18 +18,22 @@ function DogCarousel(){
     useEffect(() => {
         dispatch(getDogs(user.id));
     }, [])
-
-    let vari = 'dogs'
     
     const doggos = useSelector((state) => Object.values(state.dogs));
-    console.log('HOpefully an array of dogs4543452354:', doggos[0])
+    let newArr = []
+    doggos.forEach(obj => {
+        console.log('HOPEFULLY AN OBJECT:', obj.dogs)
+        newArr.push(obj.dogs)
+    })
+
+    let arrOfDogs = newArr[0]
 
     const slides = [];
     let i = 0
-    doggos?.forEach((doggo) => {
+    arrOfDogs?.forEach((obj) => {
         slides.push(
             <SwiperSlide key={`slide-${i}`}>
-                <Slide dog={doggo}/>
+                <Slide dog={obj}/>
             </SwiperSlide>
         )
         i++
