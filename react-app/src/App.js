@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import Page404 from './components/Splash/Page404';
 import SplashPage from './components/Splash/SplashPage';
 import Profile from './components/Profile';
+import Walks from './components/Walks';
 import { authenticate } from './store/session';
 
 function App() {
@@ -38,8 +39,11 @@ function App() {
         <Route path='/' exact={true} >
           <SplashPage />
         </Route>
-        <Route path='/users/:id'>
-          <Profile />
+        <Route path='/users/:id' exact={true}>
+            <Profile />
+        </Route>
+        <Route path='/users/walks/:id'>
+            <Walks />
         </Route>
         <Route>
             <Page404 />

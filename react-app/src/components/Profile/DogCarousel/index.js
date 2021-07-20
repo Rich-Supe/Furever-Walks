@@ -12,7 +12,7 @@ SwiperCore.use([Navigation, Pagination])
 
 function DogCarousel({userId}){
     const dispatch = useDispatch();
-    const user = useSelector(state => state.session.user);
+    // const user = useSelector(state => state.session.user);
 
     
     useEffect(() => {
