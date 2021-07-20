@@ -15,14 +15,12 @@ class User(db.Model, UserMixin):
     user_total_walks = db.Column(db.Integer)
     user_total_duration = db.Column(db.Integer)
 
-
-    dogs = db.relationship('Dog', backref='user')
-    walks = db.relationship('Walk', backref='user')
+    dogs = db.relationship('Dog')
+    # walks = db.relationship('Walk', backref='user')
 
     @property
     def password(self):
         return self.hashed_password
-
 
     @password.setter
     def password(self, password):

@@ -1,5 +1,5 @@
 from .db import db
-from .dogwalk import dogwalks
+from .dogwalk import dogwalks_table
 
 class Dog(db.Model):
     __tablename__ = 'dogs'
@@ -12,11 +12,12 @@ class Dog(db.Model):
     dog_total_walks = db.Column(db.Integer)
     dog_total_duration = db.Column(db.Integer)
     image_url = db.Column(db.String)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    dogwalk = db.relationship('dogwalk', secondary=dogwalks, lazy='subquery', backref=db.backref('walks', lazy=True))
-    # user = db.relationship('users', back_populates='dogs')
-
+    dogwalk_child = db.relationship('Walk', secondary=dogwalks_table, backref='dogs')
+    
+    user = db.relationship('User', back_populates='dogs')
+    #  parent_id = Column(Integer, ForeignKey('parent.id'))
 
     def __repr__(self):
         print(self.name)
