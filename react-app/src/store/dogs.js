@@ -45,7 +45,7 @@ export const getDog = (dogId) => async (dispatch) => {
 
 export const getDogs = (userId) => async (dispatch) => {
     const response = await fetch(`/api/dogs/all/${userId}`)
-    
+    console.log(`Userid from getDog thunk____not okay`, userId)
     if (response.ok) {
         console.log(`Userid from getDog thunk____==-=-=--`, userId)
         const dogs = await response.json();

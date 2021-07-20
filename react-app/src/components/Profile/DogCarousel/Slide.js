@@ -7,7 +7,7 @@ function Slide({dog}){
     return (
         <div className="slide">
             <div className="dog-image">
-                <img src={dog.image} alt={dog.name} />
+                {/* <img src={dog.image} alt={dog.name} /> */}
                 <p>{dog.name}</p>
             </div>
         </div>

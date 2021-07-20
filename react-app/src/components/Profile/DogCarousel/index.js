@@ -18,48 +18,50 @@ function DogCarousel(){
     useEffect(() => {
         dispatch(getDogs(user.id));
     }, [])
+
+    let vari = 'dogs'
     
-    // const doggos = useSelector(state => state.session.dogs);
-    // console.log('HOpefully an array of dogs:', doggos)
+    const doggos = useSelector((state) => Object.values(state.dogs));
+    console.log('HOpefully an array of dogs4543452354:', doggos[0])
 
-    // const slides = [];
-    // let i = 0
-    // doggos.forEach((doggo) => {
-    //     slides.push(
-    //         <SwiperSlide key={`slide-${i}`}>
-    //             <Slide dog={doggo}/>
-    //         </SwiperSlide>
-    //     )
-    //     i++
-    // })
+    const slides = [];
+    let i = 0
+    doggos?.forEach((doggo) => {
+        slides.push(
+            <SwiperSlide key={`slide-${i}`}>
+                <Slide dog={doggo}/>
+            </SwiperSlide>
+        )
+        i++
+    })
 
-    // if (doggos) {   
-    //     return (
-    //         <>
-    //         <p>DOGGO carousel</p>
-    //         <div className={styles.dogCarousel}>
-    //             <Swiper id="main" 
-    //                 tag="section" 
-    //                 wrapperTag="ul" 
-    //                 className={styles.swiperContainer}
-    //                 navigation 
-    //                 pagination 
-    //                 spaceBetween={0} 
-    //                 slidesPerView={3}
-    //                 // onInit={(swiper) => console.log('Swiper initialized', swiper)}
-    //                 // onSlideChange={(swiper) => {
-    //                 //     console.log('Swiper slide: ', swiper)
-    //                 // }}
-    //                 // onReachEnd={() => console.log("Swiper end")}
-    //             >{slides}</Swiper>
-    //         </div>
-    //         </>
-    //     )
-    // } else {
+    if (doggos) {   
+        return (
+            <>
+            <p>DOGGO carousel</p>
+            <div className={styles.dogCarousel}>
+                <Swiper id="main" 
+                    tag="section" 
+                    wrapperTag="ul" 
+                    className={styles.swiperContainer}
+                    navigation 
+                    pagination 
+                    spaceBetween={0} 
+                    slidesPerView={2}
+                    // onInit={(swiper) => console.log('Swiper initialized', swiper)}
+                    // onSlideChange={(swiper) => {
+                    //     console.log('Swiper slide: ', swiper)
+                    // }}
+                    // onReachEnd={() => console.log("Swiper end")}
+                >{slides}</Swiper>
+            </div>
+            </>
+        )
+    } else {
         return (
             <p>No doggos :(</p>
         )
-    // }
+    }
 }
 
 
