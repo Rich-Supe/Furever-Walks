@@ -18,9 +18,11 @@ function DogCarousel(){
     useEffect(() => {
         dispatch(getDogs(user.id));
     }, [])
+
+    let vari = 'dogs'
     
     const doggos = useSelector((state) => Object.values(state.dogs));
-    console.log('HOpefully an array of dogs:', doggos)
+    console.log('HOpefully an array of dogs4543452354:', doggos[0])
 
     const slides = [];
     let i = 0
@@ -45,7 +47,7 @@ function DogCarousel(){
                     navigation 
                     pagination 
                     spaceBetween={0} 
-                    slidesPerView={3}
+                    slidesPerView={2}
                     // onInit={(swiper) => console.log('Swiper initialized', swiper)}
                     // onSlideChange={(swiper) => {
                     //     console.log('Swiper slide: ', swiper)
