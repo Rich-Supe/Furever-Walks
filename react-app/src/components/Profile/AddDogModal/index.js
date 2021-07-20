@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { Modal } from '../../../context/Modal';
-import DogProfile from './DogProfile';
+import AddDog from './AddDog';
 
-function DogProfileModal({dog}) {
+function AddDogModal() {
     const [showModal, setShowModal] = useState(false);
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>Dog Profile</button>
+            <button onClick={() => setShowModal(true)}>Add a Dog</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <DogProfile setShowModal={setShowModal} dog={dog}/>
+                    <AddDog setShowModal={setShowModal}/>
                 </Modal>
             )}
         </>
     )
 }
 
-export default DogProfileModal;
+export default AddDogModal;

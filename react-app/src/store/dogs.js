@@ -49,7 +49,8 @@ export const getDogs = (userId) => async (dispatch) => {
     if (response.ok) {
         console.log(`Userid from getDog thunk____==-=-=--`, userId)
         const dogs = await response.json();
-        dispatch(setDogs(dogs));
+        console.log(dogs.dogs)
+        dispatch(setDogs(dogs.dogs));
     }
     
     else {
@@ -71,19 +72,30 @@ export const editDog = (dogId, dog) => async (dispatch) => {
     }
 }
 
-export const createDog = (dog) => async (dispatch) => {
-    const response = await fetch(`/api/dogs`, {
+export const createDog = (name, breed, age, image_url, user_id, dog_total_distance, dog_total_duration, dog_total_walks) => async (dispatch) => {
+    console.log(name, breed, age, image_url, user_id)
+    const response = await fetch('/api/dogs/create', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(dog)
-    })
+        body: JSON.stringify({
+            name,
+            breed,
+            age,
+            image_url,
+            user_id,
+            dog_total_distance,
+            dog_total_duration,
+            dog_total_walks
+        })
+    });
     if (response.ok) {
-        const newDog = await response.json();
-        dispatch(addDog(newDog));
+        dispatch(getDogs(user_id))
+        // return response;
     }
     else {
+        console.log('else')
         return ['An error occurred. Please try again.']
     }
 }
@@ -104,7 +116,10 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case SET_DOG:
             newState = {...state};
-            newState[action.payload] = action.payload;
+            action.payload.forEach((dog) => {
+                newState[dog.id] = dog;
+            });
+            // newState[action.payload] = action.payload;
             return newState;
         case SET_DOGS:
             newState = {...state};
