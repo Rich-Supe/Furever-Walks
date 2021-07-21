@@ -1,5 +1,5 @@
 import styles from '../../../css-modules/DogProfile.module.css';
-import { useSelector, useState } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { editDog, deleteDog } from '../../../store/dogs';
@@ -18,20 +18,22 @@ function DogProfile({ dog, setShowModal }) {
 
     const submitEditDog = async (e) => {
         e.preventDefault();
-        // if (typeof(age) !== 'integer') {
-
-        // }
-        const payload = {
-            dogId,
-            name,
-            breed,
-            age,
-            image_url,
-            id
+        if (!Number(age)) {
+            setErrors(["Please input an integer for the dog age."])
+        } else {
+            const payload = {
+                dogId,
+                name,
+                breed,
+                age,
+                image_url,
+                id
+            }
+            console.log(payload)
+            console.log(payload.dogId)
+            await dispatch(editDog(payload))
+            setShowModal(false);
         }
-        console.log(payload)
-        console.log(payload.dogId)
-        await dispatch(editDog(payload))
     };
 
     const submitDeleteDog = async (e) => {
@@ -57,7 +59,12 @@ function DogProfile({ dog, setShowModal }) {
     };
 
     return (
-        <div>
+        <div className={styles.formContainer}>
+            <img
+                src={image_url}
+                alt='DogProfileImage'
+                className={styles.dogProfileImage}
+            />
             <form onSubmit={submitEditDog}>
                 <div>
                     {errors.map((error, ind) => (
@@ -103,10 +110,12 @@ function DogProfile({ dog, setShowModal }) {
                 <div>
                     <button type='submit'>Save Changes</button>
                 </div>
+                <div>
+                    <button onClick={submitDeleteDog}>
+                        Delete Dog
+                    </button>
+                </div>
             </form>
-            <button onClick={submitDeleteDog}>
-                Delete Dog
-            </button>
         </div>
     )
 }

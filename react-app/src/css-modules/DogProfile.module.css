@@ -1,0 +1,12 @@
+.dogProfileImage {
+    height: 200px;
+    max-width: 200px;
+    object-fit: contain;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+.formContainer {
+    display: flex;
+}
