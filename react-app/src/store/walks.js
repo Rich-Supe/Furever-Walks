@@ -128,9 +128,9 @@ export default function reducer(state = initialState, action) {
             return newState;
         case SET_WALKS_USER:
             newState = { ...state };
-            // action.payload.forEach((walk) => {
-            //     newState[walk.id] = walk;
-            // });
+            action.payload.forEach((walk) => {
+                newState[walk.id] = walk;
+            });
             return newState;
         case SET_WALKS_DOG:
             newState = { ...state };
