@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { login } from '../../../store/session';
-import styles from '../../../css-modules/DemoFormModal.module.css'
+// import styles from '../../../css-modules/DemoFormModal.module.css'
 
 const DemoForm = () => {
     const dispatch = useDispatch();

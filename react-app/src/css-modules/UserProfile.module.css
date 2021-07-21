@@ -1,3 +1,7 @@
 .userProfile img {
     width: 50px;
 }
+
+.userProfile ul {
+    list-style-type: none;
+}

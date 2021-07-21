@@ -1,0 +1,23 @@
+.submitButton {
+    border: none;
+    background-color: #fee380;
+}
+
+.cancelButton {
+    border: none;
+    background-color: transparent;
+}
+
+.cancelButton:hover {
+    cursor: pointer;
+}
+
+.deleteButton {
+    border: none;
+    background-color: transparent;
+    color: red;
+}
+
+.deleteButton:hover {
+    cursor: pointer;
+}

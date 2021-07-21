@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { editUser, deleteUser } from '../../../store/session';
-import styles from '../../../css-modules/EditUserModal.module.css'
+import styles from '../../../css-modules/EditUserForm.module.css'
 
 const EditUserForm = ({ setShowForm }) => {
   const user = useSelector(state => state.session.user);
@@ -64,9 +64,9 @@ const EditUserForm = ({ setShowForm }) => {
   }
 
   return (
-    <div>
+    <div className={styles.editUserContainer}>
       <h3>Edit Profile</h3>
-      <form className={styles.loginFormContainer} onSubmit={onSave}>
+      <form className={styles.editForm} onSubmit={onSave}>
         <div>
           {errors.map((error, ind) => (<div key={ind}>{error}</div>))}
         </div>
@@ -125,8 +125,8 @@ const EditUserForm = ({ setShowForm }) => {
           />
         </div>
         <div className='wrapper'>
-          <button type='submit' disabled={errors.length}>Save</button>
-          <button onClick={() => setShowForm(false)}>Cancel</button>
+          <button className={styles.submitButton} type='submit' disabled={errors.length}>Save</button>
+          <button className={styles.cancelButton} onClick={() => setShowForm(false)}>Cancel</button>
         </div>
         <div>
           {/* <button onClick={() => setShowConfirmModal(true)}>Delete Profile</button>
@@ -135,7 +135,7 @@ const EditUserForm = ({ setShowForm }) => {
                   <ConfirmDeleteModal setShowConfirmModal={setShowConfirmModal} />
               </Modal>
           )} */}
-          <button onClick={handleDelete}>Delete Profile</button>
+          <button className={styles.deleteButton} onClick={handleDelete}>Delete Profile</button>
         </div>
       </form>
     </div>

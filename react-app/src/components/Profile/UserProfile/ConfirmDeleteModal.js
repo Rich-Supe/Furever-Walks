@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteUser } from '../../../store/session';
 import { useHistory } from 'react-router-dom';
-import styles from '../../../css-modules/ConfirmDeleteModal.module.css'
+// import styles from '../../../css-modules/ConfirmDeleteModal.module.css'
 
 const ConfirmDeleteModal = ({ setShowConfirmModal }) => {
     const user = useSelector(state => state.session.user);

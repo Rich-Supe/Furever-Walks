@@ -1,8 +1,8 @@
 import styles from '../../css-modules/Profile.module.css'
-import UserInfo from './UserInfo';
+import UserProfile from './UserProfile';
 import DogCarousel from './DogCarousel';
 import AddDogModal from './AddDogModal';
-import { useSelector, useDispatch } from 'react-redux';
+// import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 
@@ -12,7 +12,7 @@ function Profile() {
     return (
         <div className={styles.profile}>
             <h1>Profile Page!</h1>
-            <UserInfo />
+            <UserProfile />
             <DogCarousel userId={id}/>
             <AddDogModal/>
         </div>

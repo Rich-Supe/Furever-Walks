@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import EditUserForm from './EditUserForm';
 
 import styles from '../../../css-modules/UserProfile.module.css';
@@ -14,7 +14,7 @@ function UserProfile(){
     return (
         <div className={styles.userProfile}>
             <h1>User Profile</h1>
-            <img src={img_url} />
+            <img src={img_url} alt='default_image'/>
             {showForm ? (
                 <div>
                     <EditUserForm setShowForm={setShowForm} />

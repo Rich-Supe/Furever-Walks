@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
 import dogGif from '../../../assets/img/dog-walking-gif.gif'
-import styles from '../../../css-modules/SplashPage.module.css'
+// import styles from '../../../css-modules/SplashPage.module.css'
 
 function SplashPage() {
     const user = useSelector(state => state.session.user);
