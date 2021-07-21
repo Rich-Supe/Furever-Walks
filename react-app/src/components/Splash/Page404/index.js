@@ -1,6 +1,6 @@
 
 import dogGif from '../../../assets/img/404-dog.gif'
-import dog404 from '../../../assets/img/404-dog3.jpg'
+// import dog404 from '../../../assets/img/404-dog3.jpg'
 import styles from '../../../css-modules/Page404.module.css'
 
 import { useHistory } from 'react-router-dom'

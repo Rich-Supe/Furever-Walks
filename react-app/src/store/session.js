@@ -110,11 +110,16 @@ export const editUser = (user) => async (dispatch) => {
 
 export const deleteUser = (user) => async (dispatch) => {
   const response = await fetch(`/api/users/${user.id}`, {
-    method: 'DELETE'
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(user)
   })
   if (response.ok) {
     const data = await response.json();
     dispatch(removeUser(data));
+    return data;
   }
 }
 

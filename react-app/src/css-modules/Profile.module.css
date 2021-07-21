@@ -1,0 +1,18 @@
+/* .profile {
+    display: grid;
+    grid-template: 
+        1fr 1fr
+        1fr 1fr;
+    grid-template-areas:
+        'userProfile graph'
+        'userProfile dogCarousel'
+        'userProfile addDogModal';
+}
+
+.userProfileContainer {
+    grid-area: 'userProfile';
+}
+
+.dogCarouselContainer {
+    grid-area: 'dogCarousel';
+} */

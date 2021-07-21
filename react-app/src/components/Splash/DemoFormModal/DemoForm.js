@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { login } from '../../../store/session';
-import styles from '../../../css-modules/DemoFormModal.module.css'
+import styles from '../../../css-modules/DemoForm.module.css'
 
 const DemoForm = () => {
     const dispatch = useDispatch();
@@ -16,9 +16,11 @@ const DemoForm = () => {
     history.push(`/users/1`)
   }
     return (
-        <form className='login-form-container' onSubmit={onLogin}>
+        <form className={styles.demoFormContainer} onSubmit={onLogin}>
             <h1>Log in as a demo user?</h1>
-            <button type="submit">Yes!</button>
+            <div className={styles.wrapper}>
+              <button type="submit">Yes!</button>
+            </div>
         </form>
 
     )

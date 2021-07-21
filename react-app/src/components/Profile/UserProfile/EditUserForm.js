@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
-import { Modal } from '../../../context/Modal';
-import ConfirmDeleteModal from './ConfirmDeleteModal';
+import React, { useState, useEffect } from 'react';
+// import { Modal } from '../../../context/Modal';
+// import ConfirmDeleteModal from './ConfirmDeleteModal';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { editUser, deleteUser } from '../../../store/session';
-import styles from '../../../css-modules/EditUserModal.module.css'
+import styles from '../../../css-modules/EditUserForm.module.css'
 
-const EditUserModal = ({ setShowModal }) => {
+const EditUserForm = ({ setShowForm }) => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState(user?.name);
@@ -17,8 +18,17 @@ const EditUserModal = ({ setShowModal }) => {
   const [email, setEmail] = useState(user?.email);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  // const [showConfirmModal, setShowConfirmModal] = useState(false);
 
+  useEffect(() => {
+    const errors = [];
+    if (!name) errors.push('Please provide your name.');
+    if (!username) errors.push('Please provide a username.');
+    if (!email) errors.push('Please provide an email.');
+    if (confirmPassword && password !== confirmPassword) errors.push('Password and confirm password must match.');
+    setErrors(errors);
+  }, [name, username, email, password, confirmPassword]);
+  
   const onSave = async (e) => {
     e.preventDefault();
     const payload = {
@@ -33,8 +43,12 @@ const EditUserModal = ({ setShowModal }) => {
       user_total_walks: 0
     }
     const data = await dispatch(editUser(payload));
-    if (data) setErrors(data);
-    setShowModal(false);
+    if (data) {
+      setErrors(data);
+    } else {
+      // setShowConfirmModal(false);
+      history.push('/');
+    }
   };
 
   const updateName = (e) => setName(e.target.value);
@@ -44,20 +58,15 @@ const EditUserModal = ({ setShowModal }) => {
   const updatePassword = (e) => setPassword(e.target.value);
   const updateConfirmPassword = (e) => setConfirmPassword(e.target.value);
 
-  const handleClear = (e) => {
-    e.preventDefault();
-    setName('');
-    setUsername('');
-    setBio('');
-    setEmail('');
-    setPassword('');
-    setConfirmPassword('');
-  };
+  const handleDelete = async () => {
+    const data = await dispatch(deleteUser(user));
+    if (data) history.push('/');
+  }
 
   return (
-    <div>
+    <div className={styles.editUserContainer}>
       <h3>Edit Profile</h3>
-      <form className={styles.loginFormContainer} onSubmit={onSave}>
+      <form className={styles.editForm} onSubmit={onSave}>
         <div>
           {errors.map((error, ind) => (<div key={ind}>{error}</div>))}
         </div>
@@ -65,7 +74,7 @@ const EditUserModal = ({ setShowModal }) => {
           <input
             name='name'
             type='text'
-            placeholder={name}
+            placeholder={name ? name : 'Name'}
             value={name}
             onChange={updateName}
           />
@@ -74,7 +83,7 @@ const EditUserModal = ({ setShowModal }) => {
           <input
             name='username'
             type='text'
-            placeholder={username}
+            placeholder={username ? username : 'Username'}
             value={username}
             onChange={updateUsername}
           />
@@ -83,7 +92,7 @@ const EditUserModal = ({ setShowModal }) => {
           <input
             name='bio'
             type='text'
-            placeholder={bio}
+            placeholder={bio ? bio : 'Bio'}
             value={bio}
             onChange={updateBio}
           />
@@ -92,7 +101,7 @@ const EditUserModal = ({ setShowModal }) => {
           <input
             name='email'
             type='text'
-            placeholder={email}
+            placeholder={email ? email : 'Email'}
             value={email}
             onChange={updateEmail}
           />
@@ -116,20 +125,21 @@ const EditUserModal = ({ setShowModal }) => {
           />
         </div>
         <div className='wrapper'>
-          <button type='submit'>Save</button>
-          <button onClick={handleClear}>Clear</button>
+          <button className={styles.submitButton} type='submit' disabled={errors.length}>Save</button>
+          <button className={styles.cancelButton} onClick={() => setShowForm(false)}>Cancel</button>
         </div>
         <div>
-          <button onClick={() => setShowConfirmModal(true)}>Delete Profile</button>
+          {/* <button onClick={() => setShowConfirmModal(true)}>Delete Profile</button>
           {showConfirmModal && (
               <Modal onClose={() => setShowConfirmModal(false)}>
                   <ConfirmDeleteModal setShowConfirmModal={setShowConfirmModal} />
               </Modal>
-          )}
+          )} */}
+          <button className={styles.deleteButton} onClick={handleDelete}>Delete Profile</button>
         </div>
       </form>
     </div>
   );
 };
 
-export default EditUserModal;
+export default EditUserForm;
