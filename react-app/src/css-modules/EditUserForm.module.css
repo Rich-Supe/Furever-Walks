@@ -1,23 +1,24 @@
-.submitButton {
+.editUserContainer .submitButton {
     border: none;
     background-color: #fee380;
 }
 
-.cancelButton {
+.editUserContainer .cancelButton {
     border: none;
     background-color: transparent;
 }
 
-.cancelButton:hover {
+.editUserContainer .cancelButton:hover {
     cursor: pointer;
 }
 
-.deleteButton {
+.editUserContainer .deleteButton {
     border: none;
     background-color: transparent;
+    color: lightgrey;
+}
+
+.editUserContainer .deleteButton:hover {
+    cursor: pointer;
     color: red;
-}
-
-.deleteButton:hover {
-    cursor: pointer;
 }

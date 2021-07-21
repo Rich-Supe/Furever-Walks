@@ -1,0 +1,13 @@
+.splashPageContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: #FFFBF0;
+    font-family: Dosis, Helvetica, sans-serif;
+    flex-direction: column;
+    align-items: center;
+}
+
+.splashPageContainer h1 {
+    font-family: 'Rock Salt', cursive;
+}

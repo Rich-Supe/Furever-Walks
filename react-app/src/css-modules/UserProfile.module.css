@@ -5,3 +5,13 @@
 .userProfile ul {
     list-style-type: none;
 }
+
+.userProfile button {
+    border: none;
+    background-color: transparent;
+    color: grey;
+}
+
+.userProfile button:hover {
+    cursor: pointer;
+}
