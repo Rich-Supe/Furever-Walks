@@ -45,11 +45,8 @@ export const getDog = (dogId) => async (dispatch) => {
 
 export const getDogs = (userId) => async (dispatch) => {
     const response = await fetch(`/api/dogs/all/${userId}`)
-    console.log(`Userid from getDog thunk____not okay`, userId)
     if (response.ok) {
-        console.log(`Userid from getDog thunk____==-=-=--`, userId)
         const dogs = await response.json();
-        console.log(dogs.dogs)
         dispatch(setDogs(dogs.dogs));
     }
     
@@ -58,17 +55,19 @@ export const getDogs = (userId) => async (dispatch) => {
     }
 }
 
-export const editDog = (dogId, dog) => async (dispatch) => {
+export const editDog = (payload) => async (dispatch) => {
+    console.log('here!')
+    const dogId = payload.dogId;
+    const userId = payload.id;
     const response = await fetch(`/api/dogs/${dogId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(dog)
+        body: JSON.stringify(payload)
     })
     if (response.ok) {
-        const dog = await response.json();
-        dispatch(updateDog(dog));
+        dispatch(getDogs(userId))
     }
 }
 
