@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
   session,
   dogs,
   walks,
-  maps,
+//   maps,
 
 });
 
