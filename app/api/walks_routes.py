@@ -37,17 +37,6 @@ def add_walk():
         return walk.to_dict()
     return {'message': 'Validation Failed'}
 
-# edit walk
-@walk_routes.route('/<int:walk_id>', methods=['PUT'])
-def edit_walk(walk_id):
-    form = NewWalkForm()
-    walk = Walk.query.get(walk_id)
-    if form.validate_on_submit():
-        walk = Walk(form.name.data, form.user_id.data, form.distance.data, form.duration.data, form.date.data, form.rating.data, form.finished.data)
-        db.session.add(walk)
-        db.session.commit()
-        return walk.to_dict()
-    return {'message': 'Validation Failed'}
 
 # write a route to update or edit a walk
 @walk_routes.route('/<int:walk_id>', methods=['PUT'])
