@@ -2,24 +2,35 @@ import styles from '../../../css-modules/DogProfile.module.css';
 import { useSelector, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { editDog } from '../../../store/dogs';
 
-function DogProfile({ dog }) {
+function DogProfile({ dog, setShowModal }) {
     console.log(dog)
     console.log(dog.id)
-    const dogs = useSelector(state => state.dogs)
-    console.log(dogs)
+    const dogId = dog.id
     const [errors, setErrors] = useState([]);
-    const [name, setName] = useState('');
-    const [breed, setBreed] = useState('');
-    const [age, setAge] = useState('');
-    const [image_url, setImage_url] = useState('');
+    const [name, setName] = useState(dog.name);
+    const [breed, setBreed] = useState(dog.breed);
+    const [age, setAge] = useState(dog.age);
+    const [image_url, setImage_url] = useState(dog.image_url);
     const dispatch = useDispatch();
     const { id } = useParams();
 
-    const editDog = async (e) => {
+    const submitEditDog = async (e) => {
         e.preventDefault();
-
-    }
+        const payload = {
+            dogId,
+            name,
+            breed,
+            age,
+            image_url,
+            id
+        }
+        console.log(payload)
+        console.log(payload.dogId)
+        const data = await dispatch(editDog(payload))
+        setShowModal(false);
+    };
 
     const updateName = (e) => {
         setName(e.target.value);
@@ -38,7 +49,7 @@ function DogProfile({ dog }) {
     };
 
     return (
-        <form onSubmit={editDog}>
+        <form onSubmit={submitEditDog}>
             <div>
                 {errors.map((error, ind) => (
                     <div key={ind}>{error}</div>
