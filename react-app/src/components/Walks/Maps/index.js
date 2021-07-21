@@ -9,10 +9,10 @@ const MapContainer = () => {
     const ref = useRef();
 
     const [ map, setMap ] = useState();
-    const options = {
-        center: { lat: 37.7749, lng: -122.4194 },
-        zoom: 12,
-    }
+    // const options = {
+    //     center: { lat: 37.7749, lng: -122.4194 },
+    //     zoom: 12,
+    // }
 
     useEffect(() => {
         const onLoad = () =>
