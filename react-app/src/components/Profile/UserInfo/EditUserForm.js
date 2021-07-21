@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { editUser, deleteUser } from '../../../store/session';
 import styles from '../../../css-modules/EditUserModal.module.css'
 
-const EditUserModal = ({ setShowModal }) => {
+const EditUserForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
@@ -34,7 +34,6 @@ const EditUserModal = ({ setShowModal }) => {
     }
     const data = await dispatch(editUser(payload));
     if (data) setErrors(data);
-    setShowModal(false);
   };
 
   const updateName = (e) => setName(e.target.value);
@@ -132,4 +131,4 @@ const EditUserModal = ({ setShowModal }) => {
   );
 };
 
-export default EditUserModal;
+export default EditUserForm;
