@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Modal } from '../../../context/Modal';
-import ConfirmDeleteModal from './ConfirmDeleteModal';
+// import { Modal } from '../../../context/Modal';
+// import ConfirmDeleteModal from './ConfirmDeleteModal';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { editUser, deleteUser } from '../../../store/session';
@@ -59,8 +59,8 @@ const EditUserForm = ({ setShowForm }) => {
   const updateConfirmPassword = (e) => setConfirmPassword(e.target.value);
 
   const handleDelete = async () => {
-    await dispatch(deleteUser(user));
-    history.push('/');
+    const data = await dispatch(deleteUser(user));
+    if (data) history.push('/');
   }
 
   return (

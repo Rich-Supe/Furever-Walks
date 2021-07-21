@@ -54,5 +54,5 @@ def deleteUser(id):
     user = User.query.get(id)
     db.session.delete(user)
     db.session.commit()
-    return 
+    return user.to_dict()
     
