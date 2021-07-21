@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal } from '../../../context/Modal';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
 import { useSelector, useDispatch } from 'react-redux';
@@ -6,9 +6,10 @@ import { useHistory } from 'react-router-dom';
 import { editUser, deleteUser } from '../../../store/session';
 import styles from '../../../css-modules/EditUserModal.module.css'
 
-const EditUserForm = () => {
+const EditUserForm = ({ setShowForm }) => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState(user?.name);
@@ -17,8 +18,17 @@ const EditUserForm = () => {
   const [email, setEmail] = useState(user?.email);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  // const [showConfirmModal, setShowConfirmModal] = useState(false);
 
+  useEffect(() => {
+    const errors = [];
+    if (!name) errors.push('Please provide your name.');
+    if (!username) errors.push('Please provide a username.');
+    if (!email) errors.push('Please provide an email.');
+    if (confirmPassword && password !== confirmPassword) errors.push('Password and confirm password must match.');
+    setErrors(errors);
+  }, [name, username, email, password, confirmPassword]);
+  
   const onSave = async (e) => {
     e.preventDefault();
     const payload = {
@@ -33,7 +43,12 @@ const EditUserForm = () => {
       user_total_walks: 0
     }
     const data = await dispatch(editUser(payload));
-    if (data) setErrors(data);
+    if (data) {
+      setErrors(data);
+    } else {
+      // setShowConfirmModal(false);
+      history.push('/');
+    }
   };
 
   const updateName = (e) => setName(e.target.value);
@@ -43,15 +58,10 @@ const EditUserForm = () => {
   const updatePassword = (e) => setPassword(e.target.value);
   const updateConfirmPassword = (e) => setConfirmPassword(e.target.value);
 
-  const handleClear = (e) => {
-    e.preventDefault();
-    setName('');
-    setUsername('');
-    setBio('');
-    setEmail('');
-    setPassword('');
-    setConfirmPassword('');
-  };
+  const handleDelete = async () => {
+    await dispatch(deleteUser(user));
+    history.push('/');
+  }
 
   return (
     <div>
@@ -64,7 +74,7 @@ const EditUserForm = () => {
           <input
             name='name'
             type='text'
-            placeholder={name}
+            placeholder={name ? name : 'Name'}
             value={name}
             onChange={updateName}
           />
@@ -73,7 +83,7 @@ const EditUserForm = () => {
           <input
             name='username'
             type='text'
-            placeholder={username}
+            placeholder={username ? username : 'Username'}
             value={username}
             onChange={updateUsername}
           />
@@ -82,7 +92,7 @@ const EditUserForm = () => {
           <input
             name='bio'
             type='text'
-            placeholder={bio}
+            placeholder={bio ? bio : 'Bio'}
             value={bio}
             onChange={updateBio}
           />
@@ -91,7 +101,7 @@ const EditUserForm = () => {
           <input
             name='email'
             type='text'
-            placeholder={email}
+            placeholder={email ? email : 'Email'}
             value={email}
             onChange={updateEmail}
           />
@@ -115,16 +125,17 @@ const EditUserForm = () => {
           />
         </div>
         <div className='wrapper'>
-          <button type='submit'>Save</button>
-          <button onClick={handleClear}>Clear</button>
+          <button type='submit' disabled={errors.length}>Save</button>
+          <button onClick={() => setShowForm(false)}>Cancel</button>
         </div>
         <div>
-          <button onClick={() => setShowConfirmModal(true)}>Delete Profile</button>
+          {/* <button onClick={() => setShowConfirmModal(true)}>Delete Profile</button>
           {showConfirmModal && (
               <Modal onClose={() => setShowConfirmModal(false)}>
                   <ConfirmDeleteModal setShowConfirmModal={setShowConfirmModal} />
               </Modal>
-          )}
+          )} */}
+          <button onClick={handleDelete}>Delete Profile</button>
         </div>
       </form>
     </div>

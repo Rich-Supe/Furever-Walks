@@ -13,14 +13,14 @@ function UserProfile(){
 
     return (
         <div className={styles.userProfile}>
+            <h1>User Profile</h1>
+            <img src={img_url} />
             {showForm ? (
                 <div>
                     <EditUserForm setShowForm={setShowForm} />
                 </div>
             ) : (
                 <div>
-                    <h1>User Profile</h1>
-                    <img src={img_url} />
                     <ul>    
                         <li>Name: {user?.name}</li>
                         <li>Username: {user?.username}</li>
@@ -32,7 +32,9 @@ function UserProfile(){
                     </ul>
                 </div>
             )}
-            <button onClick={() => setShowForm(true)}>Edit Profile</button>
+            {!showForm && 
+                <button onClick={() => setShowForm(true)}>Edit Profile</button>
+            }
         </div>
 
     )
