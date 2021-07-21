@@ -99,7 +99,8 @@ export const createDog = (name, breed, age, image_url, user_id, dog_total_distan
     }
 }
 
-export const deleteDog = (dogId) => async (dispatch) => {
+export const deleteDog = (dogId, id) => async (dispatch) => {
+    const userId = id
     const response = await fetch(`/api/dogs/${dogId}`, {
         method: 'DELETE'
     })
@@ -126,19 +127,22 @@ export default function reducer(state = initialState, action) {
                 newState[dog.id] = dog;
             });
             return newState;
-        case UPDATE_DOG:
-            newState = {...state};
-            newState[action.payload.id] = action.payload;
-            return newState;
-        case ADD_DOG:
-            newState = {...state};
-            newState[action.payload.id] = action.payload;
-            return newState;
+        // case UPDATE_DOG:
+        //     newState = {...state};
+        //     newState[action.payload.id] = action.payload;
+        //     return newState;
+        // case ADD_DOG:
+        //     newState = {...state};
+        //     newState[action.payload.id] = action.payload;
+        //     return newState;
         case REMOVE_DOG:  
             newState = {...state};
-            newState.dog = [...state.dog];
-            const index = newState.dog.findIndex((dog) => dog.id === action.payload);
-            newState.dog.splice(index, 1);
+            // console.log(newState)
+            // console.log(action.payload)
+            // newState.dog = [...state.dog];
+            // const index = newState.dog.findIndex((dog) => dog.id === action.payload);
+            // newState.dog.splice(index, 1);
+            delete newState[action.payload]
             return newState; 
         default:
             console.log('HELLLOOOO from default')
