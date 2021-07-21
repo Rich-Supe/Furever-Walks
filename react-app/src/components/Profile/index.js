@@ -11,10 +11,10 @@ function Profile() {
 
     return (
         <div className={styles.profile}>
-            <h1>Profile Page!</h1>
-            <UserProfile />
-            <DogCarousel userId={id}/>
-            <AddDogModal/>
+            {/* <h1>Profile Page!</h1> */}
+            <UserProfile className={styles.userProfileContainer} />
+            <DogCarousel className={styles.dogCarouselContainer} userId={id}/>
+            <AddDogModal />
         </div>
 
     );
