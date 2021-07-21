@@ -48,13 +48,6 @@ def create_dog():
             dog_total_walks=form.dog_total_walks.data)
         db.session.add(dog)
         db.session.commit()
-        print('dnqwiojdioqwjdwqdjqowidjiqwodjoqwjd', dog)
-        print('dnqwiojdioqwjdwqdjqowidjiqwodjoqwjd', dog)
-        print('dnqwiojdioqwjdwqdjqowidjiqwodjoqwjd', dog)
-        print('dnqwiojdioqwjdwqdjqowidjiqwodjoqwjd', dog)
-        print('dnqwiojdioqwjdwqdjqowidjiqwodjoqwjd', dog)
-        print('dnqwiojdioqwjdwqdjqowidjiqwodjoqwjd', dog)
-        print('dnqwiojdioqwjdwqdjqowidjiqwodjoqwjd', dog.to_dict())
         return dog.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -64,19 +57,13 @@ def update_dog(dog_id):
     dog = Dog.query.get(dog_id)
     if dog is None:
         return {'message': 'No dog found'}, 404
-    form = NewDogForm()
-    if form.validate_on_submit():
-        dog.name = form.name.data
-        dog.breed = form.breed.data
-        dog.age = form.age.data
-        dog.image_url = form.image_url.data
-        dog.user_id = form.user_id.data
-        dog.dog_total_distance = form.dog_total_distance.data
-        dog.dog_total_duration = form.dog_total_duration.data
-        dog.dog_total_walks = form.dog_total_walks.data
-        db.session.commit()
-        return dog.to_dict()
-    return "bad data"
+    data = request.get_json()
+    dog.name = data['name']
+    dog.breed = data['breed']
+    dog.age = data['age']
+    dog.image_url = data['image_url']
+    db.session.commit()
+    return dog.to_dict()
     
 
 # Remove Doggo
