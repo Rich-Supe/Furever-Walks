@@ -33,9 +33,8 @@ function AddDog({ setShowModal }) {
         }
         console.log('data', data)
         console.log('errors', errors)
-        if (data['id']) {
-            setErrors([]);
-            setShowModal(false);
+        if (data === undefined) {
+        setShowModal(false);
         }
     }
 
@@ -57,14 +56,11 @@ function AddDog({ setShowModal }) {
 
     return (
         <form onSubmit={addDog}>
-            {/* {typeof(errors) === 'array' ? ( */}
             <div>
                 {errors.map((error, ind) => (
                     <div key={ind}>{error}</div>
                 ))}
             </div>
-            {/* ) : null
-            } */}
             <div>
                 <input
                     type='text'
