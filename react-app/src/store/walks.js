@@ -69,11 +69,18 @@ export const getWalksDog = (dogId) => async (dispatch) => {
     if (response.ok) {
         console.log(`Userid from getWalk thunk____==-=-=--`, dogId)
         const walks = await response.json();
-        dispatch(setWalksDog(walks));
+        dispatch(setWalksDog(walks.walks));
     }
 
     else {
         return ['An error occurred. Please try again.']
+    }
+}
+
+export const getAllWalksDog = () => async (dispatch) => {
+    const response = await fetch('/api/walks/all')
+    if response.ok {
+        
     }
 }
 

@@ -33,7 +33,7 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(dog_routes, url_prefix='/api/dogs')
-app.register_blueprint(walk_routes, url_prefic='/api/walks')
+app.register_blueprint(walk_routes, url_prefix='/api/walks')
 db.init_app(app)
 Migrate(app, db)
 
