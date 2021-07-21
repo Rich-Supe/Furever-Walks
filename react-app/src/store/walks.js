@@ -77,13 +77,6 @@ export const getWalksDog = (dogId) => async (dispatch) => {
     }
 }
 
-export const getAllWalksDog = () => async (dispatch) => {
-    const response = await fetch('/api/walks/all')
-    if response.ok {
-        
-    }
-}
-
 export const editWalk = (walkId, walk) => async (dispatch) => {
     const response = await fetch(`/api/walks/${walkId}`, {
         method: 'PUT',
