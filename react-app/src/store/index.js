@@ -3,11 +3,16 @@ import thunk from 'redux-thunk';
 import session from './session';
 import dogs from './dogs';
 import walks from './walks';
+// import maps from './maps';
+import modals from './modals'
 
 const rootReducer = combineReducers({
   session,
   dogs,
   walks,
+//   maps,
+  modals,
+
 });
 
 
