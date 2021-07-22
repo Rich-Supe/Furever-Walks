@@ -1,5 +1,13 @@
+.userProfile {
+    display: flex;
+    flex-direction: column;
+    
+    font-family: Dosis, Helvetica, sans-serif;
+}
+
 .userProfile img {
     width: 50px;
+    
 }
 
 .userProfile ul {

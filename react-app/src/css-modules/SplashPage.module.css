@@ -10,4 +10,11 @@
 
 .splashPageContainer h1 {
     font-family: 'Rock Salt', cursive;
+    margin: 1%;
+}
+
+.splashPageContainer img {
+    margin: 1%;
+    width: auto;
+    max-height: 10%;
 }

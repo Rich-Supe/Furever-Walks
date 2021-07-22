@@ -1,18 +1,21 @@
-/* .profile {
+.profile {
     display: grid;
     grid-template: 
         1fr 1fr
         1fr 1fr;
     grid-template-areas:
         'userProfile graph'
-        'userProfile dogCarousel'
-        'userProfile addDogModal';
+        'userProfile dogCarousel';
 }
 
 .userProfileContainer {
-    grid-area: 'userProfile';
+    grid-area: userProfile;
+}
+
+.graphContainer {
+    grid-area: graph;
 }
 
 .dogCarouselContainer {
-    grid-area: 'dogCarousel';
-} */
+    grid-area: dogCarousel;
+}
