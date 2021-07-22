@@ -7,14 +7,15 @@ import styles from '../../../css-modules/Graph.module.css';
 function Graph() {
     const dispatch = useDispatch();
 
-    const [showDuration, setShowDuration] = useState(false)
+    const [showDuration, setShowDuration] = useState(true)
 
-    const user = useSelector(state => state.session.user);
-    const dogsObj = useSelector(state => state.dogs);
-    const dogs = dogsObj['dogs']
     const walks = useSelector(state => state.walks);
+    const user = useSelector(state => state.session.user);
+    const dogs = useSelector(state => state.dogs);
+    // const dogsObj = useSelector(state => state.dogs);
+    // const dogs = dogsObj['dogs']
     // console.log('USER-----------------', user);
-    console.log('DOGS-----------------', dogs);
+    // console.log('DOGS-----------------', dogs);
     // console.log('DOG-----------------', dogs['1']);
     // console.log('WALKS-----------------', walks);
     // console.log('WALKS-----------------', walks['1']);
@@ -54,20 +55,38 @@ function Graph() {
     }
 
     return (
-        <div>
-            <div>
-                <label>
-                    Distance
-                    <input type='radio' value='distance' onChange={() => setShowDuration(true)} checked={showDuration} />
-                </label>
-                <label>
-                    Duration
-                    <input type='radio' value='duration' onChange={() => setShowDuration(false)} checked={!showDuration}/>
-                </label>
+        <div className={styles.graphBox}>
+            <h2>Stats</h2>
+            <div className={styles.label}>
+                <div>
+                    <label>
+                        Duration
+                        <input 
+                            type='radio' 
+                            value='distance' 
+                            onChange={() => setShowDuration(true)} checked={showDuration} 
+                        />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Distance
+                        <input 
+                            type='radio' 
+                            value='duration' 
+                            onChange={() => setShowDuration(false)} checked={!showDuration}
+                        />
+                    </label>
+                </div>
             </div>
-            <div>
+            <div className={styles.graph}>
                 {showDuration ? (
-                    <LineChart width={700} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+                    <LineChart 
+                        width={700} 
+                        height={300} 
+                        data={data} 
+                        margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+                    >
                         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
                         <XAxis dataKey="name" />
                         <YAxis />
