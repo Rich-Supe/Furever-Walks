@@ -16,36 +16,23 @@ return (
     <nav className={styles.navbarContainer}>
     {user ? (
         <ul>
-        <li>
-            <NavLink to='/' exact={true} className='navbar-container__navlink' activeClassName='active'>
-            Home
-            </NavLink>
-        </li>
-        <li>
-            <NavLink to={`/users/walks/${userId}`} exact={true} className='navbar-container__navlink' activeClassName='active'>
-            Walks
-            </NavLink>
-        </li>
-        <li>
-            <LogoutButton />
-        </li>
-        {/* <li>
-            <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-            </NavLink>
-        </li> */}
+            <li>
+                <NavLink to='/' exact={true} className={styles.navlink} activeClassName='active'>
+                Home
+                </NavLink>
+            </li>
+            <li>
+                <NavLink to={`/users/walks/${userId}`} exact={true} className={styles.navlink} activeClassName='active'>
+                Walks
+                </NavLink>
+            </li>
+            <li><LogoutButton /></li>
         </ul>
     ) : (
         <ul>
-            <li>
-                <DemoFormModal />
-            </li>
-            <li>
-                <LoginFormModal />
-            </li>
-            <li>
-                <SignupFormModal />
-            </li>
+            <li><DemoFormModal /></li>
+            <li><LoginFormModal /></li>
+            <li><SignupFormModal /></li>
         </ul>
     )}
     </nav>
