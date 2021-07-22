@@ -10,6 +10,8 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.dog_routes import dog_routes
 from .api.walks_routes import walk_routes
+
+# from .api.map_routes import map_routes
 from .seeds import seed_commands
 
 from .config import Config
@@ -34,6 +36,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(dog_routes, url_prefix='/api/dogs')
 app.register_blueprint(walk_routes, url_prefix='/api/walks')
+# app.register_blueprint(map_routes, url_prefix='/api/maps')
 db.init_app(app)
 Migrate(app, db)
 

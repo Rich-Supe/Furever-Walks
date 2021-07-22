@@ -55,7 +55,7 @@ export const getWalksUser = (userId) => async (dispatch) => {
     if (response.ok) {
         console.log(`Userid from getWalk thunk____==-=-=--`, userId)
         const walks = await response.json();
-        dispatch(setWalksUser(walks));
+        dispatch(setWalksUser(walks.walks));
     }
 
     else {
@@ -128,9 +128,9 @@ export default function reducer(state = initialState, action) {
             return newState;
         case SET_WALKS_USER:
             newState = { ...state };
-            action.payload.forEach((walk) => {
-                newState[walk.id] = walk;
-            });
+            // action.payload.forEach((walk) => {
+            //     newState[walk.id] = walk;
+            // });
             return newState;
         case SET_WALKS_DOG:
             newState = { ...state };
@@ -153,7 +153,6 @@ export default function reducer(state = initialState, action) {
             newState.walk.splice(index, 1);
             return newState;
         default:
-            console.log('HELLLOOOO from default')
             return state;
     }
 }
