@@ -22,7 +22,7 @@ function Walks(){
             <div className={styles.walksFormContainer}><NewWalk /></div>
             <div className={styles.walksCarouselContainer}><WalksCarousel /></div>
             <div className={styles.walksInfoContainer}><WalkInfo /></div>
-            {/* <div className={styles.walksMap}><Maps /></div> */}
+            <div className={styles.walksMap}><Maps /></div>
         </div>
     )
 }
