@@ -14,7 +14,7 @@ class Dog(db.Model):
     image_url = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    dogwalk_child = db.relationship('Walk', secondary=dogwalks_table, backref='dogs')
+    dogwalk_dog = db.relationship('Walk', secondary=dogwalks_table, back_populates='dogwalk_walk')
     
     user = db.relationship('User', back_populates='dogs')
     #  parent_id = Column(Integer, ForeignKey('parent.id'))

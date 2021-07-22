@@ -16,7 +16,7 @@ class Walk(db.Model):
     routeData = db.Column(db.PickleType)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    # dogwalk_parent = db.relationship('Dogs', secondary=dogwalks_table, back_populates='walks')
+    dogwalk_walk = db.relationship('Dog', secondary=dogwalks_table, back_populates='dogwalk_dog')
 
     def __repr__(self):
         print(self.name)

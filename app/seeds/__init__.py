@@ -2,7 +2,7 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .dogs import seed_dogs, undo_dogs
 from .walks import seed_walks, undo_walks
-
+from .dogwalks import relationships
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
 seed_commands = AppGroup('seed')
@@ -14,6 +14,7 @@ def seed():
     seed_users()
     seed_dogs()
     seed_walks()
+    relationships()
     # Add other seed functions here
 
 

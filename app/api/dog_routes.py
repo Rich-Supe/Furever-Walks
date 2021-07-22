@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from app.forms import NewDogForm
-from app.models import Dog, db
+from app.models import Dog, db, Walk
 
 
 dog_routes = Blueprint('dogs', __name__)
@@ -27,9 +27,19 @@ def get_dog(dog_id):
 # @dog_routes.route('/all/:user_id', methods=['GET'])
 def get_all_dogs(user_id):
     # print('UserId from get dog api route---------------------------------', user_id)
-    dogs = Dog.query.filter_by(user_id=user_id)
+    dogs = Dog.query.filter_by(user_id==user_id)
     # print('DOGGOS from api get all------------', dogs)
     return {"dogs": [dog.to_dict() for dog in dogs]}
+
+
+@dog_routes.route('/all/walks/<int:walk_id>', methods=['GET'])
+
+def get_dogs_by_walk(walk_id):
+
+    dogs = Dog.query.join(Walk).filter(Walk.id==walk_id).all()
+
+    return {"dogs": [dog.to_dict() for dog in dogs]}
+
 
 #Crate a new dog
 @dog_routes.route('/create', methods=['POST'])
