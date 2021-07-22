@@ -1,4 +1,4 @@
-from app.models import db, Walk
+from app.models import db, Walk, Dog
 
 def seed_walks():
     walk1 = Walk(name='Favorite Route', distance=2, duration=40, date='2021-03-11', rating=0, finished=True, routeData={}, user_id=1)

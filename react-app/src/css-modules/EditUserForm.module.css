@@ -1,3 +1,12 @@
+.editUserContainer { 
+    display: flex;
+}
+
+.editForm {
+    margin-left: -100px;
+
+}
+
 .editUserContainer .submitButton {
     border: none;
     background-color: #fee380;

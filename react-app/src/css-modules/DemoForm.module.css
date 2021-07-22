@@ -1,12 +1,19 @@
 .demoFormContainer {
     /* background-color: transparent; */
     font-family: Dosis, Helvetica, sans-serif;
+    background-color: transparent;
+    width: 200%;
+    height: 200%;
+    padding: 30%;
+    color: white;
+    text-shadow: 2px 2px #ffc911;
 }
 
 .demoFormContainer div .wrapper{
     transform: translate(-50%, -50%);
     width: 210px;
     align-self: flex-end;
+    background-color: transparent;
 }
 
 .demoFormContainer button {

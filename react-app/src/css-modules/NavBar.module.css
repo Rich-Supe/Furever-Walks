@@ -23,3 +23,8 @@
     cursor: pointer;
     text-decoration: underline;
 }
+
+.navlink {
+    text-decoration: none;
+    color:black;
+}
