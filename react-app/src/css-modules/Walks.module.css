@@ -1,0 +1,32 @@
+.walksPageContainer {
+    display: grid;
+    grid-template:
+        1fr 1fr
+        1fr 1fr
+        1fr 1fr;
+    grid-template-areas: 
+        'form map'
+        'carousel map'
+        'info map';
+    font-family: Dosis, Helvetica, sans-serif;
+}
+
+.walksFormContainer {
+    grid-area: form;
+
+}
+
+.walksCarouselContainer {
+    grid-area: carousel;
+
+}
+
+.walksInfoContainer {
+    grid-area: info;
+    
+}
+
+.walksMapContainer {
+    grid-area: map;
+
+}
