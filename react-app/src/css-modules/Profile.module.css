@@ -6,6 +6,7 @@
     grid-template-areas:
         'userProfile graph'
         'userProfile dogCarousel';
+    font-family: Dosis, Helvetica, sans-serif;
 }
 
 .userProfileContainer {
