@@ -1,5 +1,13 @@
+.userProfile {
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+
 .userProfile img {
     width: 50px;
+    
 }
 
 .userProfile ul {
