@@ -4,7 +4,7 @@ import styles from '../../css-modules/Walks.module.css'
 import NewWalk from './NewWalk'
 import WalkInfo from './WalkInfo'
 import WalksCarousel from './WalksCarousel'
-// import Maps from './Maps';
+import Maps from './Maps';
 import { getWalksUser, getWalk } from '../../store/walks';
 
 
