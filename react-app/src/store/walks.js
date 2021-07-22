@@ -69,7 +69,7 @@ export const getWalksDog = (dogId) => async (dispatch) => {
     if (response.ok) {
         console.log(`Userid from getWalk thunk____==-=-=--`, dogId)
         const walks = await response.json();
-        dispatch(setWalksDog(walks));
+        dispatch(setWalksDog(walks.walks));
     }
 
     else {

@@ -10,6 +10,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.dog_routes import dog_routes
 from .api.walks_routes import walk_routes
+
 # from .api.map_routes import map_routes
 from .seeds import seed_commands
 
