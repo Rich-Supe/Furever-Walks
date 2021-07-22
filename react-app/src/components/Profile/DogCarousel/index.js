@@ -20,14 +20,6 @@ function DogCarousel({userId}){
     }, [dispatch])
     
     const doggos = useSelector((state) => Object.values(state.dogs));
-    // let newArr = []
-    // doggos.forEach(obj => {
-    //     console.log('HOPEFULLY AN OBJECT:', obj.dogs)
-    //     newArr.push(obj.dogs)
-    // })
-
-
-    // let arrOfDogs = newArr[0]
 
     const slides = [];
     let i = 0
