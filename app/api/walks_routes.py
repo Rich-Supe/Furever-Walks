@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from app.forms import NewWalkForm
-from app.models import Walk, db, user
+from app.models import Walk, db, user, Dog
 import datetime
 
 walk_routes = Blueprint('walks', __name__)
@@ -24,9 +24,18 @@ def get_walks(user_id):
     return {"walks": [walk.to_dict() for walk in walks]}
 
 # Get all walks by dog
-@walk_routes.route('/all/<int:dog_id>', methods=['GET'])
+# @walk_routes.route('/all/<int:dog_id>', methods=['GET'])
+# def get_walks_by_dog(dog_id):
+#     walks = Walk.query.filter_by(dog_id=dog_id).all()
+#     return {"walks": [walk.to_dict() for walk in walks]}
+
+
+@walk_routes.route('/all/dogs/<int:dog_id>', methods=['GET'])
+
 def get_walks_by_dog(dog_id):
-    walks = Walk.query.filter_by(dog_id=dog_id).all()
+
+    walks = Walk.query.join(Dog).filter(Dog.id == dog_id).all()
+
     return {"walks": [walk.to_dict() for walk in walks]}
 
 # add walk

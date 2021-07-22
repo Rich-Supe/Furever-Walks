@@ -4,6 +4,7 @@ const SET_WALKS_DOG = 'walks/SET_WALKS_DOG';
 const ADD_WALK = 'walks/ADD_WALK';
 const UPDATE_WALK = 'walks/UPDATE_WALK';
 const REMOVE_WALK = 'walks/REMOVE_WALK';
+const WALKS_BY_DOG = 'walks/WALKS_BY_DOG';
 
 const setWalk = (id) => ({
     type: SET_WALK,
@@ -18,6 +19,11 @@ const setWalksUser = (walks) => ({
 const setWalksDog = (walks) => ({
     type: SET_WALKS_DOG,
     payload: walks
+});
+
+const setWalksByDogId = (dogId) => ({
+    type: WALKS_BY_DOG,
+    payload: dogId
 });
 
 const updateWalk = (walk) => ({
@@ -70,6 +76,21 @@ export const getWalksDog = (dogId) => async (dispatch) => {
         console.log(`Userid from getWalk thunk____==-=-=--`, dogId)
         const walks = await response.json();
         dispatch(setWalksDog(walks.walks));
+    }
+
+    else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
+export const getWalksByDog = (dogId) => async (dispatch) => {
+    // const dogId = dog.id;
+    const response = await fetch(`/api/walks/all/dogs/${dogId}`)
+    console.log(`Userid from getWalk thunk____not okay`, dogId)
+    if (response.ok) {
+        console.log(`Userid from getWalk thunk____==-=-=--`, dogId)
+        const walks = await response.json();
+        dispatch(setWalksByDogId(walks.walks));
     }
 
     else {
@@ -134,6 +155,12 @@ export default function reducer(state = initialState, action) {
             });
             return newState;
         case SET_WALKS_DOG:
+            newState = { ...state };
+            action.payload.forEach((walk) => {
+                newState[walk.id] = walk;
+            });
+            return newState;
+        case WALKS_BY_DOG:
             newState = { ...state };
             action.payload.forEach((walk) => {
                 newState[walk.id] = walk;
