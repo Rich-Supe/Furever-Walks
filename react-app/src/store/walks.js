@@ -92,7 +92,8 @@ export const editWalk = (walkId, walk) => async (dispatch) => {
 }
 
 export const createWalk = (walk) => async (dispatch) => {
-    const response = await fetch(`/api/walks`, {
+    console.log("walk from createWalk thunk", walk)
+    const response = await fetch(`/api/walks/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

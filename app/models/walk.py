@@ -10,7 +10,7 @@ class Walk(db.Model):
     name = db.Column(db.String, nullable=False)
     distance = db.Column(db.Float, nullable=False)
     duration = db.Column(db.Integer, nullable=False)
-    date = db.Column(db.DateTime, nullable=False)
+    date = db.Column(db.Date, nullable=False)
     rating = db.Column(db.Integer)
     finished = db.Column(db.Boolean, default=False)
     routeData = db.Column(db.PickleType)

@@ -1,6 +1,7 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from app.forms import NewWalkForm
-from app.models import Walk, db, user, walk
+from app.models import Walk, db, user
+import datetime
 
 walk_routes = Blueprint('walks', __name__)
 
@@ -14,10 +15,10 @@ def get_walk(walk_id):
 # get all walks by user
 @walk_routes.route('/all/<int:user_id>', methods=['GET'])
 def get_walks(user_id):
-    print("HERE @@@@@@@@'/all/<int:user_id>'", user_id)
+    # print("HERE @@@@@@@@'/all/<int:user_id>'", user_id)
 
     walks = Walk.query.filter_by(user_id=user_id).all()
-    print("###################", walks)
+    # print("###################", walks)
     # return jsonify([walk.to_dict() for walk in walks])
     # return jsonify(walks=[walk.serialize() for walk in walks])
     return {"walks": [walk.to_dict() for walk in walks]}
@@ -32,13 +33,26 @@ def get_walks_by_dog(dog_id):
 @walk_routes.route('/', methods=['POST'])
 def add_walk():
     form = NewWalkForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print(form.data)
+    print(request.data)
     if form.validate_on_submit():
-        walk = Walk(form.name.data, form.user_id.data, form.distance.data, form.duration.data, form.date.data, form.rating.data, form.finished.data)
+        walk = Walk(
+            name=form.name.data, 
+            user_id=int(form.user_id.data), 
+            distance=float(form.distance.data), 
+            duration=int(form.duration.data), 
+            date=datetime.date.today(), 
+            rating=int(form.rating.data), 
+            finished=form.finished.data 
+            # routeData=form.routeData.data
+            )
+        print('backend@@######$$$$$$$&&&&&', walk)
         db.session.add(walk)
         db.session.commit()
         # return jsonify(walk.to_dict())
         return walk.to_dict()
-    return {'message': 'Validation Failed'}
+    return {'message': form.errors}
 
 
 # write a route to update or edit a walk
