@@ -11,18 +11,24 @@ function Graph() {
 
     const walks = useSelector(state => state.walks);
     const user = useSelector(state => state.session.user);
-    const dogs = useSelector(state => state.dogs);
+    const dogs = useSelector(state => Object.values(state.dogs));
+
+    // const matches = walks.filter(walk => walk.user_id == dog.user_id);
+
     // const dogsObj = useSelector(state => state.dogs);
     // const dogs = dogsObj['dogs']
     // console.log('USER-----------------', user);
-    // console.log('DOGS-----------------', dogs);
+    console.log('DOGS-----------------', dogs);
+    // console.log('DOGS-----------------', dogs['0']);
     // console.log('DOG-----------------', dogs['1']);
     // console.log('WALKS-----------------', walks);
     // console.log('WALKS-----------------', walks['1']);
 
-    useEffect(() => {
-        dispatch(getWalksDog(1))
-    }, [dispatch]);
+    // useEffect(() => {
+    //     const dog1Walk = dispatch(getWalksDog(1));
+
+
+    // }, [dispatch]);
 
     const today1 = new Date();
     const today2 = new Date();
@@ -39,20 +45,32 @@ function Graph() {
     today7.setDate(today7.getDate()-6);
 
     const data = [
-        {name: today7.toDateString().slice(0, 10), dogDuration1: 350, dogDistance1: 450, dogDuration2: 150, dogDistance2: 350, dogDuration3: 100, dogDistance3: 500},
-        {name: today6.toDateString().slice(0, 10), dogDuration1: 350, dogDistance1: 450, dogDuration2: 150, dogDistance2: 350, dogDuration3: 100, dogDistance3: 500},
-        {name: today5.toDateString().slice(0, 10), dogDuration1: 350, dogDistance1: 450, dogDuration2: 150, dogDistance2: 350, dogDuration3: 100, dogDistance3: 500},
-        {name: today4.toDateString().slice(0, 10), dogDuration1: 350, dogDistance1: 450, dogDuration2: 150, dogDistance2: 350, dogDuration3: 100, dogDistance3: 500},
-        {name: today3.toDateString().slice(0, 10), dogDuration1: 350, dogDistance1: 450, dogDuration2: 150, dogDistance2: 350, dogDuration3: 100, dogDistance3: 500},
-        {name: today2.toDateString().slice(0, 10), dogDuration1: 350, dogDistance1: 450, dogDuration2: 150, dogDistance2: 350, dogDuration3: 100, dogDistance3: 500},
-        {name: today1.toDateString().slice(0, 10), dogDuration1: 350, dogDistance1: 450, dogDuration2: 150, dogDistance2: 350, dogDuration3: 100, dogDistance3: 500},
+        {date: today7.toDateString().slice(0, 10)},
+        {date: today6.toDateString().slice(0, 10), dogDuration1: 350, dogDistance1: 450, dogDuration2: 150, dogDistance2: 350, dogDuration3: 100, dogDistance3: 500},
+        {date: today5.toDateString().slice(0, 10), dogDuration1: 350, dogDistance1: 450, dogDuration2: 150, dogDistance2: 350, dogDuration3: 100, dogDistance3: 500},
+        {date: today4.toDateString().slice(0, 10), dogDuration1: 350, dogDistance1: 450, dogDuration2: 150, dogDistance2: 350, dogDuration3: 100, dogDistance3: 500},
+        {date: today3.toDateString().slice(0, 10), dogDuration1: 350, dogDistance1: 450, dogDuration2: 150, dogDistance2: 350, dogDuration3: 100, dogDistance3: 500},
+        {date: today2.toDateString().slice(0, 10), dogDuration1: 350, dogDistance1: 450, dogDuration2: 150, dogDistance2: 350, dogDuration3: 100, dogDistance3: 500},
+        {date: today1.toDateString().slice(0, 10), dogDuration1: 350, dogDistance1: 450, dogDuration2: 150, dogDistance2: 350, dogDuration3: 100, dogDistance3: 500},
     ]
 
-    for (let dog in dogs) {
-        // data['dog1'] = dog['dog_total_distance']
-        // data['dog1'] = dog['dog_total_duration']
-        console.log('DOG----------', dog);
-    }
+    // let dogwalks = {};
+    // dogs.forEach(dog => {
+        // data[`dogDuration${dog.id}`] = dog['dog_total_duration']
+        // console.log(data[`dogDuration${dog.id}`]);
+        // dogwalks[dog.id] = walks.
+
+        // data[dateKey]
+    //     data[0][`dogDuration${dog.id}`] = dog['dog_total_duration']
+    //     console.log('HERE-----', dog.id);
+
+    // })
+
+    // for (let dog in dogs) {
+    //     data['dogDistance1'] = dog['dog_total_distance']
+    //     data['dogDuration1'] = dog['dog_total_duration']
+    //     console.log('DOG----------', dog);
+    // }
 
     return (
         <div className={styles.graphBox}>
@@ -88,7 +106,7 @@ function Graph() {
                         margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
                     >
                         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                        <XAxis dataKey="name" />
+                        <XAxis dataKey="date" />
                         <YAxis />
                         <Tooltip />
                         <Legend />
@@ -99,7 +117,7 @@ function Graph() {
                 ) : (
                     <LineChart width={700} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
                         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                        <XAxis dataKey="name" />
+                        <XAxis dataKey="date" />
                         <YAxis />
                         <Tooltip />
                         <Legend />
