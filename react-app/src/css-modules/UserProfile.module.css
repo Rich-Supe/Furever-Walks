@@ -1,5 +1,14 @@
+.userProfile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5%;
+    
+}
+
 .userProfile img {
     width: 50px;
+    
 }
 
 .userProfile ul {

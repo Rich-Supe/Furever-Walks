@@ -1,0 +1,25 @@
+.graphBox {
+    display: grid;
+    grid-template: 
+        1fr 1fr
+        1fr 1fr;
+    grid-template-areas: 
+        'h h'
+        'label graph';
+    
+}
+
+.graphBox h2 {
+    grid-area: h;
+    text-align: center;
+}
+
+.label {
+    grid-area: label;
+
+}
+
+.graph {
+    grid-area: graph;
+
+}

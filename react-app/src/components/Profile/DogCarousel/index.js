@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {getDogs} from '../../../store/dogs'
 import Slide from './Slide'
+import AddDogModal from '../AddDogModal'
 import styles from '../../../css-modules/DogCarousel.module.css'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -35,8 +36,8 @@ function DogCarousel({userId}){
     if (doggos) {   
         return (
             <>
-            <p>DOGGO carousel</p>
-            <div className={styles.dogCarousel}>
+                <p>DOGGO carousel</p>
+                <div className={styles.dogCarousel}>
                 <Swiper id="main" 
                     tag="section" 
                     wrapperTag="ul" 
@@ -51,7 +52,8 @@ function DogCarousel({userId}){
                     // }}
                     // onReachEnd={() => console.log("Swiper end")}
                 >{slides}</Swiper>
-            </div>
+                </div>
+                <AddDogModal />
             </>
         )
     } else {

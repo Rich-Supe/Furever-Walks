@@ -4,6 +4,7 @@ import styles from '../../css-modules/Walks.module.css'
 import NewWalk from './NewWalk'
 import WalkInfo from './WalkInfo'
 import WalksCarousel from './WalksCarousel'
+// import Maps from './Maps';
 import { getWalksUser, getWalk } from '../../store/walks';
 
 
@@ -11,6 +12,7 @@ function Walks(){
     const dispatch = useDispatch();
     const user = useSelector((state)=> state.session.user)
     let userId = user ? user.id : null
+    // console.log("##############", userId)
     useEffect(()=>{
         dispatch(getWalksUser(2))
     },[dispatch])
@@ -20,6 +22,7 @@ function Walks(){
             <NewWalk />
             <WalksCarousel />
             <WalkInfo />
+            {/* <Maps /> */}
         </div>
     )
 }

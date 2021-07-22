@@ -55,7 +55,7 @@ export const getWalksUser = (userId) => async (dispatch) => {
     if (response.ok) {
         console.log(`Userid from getWalk thunk____==-=-=--`, userId)
         const walks = await response.json();
-        dispatch(setWalksUser(walks));
+        dispatch(setWalksUser(walks.walks));
     }
 
     else {
@@ -69,7 +69,7 @@ export const getWalksDog = (dogId) => async (dispatch) => {
     if (response.ok) {
         console.log(`Userid from getWalk thunk____==-=-=--`, dogId)
         const walks = await response.json();
-        dispatch(setWalksDog(walks));
+        dispatch(setWalksDog(walks.walks));
     }
 
     else {
@@ -92,7 +92,8 @@ export const editWalk = (walkId, walk) => async (dispatch) => {
 }
 
 export const createWalk = (walk) => async (dispatch) => {
-    const response = await fetch(`/api/walks`, {
+    console.log("walk from createWalk thunk", walk)
+    const response = await fetch(`/api/walks/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -153,7 +154,6 @@ export default function reducer(state = initialState, action) {
             newState.walk.splice(index, 1);
             return newState;
         default:
-            console.log('HELLLOOOO from default')
             return state;
     }
 }
