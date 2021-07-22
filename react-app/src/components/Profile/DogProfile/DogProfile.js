@@ -1,12 +1,14 @@
 import styles from '../../../css-modules/DogProfile.module.css';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { editDog, deleteDog } from '../../../store/dogs';
+import { setModal } from '../../../store/modals';
 
-function DogProfile({ dog, setShowModal }) {
+function DogProfile({ dog }) {
     // console.log(dog)
     // console.log(dog.id)
+    const modalStatus = useSelector(state => state.modals.status)
     const dogId = dog.id
     const [errors, setErrors] = useState([]);
     const [name, setName] = useState(dog.name);
@@ -32,14 +34,16 @@ function DogProfile({ dog, setShowModal }) {
             console.log(payload)
             console.log(payload.dogId)
             await dispatch(editDog(payload))
-            setShowModal(false);
+            // setShowModal(modalStatus);
+            dispatch(setModal(false))
         }
     };
 
     const submitDeleteDog = async (e) => {
         e.preventDefault();
         await dispatch(deleteDog(dogId, id))
-        setShowModal(false);
+        // setShowModal(modalStatus);
+        dispatch(setModal(false))
     }
 
     const updateName = (e) => {

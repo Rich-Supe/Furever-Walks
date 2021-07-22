@@ -1,33 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal } from '../../../context/Modal';
 import DogProfile from './DogProfile';
 import styles from '../../../css-modules/DogProfile.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { setModal, setDogModalId } from '../../../store/modals';
 
-function DogProfileModal({dog, setShowModal, showModal}) {
-    // const [showModal, setShowModal] = useState(false);
-    // console.log(dog)
+function DogProfileModal({ dog }) {
+    const modalStatus = useSelector(state => state.modals.status)
+    const dogModalNum = useSelector(state => state.modals.dogId)
+    const [showModal, setShowModal] = useState(modalStatus);
     const dogImageURL = dog.image_url
-    console.log(dogImageURL)
+    const dispatch = useDispatch();
 
-    const closeThenOpenModals = () => {
-        setShowModal(false)
-        setShowModal(true)
+    useEffect(() => {
+        setShowModal(modalStatus)
+        console.log(showModal)
+    }, [modalStatus])
+
+    const openModal = () => {
+        dispatch(setModal(true))
+        dispatch(setDogModalId(dog.id))
+    }
+
+    const closeModal = () => {
+        dispatch(setModal(false))
     }
 
     return (
         <div className={styles.dogProfileModal}>
-            {dog.name}  
+            <div>
+                {dog.name}
+            </div>
             <img
                 src={dogImageURL}
                 alt='DogProfileImage'
                 className={styles.dogProfileImage}
-                onClick={closeThenOpenModals}
+                onClick={openModal}
             />
-            {/* <button onClick={() => setShowModal(true)}>{dog.name}'s' Profile</button> */}
             {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
-                    <DogProfile setShowModal={setShowModal} dog={dog}/>
-                </Modal>
+                <>
+                    {dogModalNum === dog.id && (
+                        <Modal onClose={closeModal}>
+                            <DogProfile dog={dog} setShowModal={setShowModal} />
+                        </Modal>
+                    )}
+                </>
             )}
         </div>
     )

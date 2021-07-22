@@ -1,12 +1,10 @@
 
 import styles from '../../../css-modules/Slide.module.css'
 import DogProfileModal from '../DogProfile';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Slide({ dog }) {
-    const [showModal, setShowModal] = useState(false);
-    // console.log(`Dog from dog slide`, dog)
-
 
     return (
         <div className="slide">
@@ -14,7 +12,7 @@ function Slide({ dog }) {
                 {/* <img src={dog.image} alt={dog.name} /> */}
                 {/* <p>{dog.name}</p> */}
                 <p>
-                    <DogProfileModal dog={dog} setShowModal={setShowModal} showModal={showModal}/>
+                    <DogProfileModal dog={dog}/>
                 </p>
             </div>
         </div>
