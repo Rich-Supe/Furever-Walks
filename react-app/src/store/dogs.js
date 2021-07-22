@@ -3,6 +3,7 @@ const SET_DOGS = 'dogs/SET_DOGS';
 const ADD_DOG = 'dogs/ADD_DOG';
 const UPDATE_DOG = 'dogs/UPDATE_DOG';
 const REMOVE_DOG = 'dogs/REMOVE_DOG';
+const DOGS_BY_WALK = 'dogs/DOGS_BY_WALK';
 
 const setDog = (id) => ({
     type: SET_DOG,
@@ -12,6 +13,11 @@ const setDog = (id) => ({
 const setDogs = (dogs) => ({
     type: SET_DOG,
     payload: dogs
+});
+
+const setDogsByWalkId = (walkId) => ({
+    type: DOGS_BY_WALK,
+    payload: walkId
 });
 
 const updateDog = (dog) => ({
@@ -50,6 +56,20 @@ export const getDogs = (userId) => async (dispatch) => {
         dispatch(setDogs(dogs.dogs));
     }
     
+    else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
+export const getDogsByWalk = (walkId) => async (dispatch) => {
+    const response = await fetch(`/api/dogs/all/walks/${walkId}`)
+    console.log(`Userid from getDog thunk____not okay`, walkId)
+    if (response.ok) {
+        console.log(`Userid from getDog thunk____==-=-=--`, walkId)
+        const dogs = await response.json();
+        dispatch(setDogsByWalkId(dogs.dogs));
+    }
+
     else {
         return ['An error occurred. Please try again.']
     }
@@ -123,6 +143,12 @@ export default function reducer(state = initialState, action) {
             return newState;
         case SET_DOGS:
             newState = {...state};
+            action.payload.forEach((dog) => {
+                newState[dog.id] = dog;
+            });
+            return newState;
+        case DOGS_BY_WALK:
+            newState = { ...state };
             action.payload.forEach((dog) => {
                 newState[dog.id] = dog;
             });
