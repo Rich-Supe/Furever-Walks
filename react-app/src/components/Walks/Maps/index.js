@@ -8,14 +8,19 @@ const MapContainer = () => {
     const key = process.env.REACT_APP_MAPS_API_KEY;
     const ref = useRef();
     const [ map, setMap ] = useState(null);
+    // const [ distance, setDistance ] = useState(null);
+    // const [ duration, setDuration ] = useState(null);
     // const [ marker1, setMarker1 ] = useState(null);
     // const [ marker2, setMarker2 ] = useState(null);
     // let [ count, setCount ] = useState(0);
-    const myLatlng = { lat: 37.363, lng: -122.044 };
-    const SanFransisco = { lat: 37.7749, lng: -122.4194 };
+    // const myLatlng = { lat: 37.36323, lng: -122.04423 };
+    // const SanFransisco = { lat: 37.774923, lng: -122.419423 };
     // const NewYork = {lat: 37.756008006000215, lng: -122.4073820010392}
     let marker1 = null
     let marker2 = null
+    let distance = null
+    let duration = null
+    // let count = 0;
 
     function placeMarkerAndPanTo(latLng, map) {
         console.log("COORD from current marker placer:", latLng.lat(), latLng.lng())
@@ -29,7 +34,7 @@ const MapContainer = () => {
         };
 
     if (map != null) {
-    map.addListener('click', (e) => {
+        map.addListener('click', (e) => {
         // setCount(count ++);
         // console.log(count)
         if (marker1 === null) {
@@ -37,13 +42,15 @@ const MapContainer = () => {
         } else if (marker2 === null) {
             marker2 = ({ lat: e.latLng.lat(), lng: e.latLng.lng() });
         }
-        if (marker1 !== null && marker2 !== null) {
-            console.log("mark1:", marker1)
-            console.log("mark2:", marker2)
-            // getDirections(marker1, marker2);
-            // getDirections(myLatlng, SanFransisco)
-            // getDirections(marker1.getPosition(), marker2.getPosition());
-        }
+        // count ++;
+        // console.log(count)
+        // if (marker1 !== null && marker2 !== null) {
+        //     console.log("mark1:", marker1)
+        //     console.log("mark2:", marker2)
+        //     // getDirections(marker1, marker2);
+        //     // getDirections(myLatlng, SanFransisco)
+        //     // getDirections(marker1.getPosition(), marker2.getPosition());
+        // }
         placeMarkerAndPanTo(e.latLng, map);
     });
     }
@@ -53,7 +60,8 @@ const MapContainer = () => {
         console.log('origin:', origin);
         console.log('destination:', destination);
         const directionsService = new window.google.maps.DirectionsService();
-        // const directionsRenderer = new window.google.maps.DirectionsRenderer();
+        const directionsRenderer = new window.google.maps.DirectionsRenderer();
+        directionsRenderer.setMap(map);
         directionsService.route({
             origin: origin,
             destination: destination,
@@ -68,13 +76,29 @@ const MapContainer = () => {
                     return c.lat() + ',' + c.lng();
                 });
                 console.log(pathCoordinates);
-                const polyline = new window.google.maps.Polyline({
-                    path: pathCoordinates,
-                    strokeColor: '#FF0000',
-                    strokeOpacity: 1.0,
-                    strokeWeight: 3,
-                    map: map,
-                });
+                // convert path coords to latlngs:`
+                console.log("legs", legs);
+                console.log("Distance", legs[0].distance.text)
+                console.log("Duration", legs[0].duration.text)
+                console.log("steps", steps);
+                console.log("path", path);  
+                // const newCoords = []
+                // pathCoordinates.forEach(coord => {
+                //     newCoords.push(new window.google.maps.LatLng(coord));
+                // })
+                // console.log("New coords:", newCoords)
+                // const polyline = new window.google.maps.Polyline({
+                //     path: newCoords,
+                //     strokeColor: '#FF0000',
+                //     strokeOpacity: 1.0,
+                //     strokeWeight: 3,
+                //     map: map,
+                // });
+                distance = (legs[0].distance.text)
+                duration = (legs[0].duration.text)
+                console.log("STATS:", distance, duration)
+                directionsRenderer.setDirections(response);
+                // console.log("directionsRenderer:", directionsRenderer)
             } else {
                 console.log('Directions request failed due to ' + status);
             }
@@ -122,7 +146,9 @@ return (
         style={{ height: 500, width: 500 }}>
 
         </div>
-        {/* <button onClick={getDirections(myLatlng, SanFransisco)}>Search!</button> */}
+        <button onClick={() => getDirections(marker1, marker2)}>Search!</button>
+        {/* <button onClick={() => getDirections(myLatlng, SanFransisco)}>Search!</button> */}
+        {/* <button onClick={console.log(".................?")}>Search!</button> */}
     </>
 );
 };
@@ -148,3 +174,33 @@ export default MapContainer;
 //     - polyline: a polyline encoding the route of the step
 // The function should also update the map with a polyline encoding the route
 // between the user's current location and the location the user clicked on the map.
+
+
+
+
+// MITCH'S CODE
+// function initMap() {
+//     var directionsService = new google.maps.DirectionsService();
+//     var directionsRenderer = new google.maps.DirectionsRenderer();
+//     var chicago = new google.maps.LatLng(41.850033, -87.6500523);
+//     var mapOptions = {
+//       zoom:7,
+//       center: chicago
+//     }
+//     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+//     directionsRenderer.setMap(map);
+//   }
+//   function calcRoute() {
+//     var start = document.getElementById('start').value;
+//     var end = document.getElementById('end').value;
+//     var request = {
+//       origin: start,
+//       destination: end,
+//       travelMode: 'DRIVING'
+//     };
+//     directionsService.route(request, function(result, status) {
+//       if (status == 'OK') {
+//         directionsRenderer.setDirections(result);
+//       }
+//     });
+//   }
