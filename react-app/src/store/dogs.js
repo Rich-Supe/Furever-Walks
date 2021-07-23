@@ -60,7 +60,7 @@ export const getDogs = (userId) => async (dispatch) => {
 
 export const getDogsByWalk = (walkId) => async (dispatch) => {
     const response = await fetch(`/api/dogs/all/walks/${walkId}`)
-    console.log(`Userid from getDog thunk____not okay`, walkId)
+    // console.log(`Userid from getDog thunk____not okay`, walkId)
     if (response.ok) {
         console.log(`Userid from getDog thunk____==-=-=--`, walkId)
         const dogs = await response.json();

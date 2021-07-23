@@ -26,23 +26,14 @@ function Graph() {
     // console.log('DOGS FROM STORE-----', dogs);
 
 
+    /* ---------- INSERTING DATA ---------- */
+    
     // 1. get all walks
-    const walks = useSelector(state => Object.values(state.walks));
-        // // check what's in the walks & walk
-        // console.log('WALKS FROM STORE-----', walks)
-        // walks.forEach(walk => console.log('WHATS IN THIS WALK??', walk))
-
-        // // check data type
-        // walks.forEach(walk => console.log('TYPE OF WALK.DATE??', typeof walk.date))
-        // console.log('TYPE OF TODAY??', typeof matchingDate(today2))
-
-        // // check if filter works
-        // const logThis = walks.filter(walk => walk.date == matchingDate(today2))
-        // console.log('GETTING THIS????--------------', logThis);
-
+        const walks = useSelector(state => Object.values(state.walks));
 
     // 2. filter all walks from db where dates match
 
+        // create dates for 7 days back from today
         const today1 = new Date();
         const today2 = new Date();
         today2.setDate(today2.getDate()-1);
@@ -65,22 +56,23 @@ function Graph() {
             const yyyy = date.toString().slice(11, 15)
             return `${day}, ${dd} ${month} ${yyyy} 00:00:00 GMT`
         }
-        
-    const walksOnDate = walks.filter((walk) => walk.date == matchingDate(today2))
-        // walks.date format => ddd, dd MMM yyyy HH':'mm':'ss 'GMT' => Tue, 22 Mar 2016 06:30:07 GMT
-        // returns an array of objects
-        console.log('WALKS ON DATE---------!!!!!!!!!!', walksOnDate)
     
-    // 3 .find dogs where walk_id == walkId
-    // dispatch(getDogsByWalk())
-
-    // 4. push into data
-        // for (let dog in dogs) {
-        //     data['date'] = matchingDate(today1.toDateString().slice(0, 10))
-        //     data['dogDistance1'] = dog['dog_total_distance']
-        //     data['dogDuration1'] = dog['dog_total_duration']
-        //     console.log('DOG----------', dog);
-        // }
+        // get walks on each date
+        const walksOnDay1 = walks.filter((walk) => walk.date == matchingDate(today1))
+        const walksOnDay2 = walks.filter((walk) => walk.date == matchingDate(today2))
+        const walksOnDay3 = walks.filter((walk) => walk.date == matchingDate(today3))
+        const walksOnDay4 = walks.filter((walk) => walk.date == matchingDate(today4))
+        const walksOnDay5 = walks.filter((walk) => walk.date == matchingDate(today5))
+        const walksOnDay6 = walks.filter((walk) => walk.date == matchingDate(today6))
+        const walksOnDay7 = walks.filter((walk) => walk.date == matchingDate(today7))
+        // console.log('WALKS ON DAY1---------!!!!!!!!!!', walksOnDay1)
+        // console.log('WALKS ON DAY2---------!!!!!!!!!!', walksOnDay2)
+        // console.log('WALKS ON DAY3---------!!!!!!!!!!', walksOnDay3)
+        // console.log('WALKS ON DAY4---------!!!!!!!!!!', walksOnDay4)
+        // console.log('WALKS ON DAY5---------!!!!!!!!!!', walksOnDay5)
+        // console.log('WALKS ON DAY6---------!!!!!!!!!!', walksOnDay6)
+        // console.log('WALKS ON DAY7---------!!!!!!!!!!', walksOnDay7)
+        // returns an array of walk objects
 
     const data = [
         {date: today7.toDateString().slice(0, 10), dogDuration1: 35, dogDistance1: 0.5, dogDuration2: 15, dogDistance2: 1, dogDuration3: 10, dogDistance3: 0.7},
@@ -91,7 +83,33 @@ function Graph() {
         {date: today2.toDateString().slice(0, 10), dogDuration1: 35, dogDistance1: 0.5, dogDuration2: 35, dogDistance2: 0.4, dogDuration3: 10, dogDistance3: 0.8},
         {date: today1.toDateString().slice(0, 10), dogDuration1: 50, dogDistance1: 0.6, dogDuration2: 15, dogDistance2: 0.3, dogDuration3: 10, dogDistance3: 0.4},
     ]
+    
+    // 3 .find dogs where walk_id == walkId
+        const getDogsForWalk = async(walkId) => {
+            const dogs = await dispatch(getDogsByWalk(walkId))
+            console.log('DOGS FROM getDogsForWalk', dogs);
+        }
+        // if (walksOnDay1.length) getDogsForWalk(walksOnDay1.id)
+        if (walksOnDay2.length) {
+            for (let walk in walksOnDay2) {
+                getDogsForWalk(walk.id)
+            }
+        }
+        console.log('WALKS ON DAY 2------', walksOnDay2);
+        // const dogsOnDay2 = getDogsForWalk(walksOnDay2.id)
+        // const dogsOnDay3 = getDogsForWalk(walksOnDay3.id)
+        // const dogsOnDay4 = getDogsForWalk(walksOnDay4.id)
+        // const dogsOnDay5 = getDogsForWalk(walksOnDay5.id)
+        // const dogsOnDay6 = getDogsForWalk(walksOnDay6.id)
+        // const dogsOnDay7 = getDogsForWalk(walksOnDay7.id)
 
+    // 4. push into data
+        // for (let dog in dogs) {
+        //     data['date'] = matchingDate(today1.toDateString().slice(0, 10))
+        //     data['dogDistance1'] = dog['dog_total_distance']
+        //     data['dogDuration1'] = dog['dog_total_duration']
+        //     console.log('DOG----------', dog);
+        // }
 
     return (
         <div className={styles.graphBox}>
