@@ -51,7 +51,7 @@ export const getDogs = (userId) => async (dispatch) => {
     const response = await fetch(`/api/dogs/all/${userId}`)
     if (response.ok) {
         const dogs = await response.json();
-        dispatch(setDogs(dogs.dogs));
+        await dispatch(setDogs(dogs.dogs));
     }   
     else {
         return ['An error occurred. Please try again.']
