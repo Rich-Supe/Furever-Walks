@@ -34,10 +34,6 @@ function WalksCarousel(){
         slides.push(
             <SwiperSlide key={`slide-${i}`}>
                 <WalkSlide walk={obj} />
-                {/* <WalkSlide walk={obj} />
-                <WalkSlide walk={obj} />
-                <WalkSlide walk={obj} />
-                <WalkSlide walk={obj} /> */}
             </SwiperSlide>
         )
         i++
@@ -46,7 +42,7 @@ function WalksCarousel(){
     if (userWalks){
         return (
             <>
-                <div>
+                <div className={styles.walksCarouselContainer}>
                     <h1>Walk Carousel</h1>
                     <Swiper id="mainWalk"
                         tag="section"
@@ -54,11 +50,10 @@ function WalksCarousel(){
                         className={styles.swiperContainer}
                         navigation
                         pagination
-                        spaceBetween={0}
-                        slidesPerView={8}
-                        slidesPerColumn={2}
+                        spaceBetween={50}
+                        slidesPerView={6}
+                        // slidesPerColumn={2}
                         // pagination={{ clickable: true }}
-                        // slidesPerColumn={5}
                     >
                         {slides}
                         {/* {userWalks?.forEach((obj) => {

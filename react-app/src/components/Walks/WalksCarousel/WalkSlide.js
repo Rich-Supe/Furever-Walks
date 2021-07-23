@@ -22,7 +22,7 @@ function WalkSlide({ walk }) {
                 {/* {userWalks.map((walk) =>  */}
                     <li key={walk.id}>
                         <div>Name: {walk.name}</div>
-                        <div>Date: {walk.date}</div>
+                        <div>Date: {walk.date.slice(0, 12)}</div>
                         <div>Distance: {walk.distance}</div>
                         <div>Duration: {walk.duration}</div>
                         <div>Rating: {walk.rating}</div>
