@@ -1,33 +1,57 @@
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getWalksByDog } from '../../../store/walks';
+import { useParams } from 'react-router-dom';
+import { getWalksUser, getWalksByDog } from '../../../store/walks';
 import { getDogsByWalk } from '../../../store/dogs';
 import styles from '../../../css-modules/Graph.module.css';
 
 function Graph() {
     const dispatch = useDispatch();
+    const { id } = useParams();
+    const [showDuration, setShowDuration] = useState(true);
 
-    const [showDuration, setShowDuration] = useState(true)
-
-    const walks = useSelector(state => state.walks);
     const user = useSelector(state => state.session.user);
-    const dogs = useSelector(state => Object.values(state.dogs));
+    console.log('USER FROM STORE-----', user);
+    // returns an object
 
-    // const matches = walks.filter(walk => walk.user_id == dog.user_id);
+    useEffect(()=> {
+        dispatch(getWalksUser(id))
+    }, [dispatch])
+    const walks = useSelector(state => Object.values(state.walks));
+    const userWalks = Object.values(walks).filter((value) => value.user_id == id)
+    console.log('USERWALKS---------', userWalks)
+    // returns an array of objects
 
-    // const dogsObj = useSelector(state => state.dogs);
-    // const dogs = dogsObj['dogs']
-    // console.log('USER-----------------', user);
-    console.log('DOGS-----------------', dogs);
-    // console.log('DOGS-----------------', dogs['0']);
-    // console.log('DOG-----------------', dogs['1']);
-    // console.log('WALKS-----------------', walks);
-    // console.log('WALKS-----------------', walks['1']);
 
+    // 1. get walks by dog ID
+        // get all user's dogs (user.id == dogs.user_id)
+        // 
+    // 2. get dog's walks on specific date
+    // 3. insert into data array
+
+
+    // 1. get all dogs in an array
+    const dogs = useSelector(state => state.dogs);
+    console.log('DOGS FROM STORE-----', dogs);
+
+    // 2. for each dog, get all its walks (getWalksByDog)
+    // let walks;
     // useEffect(() => {
-    //     const dog1Walk = dispatch(getWalksDog(1));
-    // }, [dispatch]);
+    //     walks = dogs.map(dog => {
+    //         dispatch(getWalksByDog(dog.id))
+    //     })
+    //     // dogs.forEach(dog => {
+    //     //     walks = dispatch(getWalksByDog(dog.id))
+    //     // })
+    // }, [dispatch, dogs])
+    // console.log('WALKS--------------------', walks);
+
+    // 3. for each dog, get distance and duration, 
+    //    where its date matches date in data array
+
+    // 4. insert into data array
+
 
     const today1 = new Date();
     const today2 = new Date();
@@ -45,11 +69,11 @@ function Graph() {
 
     const data = [
         {date: today7.toDateString().slice(0, 10)},
-        {date: today6.toDateString().slice(0, 10), dogDuration1: 350, dogDistance1: 450, dogDuration2: 150, dogDistance2: 350, dogDuration3: 100, dogDistance3: 500},
-        {date: today5.toDateString().slice(0, 10), dogDuration1: 350, dogDistance1: 450, dogDuration2: 150, dogDistance2: 350, dogDuration3: 100, dogDistance3: 500},
-        {date: today4.toDateString().slice(0, 10), dogDuration1: 350, dogDistance1: 450, dogDuration2: 150, dogDistance2: 350, dogDuration3: 100, dogDistance3: 500},
-        {date: today3.toDateString().slice(0, 10), dogDuration1: 350, dogDistance1: 450, dogDuration2: 150, dogDistance2: 350, dogDuration3: 100, dogDistance3: 500},
-        {date: today2.toDateString().slice(0, 10), dogDuration1: 350, dogDistance1: 450, dogDuration2: 150, dogDistance2: 350, dogDuration3: 100, dogDistance3: 500},
+        {date: today6.toDateString().slice(0, 10)},
+        {date: today5.toDateString().slice(0, 10)},
+        {date: today4.toDateString().slice(0, 10)},
+        {date: today3.toDateString().slice(0, 10)},
+        {date: today2.toDateString().slice(0, 10)},
         {date: today1.toDateString().slice(0, 10), dogDuration1: 350, dogDistance1: 450, dogDuration2: 150, dogDistance2: 350, dogDuration3: 100, dogDistance3: 500},
     ]
 
