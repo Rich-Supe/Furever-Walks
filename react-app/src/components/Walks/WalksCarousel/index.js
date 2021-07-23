@@ -24,6 +24,9 @@ function WalksCarousel(){
     const userWalks = walks.filter((walk) => walk.user_id == id)
     console.log('WALKS CAROUSEL USER WALKS VAR', userWalks)
     // returns array of walk objects
+    userWalks?.forEach((obj) => {
+        console.log('LINE 27-----------', obj)
+    })
 
     const slides =[];
     let i = 0;
@@ -31,6 +34,10 @@ function WalksCarousel(){
         slides.push(
             <SwiperSlide key={`slide-${i}`}>
                 <WalkSlide walk={obj} />
+                {/* <WalkSlide walk={obj} />
+                <WalkSlide walk={obj} />
+                <WalkSlide walk={obj} />
+                <WalkSlide walk={obj} /> */}
             </SwiperSlide>
         )
         i++
@@ -45,13 +52,21 @@ function WalksCarousel(){
                         tag="section"
                         wrapperTag="ul"
                         className={styles.swiperContainer}
-                        // pagination={{ clickable: true }}
                         navigation
                         pagination
                         spaceBetween={0}
                         slidesPerView={8}
+                        slidesPerColumn={2}
+                        // pagination={{ clickable: true }}
                         // slidesPerColumn={5}
-                    >{slides}</Swiper>
+                    >
+                        {slides}
+                        {/* {userWalks?.forEach((obj) => {
+                            <SwiperSlide>
+                                <WalkSlide walk={obj} />
+                            </SwiperSlide>
+                        })} */}
+                    </Swiper>
                 </div>
             </>
         )

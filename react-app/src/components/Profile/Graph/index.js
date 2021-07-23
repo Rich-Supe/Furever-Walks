@@ -96,11 +96,12 @@ function Graph() {
     // ]
     
     // 3. for each walk, get walk.duration/distance where getDogByWalk(walk.id)
-    
-        // use variables: 
-            // dogs (array of dog objects)
-            // walksOnDay1/2/3/4/5/6/7 (array of walk objects)
+        // FROM HERE: go back and build backend routes and thunk actions to handle this
 
+        // use variables: 
+        //     dogs (array of dog objects)
+        //     walksOnDay1/2/3/4/5/6/7 (array of walk objects)
+        
         // if (walksOnDay2.length) {
         //     for (let walk in walksOnDay2) {
         //         (async() => {
