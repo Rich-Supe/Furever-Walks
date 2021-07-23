@@ -19,16 +19,16 @@
 
 .demoFormContainer img {
     position:fixed;
-    max-width: 40%;
+    max-width: 30%;
     z-index: 0;
     opacity: 0.8;
     transition-property: all;
     transition-duration: 0.2s;
-    /* transition-delay: 0.1s; */
+    transition-delay: 0.1s;
 }
 
 .demoFormContainer img:hover {
-    max-width: 42%;
+    max-width: 32%;
 }
 
 .demoFormContainer h1 {
