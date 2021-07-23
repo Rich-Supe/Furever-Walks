@@ -31,8 +31,16 @@ function NewWalk() {
     }
 
     const dogIds = {}
-    const checked = () => {
+    const checked = (dog) => {
         setSelectedDog(!selectedDog)
+        if(!selectedDog) {
+            // dogIds[]
+            console.log('zzzzzzzzzz', dog)
+            dogIds[dog.id] = dog.id
+        } else {
+            delete dogIds[dog.id]
+        }
+        console.log('41', dogIds);
     }
 
     const addWalk = async (e) => {
@@ -124,7 +132,7 @@ function NewWalk() {
                                 key={dog.id}
                                 type='checkbox'
                                 name='dog'
-                                onChange={checked}
+                                onChange={() => checked(dog)}
                                 value={selectedDog}>
                             </input>
                             
