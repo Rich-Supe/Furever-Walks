@@ -10,7 +10,7 @@ const MapContainer = ({handleCallback}) => {
     const dispatch = useDispatch();
     const key = process.env.REACT_APP_MAPS_API_KEY;
     const ref = useRef();
-    console.log("Hopefully a function", handleCallback)
+    // console.log("Hopefully a function", handleCallback)
     const [ map, setMap ] = useState(null);
     // const [ distance, setDistance ] = useState(null);
     // const [ duration, setDuration ] = useState(null);
