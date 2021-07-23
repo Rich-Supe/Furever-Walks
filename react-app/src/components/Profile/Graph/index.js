@@ -13,7 +13,6 @@ function Graph() {
     const [showDuration, setShowDuration] = useState(true);
 
     useEffect(() => {
-        // dispatch(authenticate())
         dispatch(getDogs(id))
         dispatch(getWalksUser(id))
     }, [dispatch])
@@ -24,141 +23,100 @@ function Graph() {
 
     const dogs = useSelector(state => Object.values(state.dogs));
     // console.log('DOGS FROM STORE-----', dogs);
-
-    const today1 = new Date();
-    // dateFormat(todau, 'dddd, mmmm dS, yyyy, h:MM:ss TT')
-    // console.log('TODAY1-----------', today1);
-
-    const today2 = new Date();
-    today2.setDate(today2.getDate()-1);
-    console.log('TODAY2-----------', today2);
-
-    const today3 = new Date();
-    today3.setDate(today3.getDate()-2);
-    const today4 = new Date();
-    today4.setDate(today4.getDate()-3);
-    const today5 = new Date();
-    today5.setDate(today5.getDate()-4);
-    const today6 = new Date();
-    today6.setDate(today6.getDate()-5);
-    const today7 = new Date();
-    today7.setDate(today7.getDate()-6);
+    // returns an array of object (dogs)
 
 
-    // function to return date in string format that matches date from backend
-    function matchingDate(date) {
-        const first = date.toString().slice(0, 3)
-        const second = date.toString().slice(4, 15)
-        return `${first}, ${second} 00:00:00 GMT`
-    }
-    console.log('USING FUNCTION-------', matchingDate(today2));
-
-
-    // get all walks
-    const walks = useSelector(state => Object.values(state.walks));
-        // check what's in the walks & walk
-        console.log('WALKS FROM STORE-----', walks)
-        walks.forEach(walk => console.log('WHATS IN THIS WALK??', walk))
-
-        // check data type
-        walks.forEach(walk => console.log('TYPE OF WALK.DATE??', typeof walk.date))
-        console.log('TYPE OF TODAY??', typeof matchingDate(today2))
-
-        // check if filter works
-        const logThis = walks.filter(walk => walk.date == matchingDate(today2))
-        console.log('GETTING THIS????', logThis);
-
-    // filter all walks from db where dates match
-    // walks.date format => ddd, dd MMM yyyy HH':'mm':'ss 'GMT' => Tue, 22 Mar 2016 06:30:07 GMT
-    const walksOnDate = walks.filter((walk) => walk.date == matchingDate(today2))
-    // returns an array of objects
-    console.log('WALKS ON DATE---------', walksOnDate)
+    /* ---------- INSERTING DATA ---------- */
     
-    // get walkId
-    // find dogs where walk_id == walkId
-    // push into data
+    // 1. get all walks from store
+        const walks = useSelector(state => Object.values(state.walks));
+
+    // 2. filter all walks where dates match
+
+        // create dates for 7 days back from today for x-axis label
+        const today1 = new Date();
+        const today2 = new Date();
+        today2.setDate(today2.getDate()-1);
+        const today3 = new Date();
+        today3.setDate(today3.getDate()-2);
+        const today4 = new Date();
+        today4.setDate(today4.getDate()-3);
+        const today5 = new Date();
+        today5.setDate(today5.getDate()-4);
+        const today6 = new Date();
+        today6.setDate(today6.getDate()-5);
+        const today7 = new Date();
+        today7.setDate(today7.getDate()-6);
+
+        // function to return date in string format that matches date from backend
+        function matchingDate(date) {
+            const day = date.toString().slice(0, 3)
+            const month = date.toString().slice(4, 7)
+            const dd = date.toString().slice(8, 10)
+            const yyyy = date.toString().slice(11, 15)
+            return `${day}, ${dd} ${month} ${yyyy} 00:00:00 GMT`
+        }
+    
+        // get walks on each date
+        const walksOnDay1 = walks.filter((walk) => walk.date == matchingDate(today1))
+        const walksOnDay2 = walks.filter((walk) => walk.date == matchingDate(today2))
+        const walksOnDay3 = walks.filter((walk) => walk.date == matchingDate(today3))
+        const walksOnDay4 = walks.filter((walk) => walk.date == matchingDate(today4))
+        const walksOnDay5 = walks.filter((walk) => walk.date == matchingDate(today5))
+        const walksOnDay6 = walks.filter((walk) => walk.date == matchingDate(today6))
+        const walksOnDay7 = walks.filter((walk) => walk.date == matchingDate(today7))
+        // console.log('WALKS ON DAY1---------!!!!!!!!!!', walksOnDay1)
+        // console.log('WALKS ON DAY2---------!!!!!!!!!!', walksOnDay2)
+        // console.log('WALKS ON DAY3---------!!!!!!!!!!', walksOnDay3)
+        // console.log('WALKS ON DAY4---------!!!!!!!!!!', walksOnDay4)
+        // console.log('WALKS ON DAY5---------!!!!!!!!!!', walksOnDay5)
+        // console.log('WALKS ON DAY6---------!!!!!!!!!!', walksOnDay6)
+        // console.log('WALKS ON DAY7---------!!!!!!!!!!', walksOnDay7)
+        // returns an array of walk objects
+
+    const data = [
+        {date: today7.toDateString().slice(0, 10), Marley1: 35, Marley2: 0.5, Luna1: 15, Luna2: 1, Dog1: 10, Dog2: 0.7},
+        {date: today6.toDateString().slice(0, 10), Marley1: 30, Marley2: 0.4, Luna1: 30, Luna2: 0.2, Dog1: 10, Dog2: 0.4},
+        {date: today5.toDateString().slice(0, 10), Marley1: 20, Marley2: 0.7, Luna1: 40, Luna2: 0.5, Dog1: 10, Dog2: 1},
+        {date: today4.toDateString().slice(0, 10), Marley1: 60, Marley2: 0.2, Luna1: 10, Luna2: 0.1, Dog1: 10, Dog2: 0.2},
+        {date: today3.toDateString().slice(0, 10), Marley1: 10, Marley2: 0.3, Luna1: 5, Luna2: 0, Dog1: 10, Dog2: 0.1},
+        {date: today2.toDateString().slice(0, 10), Marley1: 35, Marley2: 0.5, Luna1: 35, Luna2: 0.4, Dog1: 10, Dog2: 0.8},
+        {date: today1.toDateString().slice(0, 10), Marley1: 50, Marley2: 0.6, Luna1: 15, Luna2: 0.3, Dog1: 10, Dog2: 0.4},
+    ]
+
+    // walks data by both user and dogs
+    // const data = [
+    //     {date: today7.toDateString().slice(0, 10), userDuration: walksOnDay7[0]?.duration, userDistance: walksOnDay7[0]?.distance},
+    //     {date: today6.toDateString().slice(0, 10), userDuration: walksOnDay6[0]?.duration, userDistance: walksOnDay6[0]?.distance},
+    //     {date: today5.toDateString().slice(0, 10), userDuration: walksOnDay5[0]?.duration, userDistance: walksOnDay5[0]?.distance},
+    //     {date: today4.toDateString().slice(0, 10), userDuration: walksOnDay4[0]?.duration, userDistance: walksOnDay4[0]?.distance},
+    //     {date: today3.toDateString().slice(0, 10), userDuration: walksOnDay3[0]?.duration, userDistance: walksOnDay3[0]?.distance},
+    //     {date: today2.toDateString().slice(0, 10), userDuration: walksOnDay2[0]?.duration, userDistance: walksOnDay2[0]?.distance},
+    //     {date: today1.toDateString().slice(0, 10), userDuration: walksOnDay1[0]?.duration, userDistance: walksOnDay1[0]?.distance},
+    // ]
+    
+    // 3. for each walk, get walk.duration/distance where getDogByWalk(walk.id)
+    
+        // use variables: 
+            // dogs (array of dog objects)
+            // walksOnDay1/2/3/4/5/6/7 (array of walk objects)
+
+        // if (walksOnDay2.length) {
+        //     for (let walk in walksOnDay2) {
+        //         (async() => {
+        //             let doggos = await dispatch(getDogsByWalk(walk.id))
+        //             console.log('WHAT IS IN DOGGOS--------', doggos);
+        //         })();
+        //     }
+        // }
+
+    // 4. push into data
         // for (let dog in dogs) {
-        //     data['date'] = 
+        //     data['date'] = matchingDate(today1.toDateString().slice(0, 10))
         //     data['dogDistance1'] = dog['dog_total_distance']
         //     data['dogDuration1'] = dog['dog_total_duration']
         //     console.log('DOG----------', dog);
         // }
-
-    const data = [
-        {date: today7.toDateString().slice(0, 10), dogDuration1: 35, dogDistance1: 0.5, dogDuration2: 15, dogDistance2: 1, dogDuration3: 10, dogDistance3: 0.7},
-        {date: today6.toDateString().slice(0, 10), dogDuration1: 30, dogDistance1: 0.4, dogDuration2: 30, dogDistance2: 0.2, dogDuration3: 10, dogDistance3: 0.4},
-        {date: today5.toDateString().slice(0, 10), dogDuration1: 20, dogDistance1: 0.7, dogDuration2: 40, dogDistance2: 0.5, dogDuration3: 10, dogDistance3: 1},
-        {date: today4.toDateString().slice(0, 10), dogDuration1: 60, dogDistance1: 0.2, dogDuration2: 10, dogDistance2: 0.1, dogDuration3: 10, dogDistance3: 0.2},
-        {date: today3.toDateString().slice(0, 10), dogDuration1: 10, dogDistance1: 0.3, dogDuration2: 5, dogDistance2: 0, dogDuration3: 10, dogDistance3: 0.1},
-        {date: today2.toDateString().slice(0, 10), dogDuration1: 35, dogDistance1: 0.5, dogDuration2: 35, dogDistance2: 0.4, dogDuration3: 10, dogDistance3: 0.8},
-        {date: today1.toDateString().slice(0, 10), dogDuration1: 50, dogDistance1: 0.6, dogDuration2: 15, dogDistance2: 0.3, dogDuration3: 10, dogDistance3: 0.4},
-    ]
-
-    // const getDogWalkByDate = async (dog) => {
-    //     const walks = await dispatch(getWalksByDog(dog.id));
-    //     // matching date as today1/2/3... filter?
-        
-    //     return walks
-    // }
-
-    // console.log(getDogWalkByDate(dogs['1']));
-
-    // dogs.forEach((dog) => {
-    //     // ??? = getDogWalkByDate(dog)
-
-    // })
-
-
-
-    // let dogwalks = {};
-    // dogs.forEach(dog => {
-        // data[`dogDuration${dog.id}`] = dog['dog_total_duration']
-        // console.log(data[`dogDuration${dog.id}`]);
-        // dogwalks[dog.id] = walks.
-
-        // data[dateKey]
-    //     data[0][`dogDuration${dog.id}`] = dog['dog_total_duration']
-    //     console.log('HERE-----', dog.id);
-
-    // })
-
-    // for (let dog in dogs) {
-    //     data['dogDistance1'] = dog['dog_total_distance']
-    //     data['dogDuration1'] = dog['dog_total_duration']
-    //     console.log('DOG----------', dog);
-    // }
-
-
-
-
-    // 1. get walks by dog ID
-        // get all user's dogs (user.id == dogs.user_id)
-        // 
-    // 2. get dog's walks on specific date
-    // 3. insert into data array
-
-
-    // 1. get all user's dogs in an array
-    // const dogs = useSelector(state => Object.values(state.dogs));
-    // console.log('DOGS FROM STORE-----', dogs);
-
-    // 2. for each dog, get all its walks (getWalksByDog)
-    // let walks;
-    // useEffect(() => {
-    //     walks = dogs.map(dog => {
-    //         dispatch(getWalksByDog(dog.id))
-    //     })
-    //     // dogs.forEach(dog => {
-    //     //     walks = dispatch(getWalksByDog(dog.id))
-    //     // })
-    // }, [dispatch, dogs])
-    // console.log('WALKS--------------------', walks);
-
-    // 3. for each dog, get distance and duration, 
-    //    where its date matches date in data array
-
-    // 4. insert into data array
-
 
     return (
         <div className={styles.graphBox}>
@@ -198,9 +156,10 @@ function Graph() {
                         <YAxis />
                         <Tooltip />
                         <Legend />
-                        <Line type="monotone" dataKey="dogDuration1" stroke="#8884d8" />
-                        <Line type="monotone" dataKey="dogDuration2" stroke="#82ca9d" />
-                        <Line type="monotone" dataKey="dogDuration3" stroke="#e2543c" />
+                        {/* <Line type="monotone" dataKey="userDuration" stroke="#8884d8" /> */}
+                        <Line type="monotone" dataKey="Marley1" stroke="#ffc911" />
+                        <Line type="monotone" dataKey="Luna1" stroke="#82ca9d" />
+                        {/* <Line type="monotone" dataKey="Dog1" stroke="#e2543c" /> */}
                     </LineChart>
                 ) : (
                     <LineChart width={700} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
@@ -209,9 +168,10 @@ function Graph() {
                         <YAxis />
                         <Tooltip />
                         <Legend />
-                        <Line type="monotone" dataKey="dogDistance1" stroke="#8884d8" />
-                        <Line type="monotone" dataKey="dogDistance2" stroke="#82ca9d" />
-                        <Line type="monotone" dataKey="dogDistance3" stroke="#e2543c" />
+                        {/* <Line type="monotone" dataKey="userDistance" stroke="#8884d8" /> */}
+                        <Line type="monotone" dataKey="Marley2" stroke="#ffc911" />
+                        <Line type="monotone" dataKey="Luna2" stroke="#82ca9d" />
+                        {/* <Line type="monotone" dataKey="Dog2" stroke="#e2543c" /> */}
                     </LineChart>
                 )}
             </div>

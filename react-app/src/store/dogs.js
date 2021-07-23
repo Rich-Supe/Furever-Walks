@@ -4,6 +4,7 @@ const ADD_DOG = 'dogs/ADD_DOG';
 const UPDATE_DOG = 'dogs/UPDATE_DOG';
 const REMOVE_DOG = 'dogs/REMOVE_DOG';
 const DOGS_BY_WALK = 'dogs/DOGS_BY_WALK';
+// const IS_SELECTED = 'dog/IS_SELECTED';
 
 const setDog = (id) => ({
     type: SET_DOG,
@@ -35,6 +36,14 @@ const removeDog = (dogId) => ({
     payload: dogId
 });
 
+// const selectDog = (dogId, status) => ({
+//     type: IS_SELECTED,
+//     payload: dogId, status
+// })
+
+// export const isDogSelected = (payload) => async (dispatch) => {
+//     dispatch(selectDog(payload.status))
+// }
 
 export const getDog = (dogId) => async (dispatch) => {
     const response = await fetch(`/api/dogs/${dogId}`)
@@ -60,7 +69,7 @@ export const getDogs = (userId) => async (dispatch) => {
 
 export const getDogsByWalk = (walkId) => async (dispatch) => {
     const response = await fetch(`/api/dogs/all/walks/${walkId}`)
-    console.log(`Userid from getDog thunk____not okay`, walkId)
+    // console.log(`Userid from getDog thunk____not okay`, walkId)
     if (response.ok) {
         console.log(`Userid from getDog thunk____==-=-=--`, walkId)
         const dogs = await response.json();
@@ -166,6 +175,9 @@ export default function reducer(state = initialState, action) {
             // newState.dog.splice(index, 1);
             delete newState[action.payload]
             return newState; 
+        // case IS_SELECTED:
+        //     newState = { ...state };
+        //     newState
         default:
             console.log('HELLLOOOO from default')
             return state;     
