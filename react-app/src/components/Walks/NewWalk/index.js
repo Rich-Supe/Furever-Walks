@@ -16,7 +16,7 @@ function NewWalk({mapData}) {
     const dispatch = useDispatch();
     const { id } = useParams();
     console.log("Current map data from map component", mapData)
-
+    
     useEffect(() => {
         dispatch(getDogs(id))
     }, [id])
