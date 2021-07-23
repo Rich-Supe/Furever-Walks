@@ -29,8 +29,8 @@ def get_dog(dog_id):
 # @dog_routes.route('/all/:user_id', methods=['GET'])
 def get_all_dogs(user_id):
     # print('UserId from get dog api route---------------------------------', user_id)
-    dogs = Dog.query.filter_by(user_id==user_id)
-    # print('DOGGOS from api get all------------', dogs)
+    dogs = Dog.query.filter(Dog.user_id==user_id).all()
+    print('DOGGOS from api get all------------', dogs)
     return {"dogs": [dog.to_dict() for dog in dogs]}
 
 

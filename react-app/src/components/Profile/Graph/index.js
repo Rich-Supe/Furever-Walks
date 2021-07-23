@@ -15,7 +15,7 @@ function Graph() {
     console.log('USER FROM STORE-----', user);
     // returns an object
 
-    useEffect(()=> {
+    useEffect(() => {
         dispatch(getWalksUser(id))
     }, [dispatch])
     const walks = useSelector(state => Object.values(state.walks));
@@ -23,11 +23,10 @@ function Graph() {
     console.log('USERWALKS---------', userWalks)
     // returns an array of objects
 
-    useEffect(() => {
-        dispatch(getWalksUser(user?.id))
-        dispatch(getDogs(user?.id))
-    }, [dispatch])
-
+    // useEffect(() => {
+    //     dispatch(getWalksUser(id))
+    //     dispatch(getDogs(id))
+    // }, [dispatch])
 
 
     // 1. get walks by dog ID
@@ -37,9 +36,14 @@ function Graph() {
     // 3. insert into data array
 
 
+    useEffect(() => {
+        dispatch(getDogs(id))
+    }, [dispatch])
+
     // 1. get all dogs in an array
-    const dogs = useSelector(state => state.dogs);
-    console.log('DOGS FROM STORE-----', dogs);
+    const dogs = useSelector(state => Object.values(state.dogs));
+    const userDogs = Object.values(dogs).filter((dog) => dog.user_id == id)
+    console.log('DOGS FROM STORE-----', userDogs);
 
     // 2. for each dog, get all its walks (getWalksByDog)
     // let walks;
@@ -82,6 +86,22 @@ function Graph() {
         {date: today2.toDateString().slice(0, 10)},
         {date: today1.toDateString().slice(0, 10), dogDuration1: 350, dogDistance1: 450, dogDuration2: 150, dogDistance2: 350, dogDuration3: 100, dogDistance3: 500},
     ]
+
+    // const getDogWalkByDate = async (dog) => {
+    //     const walks = await dispatch(getWalksByDog(dog.id));
+    //     // matching date as today1/2/3... filter?
+        
+    //     return walks
+    // }
+
+    // console.log(getDogWalkByDate(dogs['1']));
+
+    // dogs.forEach((dog) => {
+    //     // ??? = getDogWalkByDate(dog)
+
+    // })
+
+
 
     // let dogwalks = {};
     // dogs.forEach(dog => {
