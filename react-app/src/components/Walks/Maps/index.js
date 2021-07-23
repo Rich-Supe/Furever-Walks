@@ -1,12 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
 // import { useDispatch, useSelector } from 'react-redux';
 // import Maps from './maps';
 // import styles from 
 import dogFlagIcon from '../../../assets/img/dog-icon-4.png'
+import getMapStats from '../../../store/maps'
 
-const MapContainer = () => {
+const MapContainer = ({handleCallback}) => {
+    const dispatch = useDispatch();
     const key = process.env.REACT_APP_MAPS_API_KEY;
     const ref = useRef();
+    // console.log("Hopefully a function", handleCallback)
     const [ map, setMap ] = useState(null);
     // const [ distance, setDistance ] = useState(null);
     // const [ duration, setDuration ] = useState(null);
@@ -23,7 +27,7 @@ const MapContainer = () => {
     // let count = 0;
 
     function placeMarkerAndPanTo(latLng, map) {
-        console.log("COORD from current marker placer:", latLng.lat(), latLng.lng())
+        // console.log("COORD from current marker placer:", latLng.lat(), latLng.lng())
         new window.google.maps.Marker({
             position: latLng,
             map: map,
@@ -57,8 +61,8 @@ const MapContainer = () => {
 
     function getDirections(origin, destination) {
         if (map) {
-        console.log('origin:', origin);
-        console.log('destination:', destination);
+        // console.log('origin:', origin);
+        // console.log('destination:', destination);
         const directionsService = new window.google.maps.DirectionsService();
         const directionsRenderer = new window.google.maps.DirectionsRenderer();
         directionsRenderer.setMap(map);
@@ -77,11 +81,11 @@ const MapContainer = () => {
                 });
                 console.log(pathCoordinates);
                 // convert path coords to latlngs:`
-                console.log("legs", legs);
-                console.log("Distance", legs[0].distance.text)
-                console.log("Duration", legs[0].duration.text)
-                console.log("steps", steps);
-                console.log("path", path);  
+                // console.log("legs", legs);
+                // console.log("Distance", legs[0].distance.text)
+                // console.log("Duration", legs[0].duration.text)
+                // console.log("steps", steps);
+                // console.log("path", path);  
                 // const newCoords = []
                 // pathCoordinates.forEach(coord => {
                 //     newCoords.push(new window.google.maps.LatLng(coord));
@@ -96,7 +100,9 @@ const MapContainer = () => {
                 // });
                 distance = (legs[0].distance.text)
                 duration = (legs[0].duration.text)
-                console.log("STATS:", distance, duration)
+                console.log("Dist/Duration:", distance, duration)
+                // dispatch(getMapStats({distance, duration}))
+                handleCallback({distance, duration})
                 directionsRenderer.setDirections(response);
                 // console.log("directionsRenderer:", directionsRenderer)
             } else {
