@@ -1,9 +1,7 @@
 import styles from '../../css-modules/Profile.module.css'
 import UserProfile from './UserProfile';
 import DogCarousel from './DogCarousel';
-// import AddDogModal from './AddDogModal';
 import Graph from './Graph';
-// import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 
@@ -22,9 +20,7 @@ function Profile() {
             <div className={styles.dogCarouselContainer}>
                 <DogCarousel userId={id}/>
             </div>
-            {/* <AddDogModal /> */}
         </div>
-
     );
 }
 

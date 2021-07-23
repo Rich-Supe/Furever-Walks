@@ -1,8 +1,8 @@
 .profile {
     display: grid;
     grid-template: 
-        1fr 1fr
-        1fr 1fr;
+        auto 1fr
+        auto 1fr;
     grid-template-areas:
         'userProfile graph'
         'userProfile dogCarousel';

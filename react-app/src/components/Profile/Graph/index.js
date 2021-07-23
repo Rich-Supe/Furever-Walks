@@ -1,7 +1,8 @@
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getWalksDog } from '../../../store/walks';
+import { getWalksByDog } from '../../../store/walks';
+import { getDogsByWalk } from '../../../store/dogs';
 import styles from '../../../css-modules/Graph.module.css';
 
 function Graph() {
@@ -26,8 +27,6 @@ function Graph() {
 
     // useEffect(() => {
     //     const dog1Walk = dispatch(getWalksDog(1));
-
-
     // }, [dispatch]);
 
     const today1 = new Date();
