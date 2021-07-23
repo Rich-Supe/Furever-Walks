@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getDogs } from '../../../store/dogs';
 
-function NewWalk() {
+function NewWalk({mapData}) {
     const errors = [];
     const [name, setName] = useState('');
     const [distance, setDistance] = useState("0");
@@ -15,6 +15,7 @@ function NewWalk() {
     const [selectedDog, setSelectedDog] = useState(false)
     const dispatch = useDispatch();
     const { id } = useParams();
+    console.log("Current map data from map component", mapData)
 
     useEffect(() => {
         dispatch(getDogs(id))

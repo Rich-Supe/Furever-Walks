@@ -24,11 +24,11 @@ function Walks(){
         setMapData(data) 
     }
 
-    console.log("---------", mapCallback, "---------")
+    // console.log("---------", mapCallback, "---------")
 
-    if (mapData) {
-        console.log("asdfasdfa;lj", mapData)
-    }
+    // if (mapData) {
+    //     console.log("asdfasdfa;lj", mapData)
+    // }
 
     return (
         <div className={styles.walksPage}>
