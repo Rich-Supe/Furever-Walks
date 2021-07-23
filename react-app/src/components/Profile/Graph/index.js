@@ -45,6 +45,7 @@ function Graph() {
     today7.setDate(today7.getDate()-6);
 
 
+    // function to return date in string format that matches date from backend
     function matchingDate(date) {
         const first = date.toString().slice(0, 3)
         const second = date.toString().slice(4, 15)
@@ -53,25 +54,44 @@ function Graph() {
     console.log('USING FUNCTION-------', matchingDate(today2));
 
 
+    // get all walks
     const walks = useSelector(state => Object.values(state.walks));
-    console.log('WALKS FROM STORE-----', walks)
+        // check what's in the walks & walk
+        console.log('WALKS FROM STORE-----', walks)
         walks.forEach(walk => console.log('WHATS IN THIS WALK??', walk))
+
+        // check data type
+        walks.forEach(walk => console.log('TYPE OF WALK.DATE??', typeof walk.date))
+        console.log('TYPE OF TODAY??', typeof matchingDate(today2))
+
+        // check if filter works
+        const logThis = walks.filter(walk => walk.date == matchingDate(today2))
+        console.log('GETTING THIS????', logThis);
+
+    // filter all walks from db where dates match
+    // walks.date format => ddd, dd MMM yyyy HH':'mm':'ss 'GMT' => Tue, 22 Mar 2016 06:30:07 GMT
     const walksOnDate = walks.filter((walk) => walk.date == matchingDate(today2))
-        // walks.date in <ddd, dd MMM yyyy HH':'mm':'ss 'GMT'   =>	Tue, 22 Mar 2016 06:30:07 GMT>
-        console.log('WALKS ON DATE---------', walksOnDate)
-        // returns an array of objects
+    // returns an array of objects
+    console.log('WALKS ON DATE---------', walksOnDate)
+    
     // get walkId
     // find dogs where walk_id == walkId
-
+    // push into data
+        // for (let dog in dogs) {
+        //     data['date'] = 
+        //     data['dogDistance1'] = dog['dog_total_distance']
+        //     data['dogDuration1'] = dog['dog_total_duration']
+        //     console.log('DOG----------', dog);
+        // }
 
     const data = [
-        {date: today7.toDateString().slice(0, 10)},
-        {date: today6.toDateString().slice(0, 10)},
-        {date: today5.toDateString().slice(0, 10)},
-        {date: today4.toDateString().slice(0, 10)},
-        {date: today3.toDateString().slice(0, 10)},
-        {date: today2.toDateString().slice(0, 10)},
-        {date: today1.toDateString().slice(0, 10), dogDuration1: 350, dogDistance1: 450, dogDuration2: 150, dogDistance2: 350, dogDuration3: 100, dogDistance3: 500},
+        {date: today7.toDateString().slice(0, 10), dogDuration1: 35, dogDistance1: 0.5, dogDuration2: 15, dogDistance2: 1, dogDuration3: 10, dogDistance3: 0.7},
+        {date: today6.toDateString().slice(0, 10), dogDuration1: 30, dogDistance1: 0.4, dogDuration2: 30, dogDistance2: 1, dogDuration3: 10, dogDistance3: 0.7},
+        {date: today5.toDateString().slice(0, 10), dogDuration1: 20, dogDistance1: 0.7, dogDuration2: 40, dogDistance2: 1, dogDuration3: 10, dogDistance3: 0.7},
+        {date: today4.toDateString().slice(0, 10), dogDuration1: 60, dogDistance1: 0.2, dogDuration2: 10, dogDistance2: 1, dogDuration3: 10, dogDistance3: 0.7},
+        {date: today3.toDateString().slice(0, 10), dogDuration1: 10, dogDistance1: 0.3, dogDuration2: 5, dogDistance2: 1, dogDuration3: 10, dogDistance3: 0.7},
+        {date: today2.toDateString().slice(0, 10), dogDuration1: 35, dogDistance1: 0.5, dogDuration2: 35, dogDistance2: 1, dogDuration3: 10, dogDistance3: 0.7},
+        {date: today1.toDateString().slice(0, 10), dogDuration1: 50, dogDistance1: 0.6, dogDuration2: 15, dogDistance2: 1, dogDuration3: 10, dogDistance3: 0.7},
     ]
 
     // const getDogWalkByDate = async (dog) => {
