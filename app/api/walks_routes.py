@@ -44,8 +44,8 @@ def get_walks_by_dog(dog_id):
 def add_walk():
     form = NewWalkForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.data)
-    print(request.data)
+    print('this is 47', form.data)
+    print('48', request.data)
     if form.validate_on_submit():
         walk = Walk(
             name=form.name.data, 
@@ -57,12 +57,25 @@ def add_walk():
             finished=form.finished.data 
             # routeData=form.routeData.data
             )
+
+        # dogslist = form.doglist.data !!!!!!!!
+
         print('backend@@######$$$$$$$&&&&&', walk)
         db.session.add(walk)
         db.session.commit()
+
+        # walk.dogwalk_walk.append(dogId)
+        # db.session.commit()
+
         # return jsonify(walk.to_dict())
         return walk.to_dict()
     return {'message': form.errors}
+
+@walk_routes.route('/dogs/<int:dog_id>')
+def add_dog_to_walk(dogId, walkId):
+    walk = Walk.query.filter(Walk.id == walkId).first()
+    walk.dogwalk_walk.append(dogId)
+
 
 
 # write a route to update or edit a walk
