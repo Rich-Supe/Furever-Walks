@@ -2,6 +2,7 @@ import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'r
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { authenticate } from '../../../store/session';
 import { getWalksUser, getWalksByDog } from '../../../store/walks';
 import { getDogs, getDogsByWalk } from '../../../store/dogs';
 import styles from '../../../css-modules/Graph.module.css';
@@ -11,61 +12,27 @@ function Graph() {
     const { id } = useParams();
     const [showDuration, setShowDuration] = useState(true);
 
-    const user = useSelector(state => state.session.user);
-    console.log('USER FROM STORE-----', user);
-    // returns an object
-
     useEffect(() => {
+        // dispatch(authenticate())
+        dispatch(getDogs(id))
         dispatch(getWalksUser(id))
     }, [dispatch])
-    const walks = useSelector(state => Object.values(state.walks));
-    const userWalks = Object.values(walks).filter((walk) => walk.user_id == id)
-    console.log('USERWALKS---------', userWalks)
-    // returns an array of objects
 
-    // useEffect(() => {
-    //     dispatch(getWalksUser(id))
-    //     dispatch(getDogs(id))
-    // }, [dispatch])
+    const user = useSelector(state => state.session.user);
+    console.log('USER FROM STORE-----', user);
+    // returns an object (user)
 
-
-    // 1. get walks by dog ID
-        // get all user's dogs (user.id == dogs.user_id)
-        // 
-    // 2. get dog's walks on specific date
-    // 3. insert into data array
-
-
-    useEffect(() => {
-        dispatch(getDogs(id))
-    }, [dispatch])
-
-    // 1. get all dogs in an array
     const dogs = useSelector(state => Object.values(state.dogs));
-    const userDogs = Object.values(dogs).filter((dog) => dog.user_id == id)
-    console.log('DOGS FROM STORE-----', userDogs);
-
-    // 2. for each dog, get all its walks (getWalksByDog)
-    // let walks;
-    // useEffect(() => {
-    //     walks = dogs.map(dog => {
-    //         dispatch(getWalksByDog(dog.id))
-    //     })
-    //     // dogs.forEach(dog => {
-    //     //     walks = dispatch(getWalksByDog(dog.id))
-    //     // })
-    // }, [dispatch, dogs])
-    // console.log('WALKS--------------------', walks);
-
-    // 3. for each dog, get distance and duration, 
-    //    where its date matches date in data array
-
-    // 4. insert into data array
-
+    console.log('DOGS FROM STORE-----', dogs);
 
     const today1 = new Date();
+    // dateFormat(todau, 'dddd, mmmm dS, yyyy, h:MM:ss TT')
+    console.log('TODAY1-----------', today1);
+
     const today2 = new Date();
     today2.setDate(today2.getDate()-1);
+    console.log('TODAY2-----------', today2);
+
     const today3 = new Date();
     today3.setDate(today3.getDate()-2);
     const today4 = new Date();
@@ -76,6 +43,24 @@ function Graph() {
     today6.setDate(today6.getDate()-5);
     const today7 = new Date();
     today7.setDate(today7.getDate()-6);
+
+    function matchDate(date) {
+        const first = date.toString().slice(0, 3)
+        const second = date.toString().slice(4, 28)
+        return `${first}, ${second}`
+    }
+    console.log('USING FUNCTION-------', matchDate(today2));
+
+    const walks = useSelector(state => Object.values(state.walks));
+    console.log('WALKS FROM STORE-----', walks)
+    const walksOnDate = walks.filter((walk) => walk.id == id)
+        // walk.date == date1 / 2 / 3
+        // walks.date in <ddd, dd MMM yyyy HH':'mm':'ss 'GMT'	Tue, 22 Mar 2016 06:30:07 GMT>
+    console.log('WALKS ON DATE---------', walksOnDate[0])
+    // returns an array of objects
+    const walkId = 0
+
+
 
     const data = [
         {date: today7.toDateString().slice(0, 10)},
@@ -120,6 +105,38 @@ function Graph() {
     //     data['dogDuration1'] = dog['dog_total_duration']
     //     console.log('DOG----------', dog);
     // }
+
+
+
+
+    // 1. get walks by dog ID
+        // get all user's dogs (user.id == dogs.user_id)
+        // 
+    // 2. get dog's walks on specific date
+    // 3. insert into data array
+
+
+    // 1. get all user's dogs in an array
+    // const dogs = useSelector(state => Object.values(state.dogs));
+    // console.log('DOGS FROM STORE-----', dogs);
+
+    // 2. for each dog, get all its walks (getWalksByDog)
+    // let walks;
+    // useEffect(() => {
+    //     walks = dogs.map(dog => {
+    //         dispatch(getWalksByDog(dog.id))
+    //     })
+    //     // dogs.forEach(dog => {
+    //     //     walks = dispatch(getWalksByDog(dog.id))
+    //     // })
+    // }, [dispatch, dogs])
+    // console.log('WALKS--------------------', walks);
+
+    // 3. for each dog, get distance and duration, 
+    //    where its date matches date in data array
+
+    // 4. insert into data array
+
 
     return (
         <div className={styles.graphBox}>
