@@ -66,18 +66,18 @@ export const getWalksUser = (userId) => async (dispatch) => {
     }
 }
 
-export const getWalksDog = (dogId) => async (dispatch) => {
-    const response = await fetch(`/api/walks/all/${dogId}`)
-    console.log(`Userid from getWalk thunk____not okay`, dogId)
-    if (response.ok) {
-        console.log(`Userid from getWalk thunk____==-=-=--`, dogId)
-        const walks = await response.json();
-        dispatch(setWalksDog(walks.walks));
-    }
-    else {
-        return ['An error occurred. Please try again.']
-    }
-}
+// export const getWalksDog = (dogId) => async (dispatch) => {
+//     const response = await fetch(`/api/walks/all/${dogId}`)
+//     console.log(`Userid from getWalk thunk____not okay`, dogId)
+//     if (response.ok) {
+//         console.log(`Userid from getWalk thunk____==-=-=--`, dogId)
+//         const walks = await response.json();
+//         dispatch(setWalksDog(walks.walks));
+//     }
+//     else {
+//         return ['An error occurred. Please try again.']
+//     }
+// }
 
 export const getWalksByDog = (dogId) => async (dispatch) => {
     const response = await fetch(`/api/walks/all/dogs/${dogId}`)

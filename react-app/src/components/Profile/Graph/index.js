@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getWalksUser, getWalksByDog } from '../../../store/walks';
-import { getDogsByWalk } from '../../../store/dogs';
+import { getDogs, getDogsByWalk } from '../../../store/dogs';
 import styles from '../../../css-modules/Graph.module.css';
 
 function Graph() {
@@ -19,9 +19,15 @@ function Graph() {
         dispatch(getWalksUser(id))
     }, [dispatch])
     const walks = useSelector(state => Object.values(state.walks));
-    const userWalks = Object.values(walks).filter((value) => value.user_id == id)
+    const userWalks = Object.values(walks).filter((walk) => walk.user_id == id)
     console.log('USERWALKS---------', userWalks)
     // returns an array of objects
+
+    useEffect(() => {
+        dispatch(getWalksUser(user?.id))
+        dispatch(getDogs(user?.id))
+    }, [dispatch])
+
 
 
     // 1. get walks by dog ID
