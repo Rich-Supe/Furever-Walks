@@ -78,7 +78,7 @@ function Graph() {
             <div className={styles.label}>
                 <div>
                     <label>
-                        Duration
+                        Duration (min.)
                         <input 
                             type='radio' 
                             value='distance' 
@@ -88,7 +88,7 @@ function Graph() {
                 </div>
                 <div>
                     <label>
-                        Distance
+                        Distance (mi.)
                         <input 
                             type='radio' 
                             value='duration' 

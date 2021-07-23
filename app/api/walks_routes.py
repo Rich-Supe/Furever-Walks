@@ -5,6 +5,7 @@ import datetime
 
 walk_routes = Blueprint('walks', __name__)
 
+
 # Create a blueprint that gets one walk
 @walk_routes.route('/<int:walk_id>', methods=['GET'])
 def get_walk(walk_id):
@@ -12,16 +13,17 @@ def get_walk(walk_id):
     # return jsonify(walk.serialize())
     return walk.to_dict()
 
+
 # get all walks by user
 @walk_routes.route('/all/<int:user_id>', methods=['GET'])
 def get_walks(user_id):
     # print("HERE @@@@@@@@'/all/<int:user_id>'", user_id)
-
     walks = Walk.query.filter_by(user_id=user_id).all()
     # print("###################", walks)
     # return jsonify([walk.to_dict() for walk in walks])
     # return jsonify(walks=[walk.serialize() for walk in walks])
     return {"walks": [walk.to_dict() for walk in walks]}
+
 
 # Get all walks by dog
 # @walk_routes.route('/all/<int:dog_id>', methods=['GET'])
@@ -30,13 +32,12 @@ def get_walks(user_id):
 #     return {"walks": [walk.to_dict() for walk in walks]}
 
 
+# Get all walks by dogID
 @walk_routes.route('/all/dogs/<int:dog_id>', methods=['GET'])
-
 def get_walks_by_dog(dog_id):
-
     walks = Walk.query.join(Dog).filter(Dog.id == dog_id).all()
-
     return {"walks": [walk.to_dict() for walk in walks]}
+
 
 # add walk
 @walk_routes.route('/', methods=['POST'])
@@ -79,8 +80,9 @@ def update_walk(walk_id):
         walk.finished = form.finished.data
         db.session.commit()
         return walk.to_dict()
-
     return {'message': 'Validation Failed'}
+
+
 # remove walk
 @walk_routes.route('/<int:walk_id>', methods=['DELETE'])
 def remove_walk(walk_id):

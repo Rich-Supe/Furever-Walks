@@ -16,11 +16,13 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
+
 # Get dog by ID
 @dog_routes.route('/<int:dog_id>', methods=['GET'])
 def get_dog(dog_id):
     dog = Dog.query.get(dog_id)
     return dog.to_dict()
+
 
 # Get dogs by userID
 @dog_routes.route('/all/<int:user_id>', methods=['GET'])
@@ -32,12 +34,10 @@ def get_all_dogs(user_id):
     return {"dogs": [dog.to_dict() for dog in dogs]}
 
 
+# Get all dogs by walkID
 @dog_routes.route('/all/walks/<int:walk_id>', methods=['GET'])
-
 def get_dogs_by_walk(walk_id):
-
     dogs = Dog.query.join(Walk).filter(Walk.id==walk_id).all()
-
     return {"dogs": [dog.to_dict() for dog in dogs]}
 
 
@@ -60,6 +60,7 @@ def create_dog():
         db.session.commit()
         return dog.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
 
 # write a route to update a dog
 @dog_routes.route('/<int:dog_id>', methods=['PUT'])
