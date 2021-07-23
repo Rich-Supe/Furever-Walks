@@ -65,13 +65,13 @@ function Graph() {
         const walksOnDay5 = walks.filter((walk) => walk.date == matchingDate(today5))
         const walksOnDay6 = walks.filter((walk) => walk.date == matchingDate(today6))
         const walksOnDay7 = walks.filter((walk) => walk.date == matchingDate(today7))
-        console.log('WALKS ON DAY1---------!!!!!!!!!!', walksOnDay1)
-        console.log('WALKS ON DAY2---------!!!!!!!!!!', walksOnDay2)
-        console.log('WALKS ON DAY3---------!!!!!!!!!!', walksOnDay3)
-        console.log('WALKS ON DAY4---------!!!!!!!!!!', walksOnDay4)
-        console.log('WALKS ON DAY5---------!!!!!!!!!!', walksOnDay5)
-        console.log('WALKS ON DAY6---------!!!!!!!!!!', walksOnDay6)
-        console.log('WALKS ON DAY7---------!!!!!!!!!!', walksOnDay7)
+        // console.log('WALKS ON DAY1---------!!!!!!!!!!', walksOnDay1)
+        // console.log('WALKS ON DAY2---------!!!!!!!!!!', walksOnDay2)
+        // console.log('WALKS ON DAY3---------!!!!!!!!!!', walksOnDay3)
+        // console.log('WALKS ON DAY4---------!!!!!!!!!!', walksOnDay4)
+        // console.log('WALKS ON DAY5---------!!!!!!!!!!', walksOnDay5)
+        // console.log('WALKS ON DAY6---------!!!!!!!!!!', walksOnDay6)
+        // console.log('WALKS ON DAY7---------!!!!!!!!!!', walksOnDay7)
         // returns an array of walk objects
 
     const data = [
@@ -159,7 +159,7 @@ function Graph() {
                         {/* <Line type="monotone" dataKey="userDuration" stroke="#8884d8" /> */}
                         <Line type="monotone" dataKey="Marley1" stroke="#ffc911" />
                         <Line type="monotone" dataKey="Luna1" stroke="#82ca9d" />
-                        <Line type="monotone" dataKey="Dog1" stroke="#e2543c" />
+                        {/* <Line type="monotone" dataKey="Dog1" stroke="#e2543c" /> */}
                     </LineChart>
                 ) : (
                     <LineChart width={700} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
@@ -171,7 +171,7 @@ function Graph() {
                         {/* <Line type="monotone" dataKey="userDistance" stroke="#8884d8" /> */}
                         <Line type="monotone" dataKey="Marley2" stroke="#ffc911" />
                         <Line type="monotone" dataKey="Luna2" stroke="#82ca9d" />
-                        <Line type="monotone" dataKey="Dog2" stroke="#e2543c" />
+                        {/* <Line type="monotone" dataKey="Dog2" stroke="#e2543c" /> */}
                     </LineChart>
                 )}
             </div>
