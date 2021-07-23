@@ -8,12 +8,10 @@ import img_url from '../../../assets/img/default-user-profile-icon.png'
 function UserProfile(){
     const user = useSelector(state => state.session.user);
     const [showForm, setShowForm] = useState(false);
-    
-
 
     return (
         <div className={styles.userProfile}>
-            <h1>User Profile</h1>
+            {/* <h1>User Profile</h1> */}
             <img src={img_url} alt='default_image'/>
             {showForm ? (
                 <div>
@@ -36,7 +34,6 @@ function UserProfile(){
                 <button onClick={() => setShowForm(true)}>Edit Profile</button>
             }
         </div>
-
     )
 }
 

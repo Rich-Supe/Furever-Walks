@@ -38,12 +38,10 @@ const removeDog = (dogId) => ({
 
 export const getDog = (dogId) => async (dispatch) => {
     const response = await fetch(`/api/dogs/${dogId}`)
-    
     if (response.ok) {
         const dog = await response.json();
         dispatch(setDog(dog));
     }
-    
     else {
         return ['An error occurred. Please try again.']
     }
@@ -54,8 +52,7 @@ export const getDogs = (userId) => async (dispatch) => {
     if (response.ok) {
         const dogs = await response.json();
         dispatch(setDogs(dogs.dogs));
-    }
-    
+    }   
     else {
         return ['An error occurred. Please try again.']
     }
@@ -69,7 +66,6 @@ export const getDogsByWalk = (walkId) => async (dispatch) => {
         const dogs = await response.json();
         dispatch(setDogsByWalkId(dogs.dogs));
     }
-
     else {
         return ['An error occurred. Please try again.']
     }

@@ -44,12 +44,10 @@ const removeWalk = (walkId) => ({
 
 export const getWalk = (walkId) => async (dispatch) => {
     const response = await fetch(`/api/walks/${walkId}`)
-
     if (response.ok) {
         const walk = await response.json();
         dispatch(setWalk(walk));
     }
-
     else {
         return ['An error occurred. Please try again.']
     }
@@ -63,28 +61,25 @@ export const getWalksUser = (userId) => async (dispatch) => {
         const walks = await response.json();
         dispatch(setWalksUser(walks.walks));
     }
-
     else {
         return ['An error occurred. Please try again.']
     }
 }
 
-export const getWalksDog = (dogId) => async (dispatch) => {
-    const response = await fetch(`/api/walks/all/${dogId}`)
-    console.log(`Userid from getWalk thunk____not okay`, dogId)
-    if (response.ok) {
-        console.log(`Userid from getWalk thunk____==-=-=--`, dogId)
-        const walks = await response.json();
-        dispatch(setWalksDog(walks.walks));
-    }
-
-    else {
-        return ['An error occurred. Please try again.']
-    }
-}
+// export const getWalksDog = (dogId) => async (dispatch) => {
+//     const response = await fetch(`/api/walks/all/${dogId}`)
+//     console.log(`Userid from getWalk thunk____not okay`, dogId)
+//     if (response.ok) {
+//         console.log(`Userid from getWalk thunk____==-=-=--`, dogId)
+//         const walks = await response.json();
+//         dispatch(setWalksDog(walks.walks));
+//     }
+//     else {
+//         return ['An error occurred. Please try again.']
+//     }
+// }
 
 export const getWalksByDog = (dogId) => async (dispatch) => {
-    // const dogId = dog.id;
     const response = await fetch(`/api/walks/all/dogs/${dogId}`)
     console.log(`Userid from getWalk thunk____not okay`, dogId)
     if (response.ok) {
@@ -92,7 +87,6 @@ export const getWalksByDog = (dogId) => async (dispatch) => {
         const walks = await response.json();
         dispatch(setWalksByDogId(walks.walks));
     }
-
     else {
         return ['An error occurred. Please try again.']
     }
