@@ -21,6 +21,7 @@ function DogCarousel({userId}){
     }, [dispatch])
     
     const doggos = useSelector((state) => Object.values(state.dogs));
+    console.log('DOG CAROUSEL DOGGOS VAR', doggos)
 
     const slides = [];
     let i = 0
@@ -36,29 +37,29 @@ function DogCarousel({userId}){
     if (doggos) {   
         return (
             <>
-                <p>DOGGO carousel</p>
                 <div className={styles.dogCarousel}>
-                <Swiper id="main" 
-                    tag="section" 
-                    wrapperTag="ul" 
-                    className={styles.swiperContainer}
-                    navigation 
-                    pagination 
-                    spaceBetween={0} 
-                    slidesPerView={5}
-                    // onInit={(swiper) => console.log('Swiper initialized', swiper)}
-                    // onSlideChange={(swiper) => {
-                    //     console.log('Swiper slide: ', swiper)
-                    // }}
-                    // onReachEnd={() => console.log("Swiper end")}
-                >{slides}</Swiper>
+                    <h1>DOGGO carousel</h1>
+                    <Swiper id="main" 
+                        tag="section" 
+                        wrapperTag="ul" 
+                        className={styles.swiperContainer}
+                        navigation 
+                        pagination 
+                        spaceBetween={0} 
+                        slidesPerView={5}
+                        // onInit={(swiper) => console.log('Swiper initialized', swiper)}
+                        // onSlideChange={(swiper) => {
+                        //     console.log('Swiper slide: ', swiper)
+                        // }}
+                        // onReachEnd={() => console.log("Swiper end")}
+                    >{slides}</Swiper>
                 </div>
                 <AddDogModal />
             </>
         )
     } else {
         return (
-            <p>No doggos :(</p>
+            <h1>No doggos :(</h1>
         )
     }
 }

@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from '../../css-modules/Walks.module.css'
 import NewWalk from './NewWalk'
-import WalkInfo from './WalkInfo'
 import WalksCarousel from './WalksCarousel'
 import Maps from './Maps';
 import { getWalksUser, getWalk } from '../../store/walks';
@@ -21,7 +20,6 @@ function Walks(){
             {/* <h1>Walks</h1> */}
             <div className={styles.walksFormContainer}><NewWalk /></div>
             <div className={styles.walksCarouselContainer}><WalksCarousel /></div>
-            <div className={styles.walksInfoContainer}><WalkInfo /></div>
             <div className={styles.walksMap}><Maps /></div>
         </div>
     )
