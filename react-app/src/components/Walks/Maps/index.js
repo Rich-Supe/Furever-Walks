@@ -8,46 +8,52 @@ const MapContainer = () => {
     const key = process.env.REACT_APP_MAPS_API_KEY;
     const ref = useRef();
     const [ map, setMap ] = useState(null);
-    const [ marker1, setMarker1 ] = useState(null);
-    const [ marker2, setMarker2 ] = useState(null);
+    // const [ marker1, setMarker1 ] = useState(null);
+    // const [ marker2, setMarker2 ] = useState(null);
+    // let [ count, setCount ] = useState(0);
     const myLatlng = { lat: 37.363, lng: -122.044 };
     const SanFransisco = { lat: 37.7749, lng: -122.4194 };
-    let markerCount = 0;
+    // const NewYork = {lat: 37.756008006000215, lng: -122.4073820010392}
+    let marker1 = null
+    let marker2 = null
 
     function placeMarkerAndPanTo(latLng, map) {
-        console.log("COORD from marker placer:", latLng)
+        console.log("COORD from current marker placer:", latLng.lat(), latLng.lng())
         new window.google.maps.Marker({
             position: latLng,
             map: map,
             icon: dogFlagIcon,
+            draggable: true,
         });
         map.panTo(latLng);
-        if (markerCount === 0) {
-            setMarker1(latLng);
-        } else if (markerCount === 1) {
-            setMarker2(latLng);
-        }
         };
 
     if (map != null) {
     map.addListener('click', (e) => {
-        placeMarkerAndPanTo(e.latLng, map);
-        console.log("Coords from marker event:", e.latLng)
-        markerCount++;
-        console.log(markerCount)
-        if (markerCount === 2) {
+        // setCount(count ++);
+        // console.log(count)
+        if (marker1 === null) {
+            marker1 = ({ lat: e.latLng.lat(), lng: e.latLng.lng() });
+        } else if (marker2 === null) {
+            marker2 = ({ lat: e.latLng.lat(), lng: e.latLng.lng() });
+        }
+        if (marker1 !== null && marker2 !== null) {
+            console.log("mark1:", marker1)
+            console.log("mark2:", marker2)
             // getDirections(marker1, marker2);
-            getDirections(myLatlng, SanFransisco)
+            // getDirections(myLatlng, SanFransisco)
             // getDirections(marker1.getPosition(), marker2.getPosition());
         }
+        placeMarkerAndPanTo(e.latLng, map);
     });
     }
 
     function getDirections(origin, destination) {
+        if (map) {
         console.log('origin:', origin);
         console.log('destination:', destination);
         const directionsService = new window.google.maps.DirectionsService();
-        const directionsRenderer = new window.google.maps.DirectionsRenderer();
+        // const directionsRenderer = new window.google.maps.DirectionsRenderer();
         directionsService.route({
             origin: origin,
             destination: destination,
@@ -73,6 +79,7 @@ const MapContainer = () => {
                 console.log('Directions request failed due to ' + status);
             }
         });
+        }
     }
 
     // function getDirections(origin, destination) {
@@ -111,10 +118,11 @@ const MapContainer = () => {
 return (
     <>
         <h1> MAPS </h1>
-        <div className="Maps__map" id="map1" ref={ref}
+        <div className="Maps__map" id="map" ref={ref}
         style={{ height: 500, width: 500 }}>
 
         </div>
+        {/* <button onClick={getDirections(myLatlng, SanFransisco)}>Search!</button> */}
     </>
 );
 };
