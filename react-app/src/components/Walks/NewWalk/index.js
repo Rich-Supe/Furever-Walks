@@ -1,8 +1,9 @@
 import styles from '../../../css-modules/NewWalk.module.css';
 import { createWalk } from '../../../store/walks';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import {getDogs} from '../../../store/dogs';
 
 function NewWalk() {
     const errors = [];
@@ -13,6 +14,14 @@ function NewWalk() {
     const [routeData, setRouteData] = useState({});
     const dispatch = useDispatch();
     const { id } = useParams();
+
+    useEffect(() => {
+        dispatch(getDogs(id))
+    }, [id])
+    let dogs = useSelector((state) => state.dogs);
+    dogs = Object.values(dogs);
+    dogs.map((dog) => console.log("@@@@@@DOGS######", dog.name))
+    
 
     const addWalk = async (e) => {
         e.preventDefault();
@@ -89,6 +98,18 @@ function NewWalk() {
                         onChange={(e) => setRouteData(e.target.value)}
                         value={routeData}
                     ></input>
+                </div>
+                <div>
+                {dogs.forEach((dog) => 
+                    <input 
+                        key={dog.id} 
+                        type='checkbox' 
+                        name='dog'
+                        onChange={() => console.log(dog)}
+                        value={dog}>
+                        {dog.name}
+                    </input>
+                )}
                 </div>
                 <div>
                     <button type='submit'>Add Walk</button>
