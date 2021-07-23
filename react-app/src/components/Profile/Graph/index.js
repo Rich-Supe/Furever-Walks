@@ -74,26 +74,26 @@ function Graph() {
         console.log('WALKS ON DAY7---------!!!!!!!!!!', walksOnDay7)
         // returns an array of walk objects
 
-    // const data = [
-    //     {date: today7.toDateString().slice(0, 10), dogDuration1: 35, dogDistance1: 0.5, dogDuration2: 15, dogDistance2: 1, dogDuration3: 10, dogDistance3: 0.7},
-    //     {date: today6.toDateString().slice(0, 10), dogDuration1: 30, dogDistance1: 0.4, dogDuration2: 30, dogDistance2: 0.2, dogDuration3: 10, dogDistance3: 0.4},
-    //     {date: today5.toDateString().slice(0, 10), dogDuration1: 20, dogDistance1: 0.7, dogDuration2: 40, dogDistance2: 0.5, dogDuration3: 10, dogDistance3: 1},
-    //     {date: today4.toDateString().slice(0, 10), dogDuration1: 60, dogDistance1: 0.2, dogDuration2: 10, dogDistance2: 0.1, dogDuration3: 10, dogDistance3: 0.2},
-    //     {date: today3.toDateString().slice(0, 10), dogDuration1: 10, dogDistance1: 0.3, dogDuration2: 5, dogDistance2: 0, dogDuration3: 10, dogDistance3: 0.1},
-    //     {date: today2.toDateString().slice(0, 10), dogDuration1: 35, dogDistance1: 0.5, dogDuration2: 35, dogDistance2: 0.4, dogDuration3: 10, dogDistance3: 0.8},
-    //     {date: today1.toDateString().slice(0, 10), dogDuration1: 50, dogDistance1: 0.6, dogDuration2: 15, dogDistance2: 0.3, dogDuration3: 10, dogDistance3: 0.4},
-    // ]
+    const data = [
+        {date: today7.toDateString().slice(0, 10), Marley1: 35, Marley2: 0.5, Luna1: 15, Luna2: 1, Dog1: 10, Dog2: 0.7},
+        {date: today6.toDateString().slice(0, 10), Marley1: 30, Marley2: 0.4, Luna1: 30, Luna2: 0.2, Dog1: 10, Dog2: 0.4},
+        {date: today5.toDateString().slice(0, 10), Marley1: 20, Marley2: 0.7, Luna1: 40, Luna2: 0.5, Dog1: 10, Dog2: 1},
+        {date: today4.toDateString().slice(0, 10), Marley1: 60, Marley2: 0.2, Luna1: 10, Luna2: 0.1, Dog1: 10, Dog2: 0.2},
+        {date: today3.toDateString().slice(0, 10), Marley1: 10, Marley2: 0.3, Luna1: 5, Luna2: 0, Dog1: 10, Dog2: 0.1},
+        {date: today2.toDateString().slice(0, 10), Marley1: 35, Marley2: 0.5, Luna1: 35, Luna2: 0.4, Dog1: 10, Dog2: 0.8},
+        {date: today1.toDateString().slice(0, 10), Marley1: 50, Marley2: 0.6, Luna1: 15, Luna2: 0.3, Dog1: 10, Dog2: 0.4},
+    ]
 
     // walks data by both user and dogs
-    const data = [
-        {date: today7.toDateString().slice(0, 10), userDuration: walksOnDay7[0]?.duration, userDistance: walksOnDay7[0]?.distance},
-        {date: today6.toDateString().slice(0, 10), userDuration: walksOnDay6[0]?.duration, userDistance: walksOnDay6[0]?.distance},
-        {date: today5.toDateString().slice(0, 10), userDuration: walksOnDay5[0]?.duration, userDistance: walksOnDay5[0]?.distance},
-        {date: today4.toDateString().slice(0, 10), userDuration: walksOnDay4[0]?.duration, userDistance: walksOnDay4[0]?.distance},
-        {date: today3.toDateString().slice(0, 10), userDuration: walksOnDay3[0]?.duration, userDistance: walksOnDay3[0]?.distance},
-        {date: today2.toDateString().slice(0, 10), userDuration: walksOnDay2[0]?.duration, userDistance: walksOnDay2[0]?.distance},
-        {date: today1.toDateString().slice(0, 10), userDuration: walksOnDay1[0]?.duration, userDistance: walksOnDay1[0]?.distance},
-    ]
+    // const data = [
+    //     {date: today7.toDateString().slice(0, 10), userDuration: walksOnDay7[0]?.duration, userDistance: walksOnDay7[0]?.distance},
+    //     {date: today6.toDateString().slice(0, 10), userDuration: walksOnDay6[0]?.duration, userDistance: walksOnDay6[0]?.distance},
+    //     {date: today5.toDateString().slice(0, 10), userDuration: walksOnDay5[0]?.duration, userDistance: walksOnDay5[0]?.distance},
+    //     {date: today4.toDateString().slice(0, 10), userDuration: walksOnDay4[0]?.duration, userDistance: walksOnDay4[0]?.distance},
+    //     {date: today3.toDateString().slice(0, 10), userDuration: walksOnDay3[0]?.duration, userDistance: walksOnDay3[0]?.distance},
+    //     {date: today2.toDateString().slice(0, 10), userDuration: walksOnDay2[0]?.duration, userDistance: walksOnDay2[0]?.distance},
+    //     {date: today1.toDateString().slice(0, 10), userDuration: walksOnDay1[0]?.duration, userDistance: walksOnDay1[0]?.distance},
+    // ]
     
     // 3. for each walk, get walk.duration/distance where getDogByWalk(walk.id)
     
@@ -155,10 +155,11 @@ function Graph() {
                         <XAxis dataKey="date" />
                         <YAxis />
                         <Tooltip />
-                        {/* <Legend /> */}
-                        <Line type="monotone" dataKey="userDuration" stroke="#8884d8" />
-                        {/* <Line type="monotone" dataKey="dogDuration2" stroke="#82ca9d" />
-                        <Line type="monotone" dataKey="dogDuration3" stroke="#e2543c" /> */}
+                        <Legend />
+                        {/* <Line type="monotone" dataKey="userDuration" stroke="#8884d8" /> */}
+                        <Line type="monotone" dataKey="Marley1" stroke="#ffc911" />
+                        <Line type="monotone" dataKey="Luna1" stroke="#82ca9d" />
+                        <Line type="monotone" dataKey="Dog1" stroke="#e2543c" />
                     </LineChart>
                 ) : (
                     <LineChart width={700} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
@@ -166,10 +167,11 @@ function Graph() {
                         <XAxis dataKey="date" />
                         <YAxis />
                         <Tooltip />
-                        {/* <Legend /> */}
-                        <Line type="monotone" dataKey="userDistance" stroke="#8884d8" />
-                        {/* <Line type="monotone" dataKey="dogDistance2" stroke="#82ca9d" />
-                        <Line type="monotone" dataKey="dogDistance3" stroke="#e2543c" /> */}
+                        <Legend />
+                        {/* <Line type="monotone" dataKey="userDistance" stroke="#8884d8" /> */}
+                        <Line type="monotone" dataKey="Marley2" stroke="#ffc911" />
+                        <Line type="monotone" dataKey="Luna2" stroke="#82ca9d" />
+                        <Line type="monotone" dataKey="Dog2" stroke="#e2543c" />
                     </LineChart>
                 )}
             </div>
