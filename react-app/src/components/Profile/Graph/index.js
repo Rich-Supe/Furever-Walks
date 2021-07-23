@@ -19,15 +19,15 @@ function Graph() {
     }, [dispatch])
 
     const user = useSelector(state => state.session.user);
-    console.log('USER FROM STORE-----', user);
+    // console.log('USER FROM STORE-----', user);
     // returns an object (user)
 
     const dogs = useSelector(state => Object.values(state.dogs));
-    console.log('DOGS FROM STORE-----', dogs);
+    // console.log('DOGS FROM STORE-----', dogs);
 
     const today1 = new Date();
     // dateFormat(todau, 'dddd, mmmm dS, yyyy, h:MM:ss TT')
-    console.log('TODAY1-----------', today1);
+    // console.log('TODAY1-----------', today1);
 
     const today2 = new Date();
     today2.setDate(today2.getDate()-1);
@@ -44,22 +44,24 @@ function Graph() {
     const today7 = new Date();
     today7.setDate(today7.getDate()-6);
 
-    function matchDate(date) {
+
+    function matchingDate(date) {
         const first = date.toString().slice(0, 3)
-        const second = date.toString().slice(4, 28)
-        return `${first}, ${second}`
+        const second = date.toString().slice(4, 15)
+        return `${first}, ${second} 00:00:00 GMT`
     }
-    console.log('USING FUNCTION-------', matchDate(today2));
+    console.log('USING FUNCTION-------', matchingDate(today2));
+
 
     const walks = useSelector(state => Object.values(state.walks));
     console.log('WALKS FROM STORE-----', walks)
-    const walksOnDate = walks.filter((walk) => walk.id == id)
-        // walk.date == date1 / 2 / 3
-        // walks.date in <ddd, dd MMM yyyy HH':'mm':'ss 'GMT'	Tue, 22 Mar 2016 06:30:07 GMT>
-    console.log('WALKS ON DATE---------', walksOnDate[0])
-    // returns an array of objects
-    const walkId = 0
-
+        walks.forEach(walk => console.log('WHATS IN THIS WALK??', walk))
+    const walksOnDate = walks.filter((walk) => walk.date == matchingDate(today2))
+        // walks.date in <ddd, dd MMM yyyy HH':'mm':'ss 'GMT'   =>	Tue, 22 Mar 2016 06:30:07 GMT>
+        console.log('WALKS ON DATE---------', walksOnDate)
+        // returns an array of objects
+    // get walkId
+    // find dogs where walk_id == walkId
 
 
     const data = [
