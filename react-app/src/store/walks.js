@@ -79,6 +79,10 @@ export const getWalksUser = (userId) => async (dispatch) => {
 //     }
 // }
 
+export const addWalkByDog = (dogId, walkId) => async (dispatch) => {
+    const response = await fetch(`/api/walks/dogs/${dogId}`)
+}
+
 export const getWalksByDog = (dogId) => async (dispatch) => {
     const response = await fetch(`/api/walks/all/dogs/${dogId}`)
     console.log(`Userid from getWalk thunk____not okay`, dogId)
@@ -118,6 +122,7 @@ export const createWalk = (walk) => async (dispatch) => {
     if (response.ok) {
         const newWalk = await response.json();
         dispatch(addWalk(newWalk));
+        return newWalk;
     }
     else {
         return ['An error occurred. Please try again.']

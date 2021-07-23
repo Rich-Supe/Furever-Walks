@@ -3,7 +3,7 @@ import { createWalk } from '../../../store/walks';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import {getDogs} from '../../../store/dogs';
+import { getDogs } from '../../../store/dogs';
 
 function NewWalk() {
     const errors = [];
@@ -12,22 +12,37 @@ function NewWalk() {
     const [duration, setDuration] = useState("0");
     const [finished, setFinished] = useState(false);
     const [routeData, setRouteData] = useState({});
+    const [selectedDog, setSelectedDog] = useState(false)
     const dispatch = useDispatch();
     const { id } = useParams();
 
     useEffect(() => {
         dispatch(getDogs(id))
     }, [id])
-    let dogs = useSelector((state) => state.dogs);
-    dogs = Object.values(dogs);
-    dogs.map((dog) => console.log("@@@@@@DOGS######", dog.name))
-    
+    const dogs = useSelector((state) => Object.values(state.dogs));
+    console.log(dogs);
+    // dogs = Object.values(dogs);
+    // dogs.map((dog) => console.log("@@@@@@DOGS######", dog.name))
+
+    const addDogToWalk = (dog, selectedDog) => {
+        if (selectedDog) {
+            // dispatch(addWalkByDog(dog.id))
+        }
+    }
+
+    const dogIds = {}
+    const checked = () => {
+        setSelectedDog(!selectedDog)
+    }
 
     const addWalk = async (e) => {
         e.preventDefault();
         const user_id = Number(id);
         const rating = 0;
         // const date = new Date();
+
+        const dogsOnWalk = [];
+        // we will add all the dogs on the walk to this array then send it in the payload
 
         if (name.length < 1) errors.push('The walk must have a name.')
         const payload = {
@@ -37,12 +52,13 @@ function NewWalk() {
             rating,
             finished,
             routeData,
-            user_id}
-        const data = await dispatch(createWalk(payload))
-            
-        // console.log("DATA!!!", payload)
+            user_id,
+            //some array of dogIds
         }
-      
+        const data = await dispatch(createWalk(payload))
+
+    }
+
 
     return (
         <div>
@@ -81,7 +97,7 @@ function NewWalk() {
                     ></input>
                 </div>
                 <div>
-                    Complete: 
+                    Complete:
                     <input
                         type='checkbox'
                         name='status'
@@ -100,16 +116,20 @@ function NewWalk() {
                     ></input>
                 </div>
                 <div>
-                {dogs.forEach((dog) => 
-                    <input 
-                        key={dog.id} 
-                        type='checkbox' 
-                        name='dog'
-                        onChange={() => console.log(dog)}
-                        value={dog}>
-                        {dog.name}
-                    </input>
-                )}
+                    Dogs
+                    {dogs.map((dog) => 
+                        <div>
+                            {dog.name}
+                            <input
+                                key={dog.id}
+                                type='checkbox'
+                                name='dog'
+                                onChange={checked}
+                                value={selectedDog}>
+                            </input>
+                            
+                        </div>
+                    )}
                 </div>
                 <div>
                     <button type='submit'>Add Walk</button>
