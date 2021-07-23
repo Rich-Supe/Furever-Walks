@@ -12,7 +12,6 @@ function NewWalk({mapData}) {
     const [duration, setDuration] = useState("0");
     const [finished, setFinished] = useState(false);
     const [routeData, setRouteData] = useState({});
-    const [selectedDog, setSelectedDog] = useState(false)
     const dispatch = useDispatch();
     const { id } = useParams();
     console.log("Current map data from map component", mapData)
@@ -21,17 +20,25 @@ function NewWalk({mapData}) {
         dispatch(getDogs(id))
     }, [id])
     const dogs = useSelector((state) => Object.values(state.dogs));
-    const dogIds = {} // 1: false, 2: false, 3: false
+    const dogIds = {};
     dogs.forEach((dog) => {
         dogIds[dog.id] = false;
     })
+    var walkingdogs = [];
     const checked = (dog) => {
         dogIds[dog.id] = !dogIds[dog.id];
-        console.log('checked value!!!', dogIds)
+        // console.log('checked value!!!', dogIds)
         const entries = Object.entries(dogIds)
-        const walkingdogs = [];
-        entries.forEach((entr) => entr[1] ? walkingdogs.push(Number(entr[0])) : null)
-        console.log(walkingdogs)
+        console.log(entries)
+        entries.forEach((entr) => {
+            if (entr[1] && !walkingdogs.includes(Number(entr[0]))){
+                walkingdogs.push(Number(entr[0]))
+                console.log('line 36')
+            } else if (!entr[1]) {
+                walkingdogs.splice(walkingdogs.indexOf(Number(entr[0])), 1)
+            }
+        })
+        console.log("line 40", walkingdogs)
         return walkingdogs;
     }
 
@@ -53,10 +60,13 @@ function NewWalk({mapData}) {
             finished,
             routeData,
             user_id,
-            //some array of dogIds
+            walkingdogs
         }
         const data = await dispatch(createWalk(payload))
-
+        // const payload2 = {
+        //     walkingdogs
+        // }
+        console.log(payload.walkingdogs)
     }
 
 
@@ -125,7 +135,7 @@ function NewWalk({mapData}) {
                                 type='checkbox'
                                 name='dog'
                                 onChange={() => checked(dog)}
-                                value={selectedDog}>
+                                value={dog}>
                             </input>
                             
                         </div>
