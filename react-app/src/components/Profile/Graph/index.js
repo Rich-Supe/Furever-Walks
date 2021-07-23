@@ -86,12 +86,12 @@ function Graph() {
 
     const data = [
         {date: today7.toDateString().slice(0, 10), dogDuration1: 35, dogDistance1: 0.5, dogDuration2: 15, dogDistance2: 1, dogDuration3: 10, dogDistance3: 0.7},
-        {date: today6.toDateString().slice(0, 10), dogDuration1: 30, dogDistance1: 0.4, dogDuration2: 30, dogDistance2: 1, dogDuration3: 10, dogDistance3: 0.7},
-        {date: today5.toDateString().slice(0, 10), dogDuration1: 20, dogDistance1: 0.7, dogDuration2: 40, dogDistance2: 1, dogDuration3: 10, dogDistance3: 0.7},
-        {date: today4.toDateString().slice(0, 10), dogDuration1: 60, dogDistance1: 0.2, dogDuration2: 10, dogDistance2: 1, dogDuration3: 10, dogDistance3: 0.7},
-        {date: today3.toDateString().slice(0, 10), dogDuration1: 10, dogDistance1: 0.3, dogDuration2: 5, dogDistance2: 1, dogDuration3: 10, dogDistance3: 0.7},
-        {date: today2.toDateString().slice(0, 10), dogDuration1: 35, dogDistance1: 0.5, dogDuration2: 35, dogDistance2: 1, dogDuration3: 10, dogDistance3: 0.7},
-        {date: today1.toDateString().slice(0, 10), dogDuration1: 50, dogDistance1: 0.6, dogDuration2: 15, dogDistance2: 1, dogDuration3: 10, dogDistance3: 0.7},
+        {date: today6.toDateString().slice(0, 10), dogDuration1: 30, dogDistance1: 0.4, dogDuration2: 30, dogDistance2: 0.2, dogDuration3: 10, dogDistance3: 0.4},
+        {date: today5.toDateString().slice(0, 10), dogDuration1: 20, dogDistance1: 0.7, dogDuration2: 40, dogDistance2: 0.5, dogDuration3: 10, dogDistance3: 1},
+        {date: today4.toDateString().slice(0, 10), dogDuration1: 60, dogDistance1: 0.2, dogDuration2: 10, dogDistance2: 0.1, dogDuration3: 10, dogDistance3: 0.2},
+        {date: today3.toDateString().slice(0, 10), dogDuration1: 10, dogDistance1: 0.3, dogDuration2: 5, dogDistance2: 0, dogDuration3: 10, dogDistance3: 0.1},
+        {date: today2.toDateString().slice(0, 10), dogDuration1: 35, dogDistance1: 0.5, dogDuration2: 35, dogDistance2: 0.4, dogDuration3: 10, dogDistance3: 0.8},
+        {date: today1.toDateString().slice(0, 10), dogDuration1: 50, dogDistance1: 0.6, dogDuration2: 15, dogDistance2: 0.3, dogDuration3: 10, dogDistance3: 0.4},
     ]
 
     // const getDogWalkByDate = async (dog) => {
