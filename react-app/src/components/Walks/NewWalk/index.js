@@ -20,27 +20,18 @@ function NewWalk() {
         dispatch(getDogs(id))
     }, [id])
     const dogs = useSelector((state) => Object.values(state.dogs));
-    console.log(dogs);
-    // dogs = Object.values(dogs);
-    // dogs.map((dog) => console.log("@@@@@@DOGS######", dog.name))
-
-    const addDogToWalk = (dog, selectedDog) => {
-        if (selectedDog) {
-            // dispatch(addWalkByDog(dog.id))
-        }
-    }
-
-    const dogIds = {}
+    const dogIds = {} // 1: false, 2: false, 3: false
+    dogs.forEach((dog) => {
+        dogIds[dog.id] = false;
+    })
     const checked = (dog) => {
-        setSelectedDog(!selectedDog)
-        if(!selectedDog) {
-            // dogIds[]
-            console.log('zzzzzzzzzz', dog)
-            dogIds[dog.id] = dog.id
-        } else {
-            delete dogIds[dog.id]
-        }
-        console.log('41', dogIds);
+        dogIds[dog.id] = !dogIds[dog.id];
+        console.log('checked value!!!', dogIds)
+        const entries = Object.entries(dogIds)
+        const walkingdogs = [];
+        entries.forEach((entr) => entr[1] ? walkingdogs.push(Number(entr[0])) : null)
+        console.log(walkingdogs)
+        return walkingdogs;
     }
 
     const addWalk = async (e) => {
@@ -49,9 +40,9 @@ function NewWalk() {
         const rating = 0;
         // const date = new Date();
 
-        const dogsOnWalk = [];
+        // const dogsOnWalk = [];
         // we will add all the dogs on the walk to this array then send it in the payload
-
+        
         if (name.length < 1) errors.push('The walk must have a name.')
         const payload = {
             name,
