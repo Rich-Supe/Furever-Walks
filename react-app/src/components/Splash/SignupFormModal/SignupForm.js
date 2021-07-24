@@ -51,7 +51,7 @@ const SignupForm = () => {
 
   return (
     <form className={styles.signupForm} onSubmit={onSignUp}>
-      <div>
+      <div className={styles.signupFormErrors}>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
@@ -103,7 +103,7 @@ const SignupForm = () => {
         ></input>
       </div>
       <div className={styles.wrapper}>
-        <button type='submit'>Sign Up </button>
+        <button type='submit'>SIGN UP</button>
       </div>
     </form>
   );

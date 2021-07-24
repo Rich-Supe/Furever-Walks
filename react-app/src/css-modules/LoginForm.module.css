@@ -16,6 +16,13 @@
     align-items: center;
 }
 
+.loginFormErrors {
+    font-family: Dosis, Helvetica, sans-serif;
+    color: red;
+    font-size: 70%;
+    text-align: center;
+}
+
 .loginForm input {
     border: none;
     width: 190px;
@@ -70,8 +77,8 @@
     .loginForm button:hover{
     color: #fff;
     cursor: pointer;
-    }
+}
 
-    .loginForm button:hover:after{
+.loginForm button:hover:after{
     width: 100%;
-    }
+}

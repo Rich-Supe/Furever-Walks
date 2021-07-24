@@ -33,7 +33,7 @@ const LoginForm = () => {
 
   return (
     <form className={styles.loginForm} onSubmit={onLogin}>
-      <div>
+      <div className={styles.loginFormErrors}>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
@@ -57,7 +57,7 @@ const LoginForm = () => {
         />
       </div>
       <div className='wrapper'>
-        <button type='submit'>Log In</button>
+        <button type='submit'>LOG IN</button>
       </div>
     </form>
   );

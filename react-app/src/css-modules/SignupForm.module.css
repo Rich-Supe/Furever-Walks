@@ -16,6 +16,13 @@
     align-items: center;
 }
 
+.signupFormErrors {
+    font-family: Dosis, Helvetica, sans-serif;
+    color: red;
+    font-size: 70%;
+    text-align: center;
+}
+
 .signupForm input {
     border: none;
     width: 190px;
