@@ -15,7 +15,7 @@ let userId = user ? user.id : null;
 return (
     <nav className={styles.navbarContainer}>
     {user ? (
-        <ul>
+        <ul className={styles.navbar}>
             <li>
                 <NavLink to='/' exact={true} className={styles.navlink} activeClassName='active'>
                 Home
