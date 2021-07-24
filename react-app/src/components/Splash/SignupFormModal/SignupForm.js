@@ -50,7 +50,7 @@ const SignupForm = () => {
   // }
 
   return (
-    <form className={styles.signupFormContainer} onSubmit={onSignUp}>
+    <form className={styles.signupForm} onSubmit={onSignUp}>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>

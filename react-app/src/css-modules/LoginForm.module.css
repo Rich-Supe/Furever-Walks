@@ -1,23 +1,37 @@
-.loginFormContainer {
+.loginForm {
     /* background-color: transparent; */
+    width: 60%;
+    height: auto;
+    margin: 15%;
+    padding: 7%;
+    
+    font-family: Dosis, Helvetica, sans-serif;
+    color: #ffc911;
+    text-shadow: 2px 2px white;
+    font-size: 200%;
+    text-align: center;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.loginFormContainer input {
+.loginForm input {
     border: none;
     width: 190px;
     height: 20px;
-    padding: 5px;
-    margin: 10px 0;
+    padding: 15px 5px;
+    margin: 5px 0;
+    font-size: 50%;
 }
 
-.loginFormContainer div .wrapper{
+.loginForm div .wrapper{
     transform: translate(-50%, -50%);
     width: 210px;
     align-self: flex-end;
 }
 
-.loginFormContainer button {
+.loginForm button {
     display: block;
     width: 200px;
     height: 40px;
@@ -37,12 +51,12 @@
     font-weight: 1000;
     }
 
-    .loginFormContainer button span{
+    .loginForm button span{
     position: relative;
     z-index: 2;
     }
 
-    .loginFormContainer button:after{
+    .loginForm button:after{
     position: absolute;
     content: "";
     top: 0;
@@ -53,11 +67,11 @@
     transition: all .35s;
     }
 
-    .loginFormContainer button:hover{
+    .loginForm button:hover{
     color: #fff;
     cursor: pointer;
     }
 
-    .loginFormContainer button:hover:after{
+    .loginForm button:hover:after{
     width: 100%;
     }
