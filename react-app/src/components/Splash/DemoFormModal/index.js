@@ -7,7 +7,7 @@ function DemoFormModal() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Demo</button>
+      <button onClick={() => setShowModal(true)}>DEMO</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <DemoForm />

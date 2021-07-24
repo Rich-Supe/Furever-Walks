@@ -10,22 +10,23 @@
 }
 
 .navbarContainer li, 
-.navbarContainer button {
+.navbarContainer button,
+.navbarContainer .navlink {
     border: none;
     background-color: transparent;
     text-decoration: none;
     font-family: Dosis, Helvetica, sans-serif;
     font-size: 1em;
     transition: all .35s;
+    font-weight: bolder;
+    color:black;
 }
 
 .navbarContainer li:hover, 
-.navbarContainer button:hover {
+.navbarContainer button:hover,
+.navbarContainer .navlink:hover {
     cursor: pointer;
     text-decoration: underline;
-}
-
-.navlink {
-    text-decoration: none;
-    color:black;
+    box-shadow: tomato;
+    color: #E2543C;
 }
