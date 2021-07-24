@@ -24,5 +24,5 @@
 
 .dogCarouselContainer {
     grid-area: dogCarousel;
-    margin: 5%;
+    margin: 0 5%;
 }
