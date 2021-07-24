@@ -15,10 +15,9 @@
     margin-bottom: 0;
 }
 
-.walksMapContainer {
+.walksMap {
     grid-area: map;
-    margin: 5%;
-    margin-bottom: 0;
+    margin: 2% 3% 0 3%;
 }
 
 .walksCarouselContainer {

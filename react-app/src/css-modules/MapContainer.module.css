@@ -8,14 +8,10 @@
         'h'
         'map'
         'button';
-    align-items: center;
-
-    /* box-shadow: 0 0 15px #edf2f7;
+    box-shadow: 0 0 15px #edf2f7;
     border-radius: 20px;
-    border: 1px solid #edf2f7; */
-    padding-top: 8%;
-    /* width: 150%; */
-    /* box-sizing: border-box; */
+    border: 1px solid #edf2f7;
+    padding: 5%;
 }
 
 .mapContainer h1 {
@@ -25,11 +21,19 @@
 
 .map {
     grid-area: map;
-
+    justify-self: center;
     box-shadow: 0 0 15px #edf2f7;
     border-radius: 20px;
     border: 1px solid #edf2f7;
+    box-sizing: border-box;
+    /* overflow: hidden; */
+    /* overflow: auto; */
+    height: 50vh;
+    max-height: 100%;
+    width: 55vw;
+    max-width: 97%;
     /* box-sizing: border-box; */
+    box-sizing: content-box;
 }
 
 .mapBtn {

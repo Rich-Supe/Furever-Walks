@@ -149,7 +149,8 @@ return (
     <div className={styles.mapContainer}>
         <h1>PLAN YOUR WALK ROUTE</h1>
         <div className={styles.map} id="map" ref={ref}
-        style={{ height: 500, width: 1100 }}>
+        // style={{ height: 500, width: 1000 }}
+        >
         </div>
         <button className={styles.mapBtn} onClick={() => getDirections(marker1, marker2)}>SEARCH</button>
         {/* <button onClick={() => getDirections(myLatlng, SanFransisco)}>Search!</button> */}
