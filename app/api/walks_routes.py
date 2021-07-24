@@ -59,12 +59,21 @@ def add_walk():
             )
 
         # dogslist = form.doglist.data !!!!!!!!
+        encoding = "utf-8"
+        # encoding = 'utf-8'
+        b'request.data.walkingdogs'.decode(encoding)
+# or
 
-        print('backend@@######$$$$$$$&&&&&', walk)
+# str(b'hello', encoding)
+        # print('backend@@######$$$$$$$&&&&&', request.data.walkingdogs )
+        # print('backend@@######$$$$$$$&&&&&', request.data.get("walkingdogs") )
+        # print('backend@@######$$$$$$$&&&&&', request.data["walkingdogs"] )
+        print('backend@@######$$$$$$$&&&&&', request.data.walkingdogs.decode(encoding) )
+
         db.session.add(walk)
         db.session.commit()
-
-        # walk.dogwalk_walk.append(dogId)
+        # print("################", )
+        # walk.dogwalk_walk.append(form.walkindogs.data)
         # db.session.commit()
 
         # return jsonify(walk.to_dict())

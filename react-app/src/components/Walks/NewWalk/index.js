@@ -29,16 +29,18 @@ function NewWalk({mapData}) {
         dogIds[dog.id] = !dogIds[dog.id];
         // console.log('checked value!!!', dogIds)
         const entries = Object.entries(dogIds)
-        console.log(entries)
+        // console.log(entries)
         entries.forEach((entr) => {
             if (entr[1] && !walkingdogs.includes(Number(entr[0]))){
                 walkingdogs.push(Number(entr[0]))
-                console.log('line 36')
-            } else if (!entr[1]) {
+                // console.log('line 36', walkingdogs)
+            }
+            if (!entr[1] && walkingdogs.includes(Number(entr[0]))) {
                 walkingdogs.splice(walkingdogs.indexOf(Number(entr[0])), 1)
             }
+            
         })
-        console.log("line 40", walkingdogs)
+        // console.log("line 40", walkingdogs)
         return walkingdogs;
     }
 
@@ -66,7 +68,7 @@ function NewWalk({mapData}) {
         // const payload2 = {
         //     walkingdogs
         // }
-        console.log(payload.walkingdogs)
+        console.log('line 71', payload.walkingdogs)
     }
 
 
