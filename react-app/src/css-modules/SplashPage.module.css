@@ -9,11 +9,12 @@
 
 .splashPageContainer h1 {
     font-family: 'Rock Salt', cursive;
-    margin: 3%;
+    margin: 2%;
 }
 
 .splashPageContainer img {
     margin: 1% 5%;
-    width: auto;
+    width: 65%;
+    height: auto;
     box-shadow: 0 0 20px 0 #e3e3e3;
 }
