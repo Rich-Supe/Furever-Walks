@@ -38,7 +38,7 @@ function DogCarousel({userId}){
         return (
             <>
                 <div className={styles.dogCarousel}>
-                    <h1>DOGGO carousel</h1>
+                    <h1>MY DOGS <AddDogModal /></h1>
                     <Swiper id="main" 
                         tag="section" 
                         wrapperTag="ul" 
@@ -54,7 +54,6 @@ function DogCarousel({userId}){
                         // onReachEnd={() => console.log("Swiper end")}
                     >{slides}</Swiper>
                 </div>
-                <AddDogModal />
             </>
         )
     } else {

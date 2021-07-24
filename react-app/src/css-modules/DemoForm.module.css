@@ -1,103 +1,25 @@
 .demoFormContainer {
+    width: 60%;
+    height: auto;
+    margin: 10% 15%;
+    padding: 5%;
+    
     font-family: Dosis, Helvetica, sans-serif;
-    background-color: transparent;
-    width: 100%;
-    height: 100%;
-    padding: 20% 0;
     color: #ffc911;
     text-shadow: 2px 2px white;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-
-    /* background-size: contain;
+    font-size: 150%;
+    text-align: center;
+    
+    background-size: contain;
     background-repeat: no-repeat;
-    background-image: url('../assets/img/dog-paw.png'); */
-}
-
-.demoFormContainer img {
-    position:fixed;
-    max-width: 30%;
-    z-index: 0;
+    background-image: url('../assets/img/dog-paw.png');
+    background-position: center;
     opacity: 0.8;
-    transition-property: all;
-    transition-duration: 0.2s;
-    transition-delay: 0.1s;
 }
 
-.demoFormContainer img:hover {
-    max-width: 32%;
-}
-
-.demoFormContainer h1 {
-    z-index:1;
-    padding-top: 15%;
-    font-size: 400%;
-    text-align: center;
-}
-
-.demoFormContainer h1:hover {
+.demoFormContainer:hover {
     cursor: pointer;
+    font-size: 155%;
+    width: 63%;
+    height: auto;
 }
-
-/* .demoFormContainer button {
-    border: none;
-    background-color: transparent;
-    font-size: 30px;
-    color: white;
-    padding: 3%;
-    z-index:1;
-} */
-
-/* .demoFormContainer div .wrapper{
-    transform: translate(-50%, -50%);
-    width: 210px;
-    align-self: flex-end;
-    background-color: transparent;
-}
-
-.demoFormContainer button {
-    display: block;
-    width: 200px;
-    height: 40px;
-    margin: 0;
-    line-height: 40px;
-    font-size: 18px;
-    font-family: sans-serif;
-    text-decoration: none;
-    color: #333;
-    background-color: #fee380;
-    border: none;
-    letter-spacing: 2px;
-    text-align: center;
-    position: relative;
-    transition: all .35s;
-    font-weight: 1000;
-    }
-
-    .demoFormContainer button span{
-    position: relative;
-    z-index: 2;
-    }
-
-    .demoFormContainer button:after{
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: #ffc911;
-    transition: all .35s;
-    }
-
-    .demoFormContainer button:hover{
-    color: #fff;
-    cursor: pointer;
-    }
-
-    .demoFormContainer button:hover:after{
-    width: 100%;
-    } */

@@ -1,0 +1,11 @@
+.dogCarousel {
+    /* box-sizing: border-box; */
+    /* overflow: auto; */
+    
+}
+
+.swiperContainer {
+    box-shadow: 0 0 15px #edf2f7;
+    border-radius: 20px;
+    border: 1px solid #edf2f7;
+}

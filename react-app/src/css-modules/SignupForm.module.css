@@ -1,23 +1,53 @@
-.signupFormContainer {
-    /* background-color: transparent; */
+.signupForm {
+    width: 60%;
+    height: auto;
+    margin: 15%;
+    padding: 7%;
+    
+    font-family: Dosis, Helvetica, sans-serif;
+    color: #ffc911;
+    text-shadow: 2px 2px white;
+    font-size: 200%;
+    text-align: center;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: white;
+    opacity: 0.9;
+    box-shadow: 0px 5px 20px lightgrey;
+    border-radius: 20px;
 }
 
-.signupFormContainer input {
+.signupFormErrors {
+    font-family: Dosis, Helvetica, sans-serif;
+    color: red;
+    font-size: 70%;
+    text-align: center;
+}
+
+.signupForm input {
     border: none;
     width: 190px;
     height: 20px;
-    padding: 5px;
-    margin: 10px 0;
+    padding: 15px 5px;
+    margin: 5px 0;
+    font-size: 50%;
 }
 
-.signupFormContainer div .wrapper{
+.signupForm input:focus {
+    outline: none;
+    box-shadow: 0 0 2px #ffc911;   
+}
+
+.signupForm div .wrapper{
     transform: translate(-50%, -50%);
     width: 210px;
     align-self: flex-end;
 }
 
-.signupFormContainer button {
+.signupForm button {
     display: block;
     width: 200px;
     height: 40px;
@@ -37,12 +67,12 @@
     font-weight: 1000;
     }
 
-    .signupFormContainer button span{
+    .signupForm button span{
     position: relative;
     z-index: 2;
     }
 
-    .signupFormContainer button:after{
+    .signupForm button:after{
     position: absolute;
     content: "";
     top: 0;
@@ -53,11 +83,11 @@
     transition: all .35s;
     }
 
-    .signupFormContainer button:hover{
+    .signupForm button:hover{
     color: #fff;
     cursor: pointer;
     }
 
-    .signupFormContainer button:hover:after{
+    .signupForm button:hover:after{
     width: 100%;
     }

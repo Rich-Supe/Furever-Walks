@@ -65,9 +65,8 @@ const EditUserForm = ({ setShowForm }) => {
 
   return (
     <div className={styles.editUserContainer}>
-      <h3>Edit Profile</h3>
-      <form className={styles.editForm} onSubmit={onSave}>
-        <div>
+      <form className={styles.editUserForm} onSubmit={onSave}>
+        <div className={styles.editUserFormErrors}>
           {errors.map((error, ind) => (<div key={ind}>{error}</div>))}
         </div>
         <div>

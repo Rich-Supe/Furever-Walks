@@ -5,20 +5,14 @@ html {
 }
 
 body {
-    height: 100vh;
-    width: 100vw;
+    height: 90%;
+    width: 100%;
     margin: 0;
+    font-size: 1.3em;
 }
 
 #root {
-    /* height: 100%; */
-    /* width: 100%; */
-    /* margin: 0; */
-}
-
-#footer {
-    font-family: Dosis, Helvetica, sans-serif;
-    background-color: #ACDFCF;
-    padding: 1%;
-    text-align: center;
+    height: 100%;
+    width: 100%;
+    margin: 0;
 }

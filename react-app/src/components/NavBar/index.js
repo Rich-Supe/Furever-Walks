@@ -18,12 +18,12 @@ return (
         <ul className={styles.navbar}>
             <li>
                 <NavLink to='/' exact={true} className={styles.navlink} activeClassName='active'>
-                Home
+                PROFILE
                 </NavLink>
             </li>
             <li>
                 <NavLink to={`/users/walks/${userId}`} exact={true} className={styles.navlink} activeClassName='active'>
-                Walks
+                WALKS
                 </NavLink>
             </li>
             <li><LogoutButton /></li>

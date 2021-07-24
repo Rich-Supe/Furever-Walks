@@ -1,31 +1,35 @@
 .navbarContainer {
     /* background-color: #fff8de; */
-    height: 5%;
+    /* height: 5%; */
+    position: sticky;
+    top: 0;
+    background-color: white;
 }
 
 .navbarContainer ul {
     list-style-type: none;
     display: flex;
     justify-content: space-around;
+    padding: 1% 0;
+    margin: 0;
 }
 
 .navbarContainer li, 
-.navbarContainer button {
+.navbarContainer button,
+.navbarContainer .navlink {
     border: none;
     background-color: transparent;
     text-decoration: none;
     font-family: Dosis, Helvetica, sans-serif;
-    font-size: 1em;
-    transition: all .35s;
+    font-size: 1.2em;
+    transition: all .2s;
+    font-weight: 900 !important;
+    color:black;
 }
 
 .navbarContainer li:hover, 
-.navbarContainer button:hover {
+.navbarContainer button:hover,
+.navbarContainer .navlink:hover {
     cursor: pointer;
-    text-decoration: underline;
-}
-
-.navlink {
-    text-decoration: none;
-    color:black;
+    color: #FFC911;
 }

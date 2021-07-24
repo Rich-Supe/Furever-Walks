@@ -1,24 +1,63 @@
 .editUserContainer { 
     display: flex;
+    align-items: center;
 }
 
-.editForm {
-    margin-left: -100px;
+.editUserForm {
+    font-family: Dosis, Helvetica, sans-serif;
+    color: #ffc911;
+    text-shadow: 2px 2px white;
+    text-align: center;
 
+    display: flex;
+    flex-direction: column;
+}
+
+.editUserFormErrors {
+    font-family: Dosis, Helvetica, sans-serif;
+    color: red;
+    text-align: center;
+    margin: 5%;
+}
+
+.editUserForm input {
+    border: none;
+    width: 190px;
+    height: 20px;
+    padding: 10px 5px;
+}
+
+.editUserForm input:focus {
+    outline: none;
+    box-shadow: 0 0 2px #ffc911;   
 }
 
 .editUserContainer .submitButton {
-    border: none;
-    background-color: #fee380;
+    border: #FFC911;
+    background-color: #FFC911;
+    color: white;
+    font-family: Dosis, Helvetica, sans-serif;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.editUserContainer .submitButton:hover {
+    border: 1px solid #FFC911;
+    color: #FFC911;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .editUserContainer .cancelButton {
     border: none;
     background-color: transparent;
+    color: black;
 }
 
 .editUserContainer .cancelButton:hover {
+    color: #FFC911;
     cursor: pointer;
+    border: none;
 }
 
 .editUserContainer .deleteButton {
@@ -30,4 +69,5 @@
 .editUserContainer .deleteButton:hover {
     cursor: pointer;
     color: red;
+    border: none;
 }

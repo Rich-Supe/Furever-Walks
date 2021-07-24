@@ -32,8 +32,8 @@ const LoginForm = () => {
   // }
 
   return (
-    <form className={styles.loginFormContainer} onSubmit={onLogin}>
-      <div>
+    <form className={styles.loginForm} onSubmit={onLogin}>
+      <div className={styles.loginFormErrors}>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
@@ -57,7 +57,7 @@ const LoginForm = () => {
         />
       </div>
       <div className='wrapper'>
-        <button type='submit'>Log In</button>
+        <button type='submit'>LOG IN</button>
       </div>
     </form>
   );

@@ -10,7 +10,6 @@ function Profile() {
 
     return (
         <div className={styles.profile}>
-            {/* <h1>Profile Page!</h1> */}
             <div className={styles.userProfileContainer}>
                 <UserProfile />
             </div>

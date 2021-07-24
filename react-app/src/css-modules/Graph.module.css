@@ -5,8 +5,11 @@
         1fr 1fr;
     grid-template-areas: 
         'h h'
-        'label graph';
-    
+        'label graph';    
+    box-shadow: 0 0 15px #edf2f7;
+    border-radius: 20px;
+    border: 1px solid #edf2f7;
+    padding: 5%;
 }
 
 .graphBox h2 {

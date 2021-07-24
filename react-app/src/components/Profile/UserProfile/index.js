@@ -14,24 +14,22 @@ function UserProfile(){
             {/* <h1>User Profile</h1> */}
             <img src={img_url} alt='default_image'/>
             {showForm ? (
-                <div>
+                <>
                     <EditUserForm setShowForm={setShowForm} />
-                </div>
+                </>
             ) : (
-                <div>
-                    <ul>    
-                        <li>Name: {user?.name}</li>
-                        <li>Username: {user?.username}</li>
-                        <li>Bio: {user?.bio}</li>
-                        <li>Email: {user?.email}</li>
-                        <li>Total Distance: {user?.user_total_distance}</li>
-                        <li>Total Duration: {user?.user_total_duration}</li>
-                        <li>Total Walks: {user?.user_total_walks}</li>
-                    </ul>
-                </div>
+                <ul>    
+                    <li>Welcome, {user?.name}!</li>
+                    <li>Username: {user?.username}</li>
+                    <li>Bio: {user?.bio}</li>
+                    <li>Email: {user?.email}</li>
+                    <li>Total Distance: {user?.user_total_distance}</li>
+                    <li>Total Duration: {user?.user_total_duration}</li>
+                    <li>Total Walks: {user?.user_total_walks}</li>
+                </ul>
             )}
             {!showForm && 
-                <button onClick={() => setShowForm(true)}>Edit Profile</button>
+                <button onClick={() => setShowForm(true)}>EDIT PROFILE</button>
             }
         </div>
     )
