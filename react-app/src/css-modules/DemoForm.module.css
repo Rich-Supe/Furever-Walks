@@ -1,13 +1,13 @@
 .demoFormContainer {
     width: 60%;
     height: auto;
-    margin: 15%;
-    padding: 7%;
+    margin: 10% 15%;
+    padding: 5%;
     
     font-family: Dosis, Helvetica, sans-serif;
     color: #ffc911;
     text-shadow: 2px 2px white;
-    font-size: 200%;
+    font-size: 150%;
     text-align: center;
     
     background-size: contain;
@@ -19,7 +19,7 @@
 
 .demoFormContainer:hover {
     cursor: pointer;
-    font-size: 220%;
+    font-size: 155%;
     width: 63%;
     height: auto;
 }
