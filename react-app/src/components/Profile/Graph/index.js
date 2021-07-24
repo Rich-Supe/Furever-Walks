@@ -121,11 +121,11 @@ function Graph() {
 
     return (
         <div className={styles.graphBox}>
-            <h2>Stats</h2>
+            <h1>WEEKLY STATS</h1>
             <div className={styles.label}>
                 <div>
                     <label>
-                        Duration (min.)
+                        DURATION (mins)
                         <input 
                             type='radio' 
                             value='distance' 
@@ -135,7 +135,7 @@ function Graph() {
                 </div>
                 <div>
                     <label>
-                        Distance (mi.)
+                        DISTANCE (mi)
                         <input 
                             type='radio' 
                             value='duration' 
@@ -147,16 +147,16 @@ function Graph() {
             <div className={styles.graph}>
                 {showDuration ? (
                     <LineChart 
-                        width={700} 
+                        width={950} 
                         height={300} 
                         data={data} 
-                        margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+                        margin={{ top: 5, right: 0, bottom: 5, left: 0 }}
                     >
                         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
                         <XAxis dataKey="date" />
                         <YAxis />
                         <Tooltip />
-                        <Legend />
+                        <Legend verticalAlign="top" align="left" height={36} layout="vertical"/>
                         <Line type="monotone" dataKey="Marley1" stroke="#ffc911" />
                         <Line type="monotone" dataKey="Luna1" stroke="#82ca9d" />
                         <Line type="monotone" dataKey="Milo1" stroke="#e2543c" />
@@ -165,12 +165,17 @@ function Graph() {
                         <Line type="monotone" dataKey="Leah1" stroke="#1e360a" />
                     </LineChart>
                 ) : (
-                    <LineChart width={700} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+                    <LineChart 
+                        width={950} 
+                        height={300} 
+                        data={data} 
+                        margin={{ top: 5, right: 0, bottom: 5, left: 0 }}
+                    >
                         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
                         <XAxis dataKey="date" />
                         <YAxis />
                         <Tooltip />
-                        <Legend />
+                        <Legend verticalAlign="top" align="left" height={36} layout="vertical"/>
                         <Line type="monotone" dataKey="Marley2" stroke="#ffc911" />
                         <Line type="monotone" dataKey="Luna2" stroke="#82ca9d" />
                         <Line type="monotone" dataKey="Milo2" stroke="#e2543c" />

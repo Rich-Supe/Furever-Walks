@@ -4,22 +4,23 @@
         1fr 1fr
         1fr 1fr;
     grid-template-areas: 
-        'h h'
-        'label graph';    
+        'h'
+        'label'
+        'graph';    
     box-shadow: 0 0 15px #edf2f7;
     border-radius: 20px;
     border: 1px solid #edf2f7;
     padding: 5%;
 }
 
-.graphBox h2 {
+.graphBox h1 {
     grid-area: h;
     text-align: center;
 }
 
 .label {
     grid-area: label;
-
+    margin: 10px 0;
 }
 
 .graph {

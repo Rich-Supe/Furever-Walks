@@ -1,0 +1,46 @@
+.newWalkContainer {
+    align-self: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    box-shadow: 0 0 15px #edf2f7;
+    border-radius: 20px;
+    border: 1px solid #edf2f7;
+
+    height: 100%;
+    box-sizing: border-box;
+    /* margin: 10% 5%; */
+    padding-top: 5%;
+}
+
+.newWalkForm {
+
+}
+
+.newWalkForm input {
+    /* border: none; */
+    width: 190px;
+    height: 20px;
+    padding: 10px 5px;
+}
+
+.newWalkForm button {
+    border: #FFC911;
+    background-color: #FFC911;
+    color: white;
+    font-family: Dosis, Helvetica, sans-serif;
+    border-radius: 5px;
+    padding: 5px;
+    width: 150px;
+    font-size: 1em;
+    margin: 20px 0;
+}
+
+.newWalkForm button:hover {
+    border: 1px solid #FFC911;
+    color: #FFC911;
+    background-color: transparent;
+    cursor: pointer;
+}

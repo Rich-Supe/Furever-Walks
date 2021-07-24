@@ -73,9 +73,9 @@ function NewWalk({mapData}) {
 
 
     return (
-        <div>
-            <h1>New Walk</h1>
-            <form onSubmit={addWalk}>
+        <div className={styles.newWalkContainer}>
+            <h1>NEW WALK</h1>
+            <form className={styles.newWalkForm} onSubmit={addWalk}>
                 <ul>
                     {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
@@ -109,7 +109,7 @@ function NewWalk({mapData}) {
                     ></input>
                 </div>
                 <div>
-                    Complete:
+                    STATUS:
                     <input
                         type='checkbox'
                         name='status'
@@ -128,7 +128,7 @@ function NewWalk({mapData}) {
                     ></input>
                 </div>
                 <div>
-                    Dogs
+                    DOGS:
                     {dogs.map((dog) => 
                         <div>
                             {dog.name}
@@ -144,7 +144,7 @@ function NewWalk({mapData}) {
                     )}
                 </div>
                 <div>
-                    <button type='submit'>Add Walk</button>
+                    <button type='submit'>ADD WALK</button>
                 </div>
             </form>
         </div>

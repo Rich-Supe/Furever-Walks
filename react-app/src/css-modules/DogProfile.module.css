@@ -9,7 +9,7 @@
     text-align: center;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
 
     background-color: white;
@@ -17,7 +17,6 @@
     box-shadow: 0px 5px 20px lightgrey;
     border-radius: 20px;
 }
-
 
 .dogProfileImage {
     height: 200px;
@@ -61,23 +60,11 @@
     cursor: pointer;
 }
 
-.editDogForm .cancelButton {
-    border: none;
-    background-color: transparent;
-    color: black;
-    font-family: Dosis, Helvetica, sans-serif;
-}
-
-.editDogForm .cancelButton:hover {
-    cursor: pointer;
-    border: none;
-    color: #FFC911;
-}
-
 .editDogForm .deleteButton {
     border: none;
     background-color: transparent;
     color: lightgrey;
+    font-family: Dosis, Helvetica, sans-serif;
 }
 
 .editDogForm .deleteButton:hover {

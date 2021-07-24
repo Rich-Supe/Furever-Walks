@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 // import { useDispatch, useSelector } from 'react-redux';
 // import Maps from './maps';
-// import styles from 
+import styles from '../../../css-modules/MapContainer.module.css'
 import dogFlagIcon from '../../../assets/img/dog-icon-4.png'
 import getMapStats from '../../../store/maps'
 
@@ -146,16 +146,15 @@ const MapContainer = ({handleCallback}) => {
     
     
 return (
-    <>
-        <h1> MAPS </h1>
-        <div className="Maps__map" id="map" ref={ref}
-        style={{ height: 500, width: 500 }}>
-
+    <div className={styles.mapContainer}>
+        <h1>PLAN YOUR WALK ROUTE</h1>
+        <div className={styles.map} id="map" ref={ref}
+        style={{ height: 500, width: 1100 }}>
         </div>
-        <button onClick={() => getDirections(marker1, marker2)}>Search!</button>
+        <button className={styles.mapBtn} onClick={() => getDirections(marker1, marker2)}>SEARCH</button>
         {/* <button onClick={() => getDirections(myLatlng, SanFransisco)}>Search!</button> */}
         {/* <button onClick={console.log(".................?")}>Search!</button> */}
-    </>
+    </div>
 );
 };
 

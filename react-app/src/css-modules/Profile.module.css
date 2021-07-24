@@ -1,13 +1,10 @@
 .profile {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    /* grid-template-rows: repeat(auto-fit, minmax(250px, 1fr)); */
     grid-template-areas:
         'userProfile graph graph graph'
         'dogCarousel dogCarousel dogCarousel dogCarousel';
     font-family: Dosis, Helvetica, sans-serif;
-    /* box-sizing: content-box; */
-    /* overflow: auto; */
     width: 100vw;
     height: auto;
 }
@@ -15,14 +12,16 @@
 .userProfileContainer {
     grid-area: userProfile;
     margin: 5%;
+    margin-bottom: 0;
 }
 
 .graphContainer {
     grid-area: graph;
     margin: 5%;
+    margin-bottom: 0;
 }
 
 .dogCarouselContainer {
     grid-area: dogCarousel;
-    margin: 0 5%;
+    margin: 3%;
 }
