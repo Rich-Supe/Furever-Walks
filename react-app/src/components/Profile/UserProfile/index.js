@@ -20,7 +20,7 @@ function UserProfile(){
             ) : (
                 <div>
                     <ul>    
-                        <li>Name: {user?.name}</li>
+                        <li>Welcome, {user?.name}!</li>
                         <li>Username: {user?.username}</li>
                         <li>Bio: {user?.bio}</li>
                         <li>Email: {user?.email}</li>
@@ -31,7 +31,7 @@ function UserProfile(){
                 </div>
             )}
             {!showForm && 
-                <button onClick={() => setShowForm(true)}>Edit Profile</button>
+                <button onClick={() => setShowForm(true)}>EDIT PROFILE</button>
             }
         </div>
     )

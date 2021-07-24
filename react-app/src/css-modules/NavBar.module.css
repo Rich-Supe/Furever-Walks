@@ -22,7 +22,7 @@
     text-decoration: none;
     font-family: Dosis, Helvetica, sans-serif;
     font-size: 1em;
-    transition: all .35s;
+    transition: all .2s;
     font-weight: bolder;
     color:black;
 }
@@ -31,7 +31,5 @@
 .navbarContainer button:hover,
 .navbarContainer .navlink:hover {
     cursor: pointer;
-    text-decoration: underline;
-    box-shadow: tomato;
-    color: #E2543C;
+    color: #FFC911;
 }

@@ -1,0 +1,11 @@
+.addDogBtn {
+    border:none;
+    background: transparent;
+    font-family: Dosis, Helvetica, sans-serif;
+
+}
+
+.addDogBtn:hover {
+    cursor: pointer;
+    color: #FFC911;
+}

@@ -18,9 +18,10 @@
 .userProfile button {
     border: none;
     background-color: transparent;
-    color: grey;
+    font-family: Dosis, Helvetica, sans-serif;
 }
 
 .userProfile button:hover {
     cursor: pointer;
+    color: #FFC911;
 }

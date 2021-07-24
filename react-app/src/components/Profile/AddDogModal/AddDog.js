@@ -1,4 +1,3 @@
-import styles from '../../../css-modules/AddDogModal.module.css'
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createDog } from '../../../store/dogs';
