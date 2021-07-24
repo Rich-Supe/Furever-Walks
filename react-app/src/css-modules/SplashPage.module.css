@@ -3,19 +3,17 @@
     height: 100%;
     display: flex;
     background-color: #FFFBF0;
-    font-family: Dosis, Helvetica, sans-serif;
     flex-direction: column;
     align-items: center;
 }
 
 .splashPageContainer h1 {
     font-family: 'Rock Salt', cursive;
-    margin: 1%;
+    margin: 3%;
 }
 
 .splashPageContainer img {
-    margin: 1%;
+    margin: 1% 5%;
     width: auto;
-    max-height: 10%;
     box-shadow: 0 0 20px 0 #e3e3e3;
 }

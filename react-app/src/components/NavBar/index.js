@@ -18,7 +18,7 @@ return (
         <ul className={styles.navbar}>
             <li>
                 <NavLink to='/' exact={true} className={styles.navlink} activeClassName='active'>
-                HOME
+                PROFILE
                 </NavLink>
             </li>
             <li>

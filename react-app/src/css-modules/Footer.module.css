@@ -1,0 +1,8 @@
+.footer {
+    font-family: Dosis, Helvetica, sans-serif;
+    background-color: #ACDFCF;
+    padding: 1%;
+    text-align: center;
+    position: sticky;
+    bottom: 0;
+}

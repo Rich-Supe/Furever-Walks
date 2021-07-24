@@ -1,12 +1,14 @@
 .navbarContainer {
     /* background-color: #fff8de; */
-    height: 5%;
+    /* height: 5%; */
 }
 
 .navbarContainer ul {
     list-style-type: none;
     display: flex;
     justify-content: space-around;
+    padding: 1% 0;
+    margin: 0;
 }
 
 .navbarContainer li, 
