@@ -63,14 +63,14 @@ function DogProfile({ dog }) {
     };
 
     return (
-        <div className={styles.formContainer}>
+        <div className={styles.editDogFormContainer}>
             <img
                 src={image_url}
                 alt='DogProfileImage'
                 className={styles.dogProfileImage}
             />
-            <form onSubmit={submitEditDog}>
-                <div>
+            <form className={styles.editDogForm} onSubmit={submitEditDog}>
+                <div className={styles.editDogFormErrors}>
                     {errors.map((error, ind) => (
                         <div key={ind}>{error}</div>
                     ))}
@@ -112,12 +112,11 @@ function DogProfile({ dog }) {
                     ></input>
                 </div>
                 <div>
-                    <button type='submit'>Save Changes</button>
+                    <button className={styles.submitButton} type='submit'>SAVE CHANGES</button>
+                    <button className={styles.cancelButton}>CANCEL</button>
                 </div>
                 <div>
-                    <button onClick={submitDeleteDog}>
-                        Delete Dog
-                    </button>
+                    <button className={styles.deleteButton} onClick={submitDeleteDog}>DELETE DOG</button>
                 </div>
             </form>
         </div>

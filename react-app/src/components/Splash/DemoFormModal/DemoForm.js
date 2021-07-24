@@ -12,8 +12,8 @@ const DemoForm = () => {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    await dispatch(login(email, password));
-    history.push(`/users/1`)
+    const authorized = await dispatch(login(email, password));
+    if (authorized) history.push(`/users/1`)
   }
 
   return (

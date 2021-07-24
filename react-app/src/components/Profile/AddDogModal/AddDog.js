@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createDog } from '../../../store/dogs';
 import { useParams } from 'react-router-dom';
+import styles from '../../../css-modules/AddDog.module.css';
 
 function AddDog({ setShowModal }) {
     const [errors, setErrors] = useState([]);
@@ -54,8 +55,8 @@ function AddDog({ setShowModal }) {
     };
 
     return (
-        <form onSubmit={addDog}>
-            <div>
+        <form className={styles.addDogForm} onSubmit={addDog}>
+            <div className={styles.addDogFormErrors}>
                 {errors.map((error, ind) => (
                     <div key={ind}>{error}</div>
                 ))}
@@ -97,7 +98,8 @@ function AddDog({ setShowModal }) {
                 ></input>
             </div>
             <div>
-                <button type='submit'>Add Dog</button>
+                <button className={styles.submitButton} type='submit'>ADD DOG</button>
+                {/* <button className={styles.cancelButton}>CANCEL</button> */}
             </div>
         </form>
     )

@@ -14,13 +14,15 @@
 
 .userProfileContainer {
     grid-area: userProfile;
+    margin: 5%;
 }
 
 .graphContainer {
     grid-area: graph;
+    margin: 5%;
 }
 
 .dogCarouselContainer {
     grid-area: dogCarousel;
-    /* box-sizing: border-box; */
+    margin: 5%;
 }

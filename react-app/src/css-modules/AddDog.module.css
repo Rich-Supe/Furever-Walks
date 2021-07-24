@@ -1,4 +1,6 @@
-.editDogFormContainer {
+.addDogForm {
+    width: 60%;
+    height: auto;
     margin: 15%;
     padding: 7%;
     
@@ -18,34 +20,28 @@
     border-radius: 20px;
 }
 
-
-.dogProfileImage {
-    height: 200px;
-    max-width: 200px;
-    object-fit: contain;
-    border-radius: 5px;
+.addDogForm .addDogFormErrors {
+    font-family: Dosis, Helvetica, sans-serif;
+    color: red;
+    text-align: center;
+    margin: 5%;
 }
 
-.editDogForm input {
+.addDogForm input {
     border: none;
     width: 190px;
     height: 20px;
-    padding: 10px 5px;
+    padding: 15px 5px;
+    margin: 5px 0;
+    font-size: 50%;
 }
 
-.editDogForm input:focus {
+.addDogForm input:focus {
     outline: none;
     box-shadow: 0 0 2px #ffc911;   
 }
 
-.editDogFormErrors {
-    font-family: Dosis, Helvetica, sans-serif;
-    color: red;
-    font-size: 70%;
-    text-align: center;
-}
-
-.editDogForm .submitButton {
+.addDogForm .submitButton {
     border: #FFC911;
     background-color: #FFC911;
     color: white;
@@ -54,46 +50,21 @@
     border-radius: 5px;
 }
 
-.editDogForm .submitButton:hover {
+.addDogForm .submitButton:hover {
     border: 1px solid #FFC911;
     color: #FFC911;
     background-color: transparent;
     cursor: pointer;
 }
 
-.editDogForm .cancelButton {
+/* .addDogForm .cancelButton {
     border: none;
     background-color: transparent;
     color: black;
-    font-family: Dosis, Helvetica, sans-serif;
 }
 
-.editDogForm .cancelButton:hover {
-    cursor: pointer;
-    border: none;
+.addDogForm .cancelButton:hover {
     color: #FFC911;
-}
-
-.editDogForm .deleteButton {
-    border: none;
-    background-color: transparent;
-    color: lightgrey;
-}
-
-.editDogForm .deleteButton:hover {
     cursor: pointer;
-    color: red;
     border: none;
-}
-
-
-
-
-.dogProfileModal {
-    display: block;
-    text-align: center;
-}
-
-img:hover {
-    cursor: pointer;
-}
+} */

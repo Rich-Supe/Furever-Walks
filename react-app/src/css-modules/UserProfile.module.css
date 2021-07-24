@@ -1,9 +1,14 @@
 .userProfile {
+    align-self: center;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 5%;
+    padding: 5% 0;
     
+    box-shadow: 0 0 15px #edf2f7;
+    border-radius: 20px;
+    border: 1px solid #edf2f7;
 }
 
 .userProfile img {
@@ -13,15 +18,21 @@
 
 .userProfile ul {
     list-style-type: none;
+    margin-left: -10%;
 }
 
 .userProfile button {
-    border: none;
-    background-color: transparent;
+    border: #FFC911;
+    background-color: #FFC911;
+    color: white;
     font-family: Dosis, Helvetica, sans-serif;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .userProfile button:hover {
-    cursor: pointer;
+    border: 1px solid #FFC911;
     color: #FFC911;
+    background-color: transparent;
+    cursor: pointer;
 }
