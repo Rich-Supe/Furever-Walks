@@ -5,7 +5,7 @@
         auto 1fr;
     grid-template-areas:
         'userProfile graph'
-        'userProfile dogCarousel';
+        'dogCarousel dogCarousel';
     font-family: Dosis, Helvetica, sans-serif;
 }
 

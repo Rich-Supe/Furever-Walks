@@ -75,13 +75,13 @@ function Graph() {
         // returns an array of walk objects
 
     const data = [
-        {date: today7.toDateString().slice(0, 10), Marley1: 35, Marley2: 0.5, Luna1: 15, Luna2: 1, Dog1: 10, Dog2: 0.7},
-        {date: today6.toDateString().slice(0, 10), Marley1: 30, Marley2: 0.4, Luna1: 30, Luna2: 0.2, Dog1: 10, Dog2: 0.4},
-        {date: today5.toDateString().slice(0, 10), Marley1: 20, Marley2: 0.7, Luna1: 40, Luna2: 0.5, Dog1: 10, Dog2: 1},
-        {date: today4.toDateString().slice(0, 10), Marley1: 60, Marley2: 0.2, Luna1: 10, Luna2: 0.1, Dog1: 10, Dog2: 0.2},
-        {date: today3.toDateString().slice(0, 10), Marley1: 10, Marley2: 0.3, Luna1: 5, Luna2: 0, Dog1: 10, Dog2: 0.1},
-        {date: today2.toDateString().slice(0, 10), Marley1: 35, Marley2: 0.5, Luna1: 35, Luna2: 0.4, Dog1: 10, Dog2: 0.8},
-        {date: today1.toDateString().slice(0, 10), Marley1: 50, Marley2: 0.6, Luna1: 15, Luna2: 0.3, Dog1: 10, Dog2: 0.4},
+        {date: today7.toDateString().slice(0, 10), Marley1: 35, Marley2: 0.5, Luna1: 15, Luna2: 1.0, Milo1: 12, Milo2: 0.7, Warren1: 24, Warren2: 0.3, Mitchell1: 23, Mitchell2: 0.2, Leah1: 13, Leah2: 0.3},
+        {date: today6.toDateString().slice(0, 10), Marley1: 30, Marley2: 0.4, Luna1: 30, Luna2: 0.2, Milo1: 16, Milo2: 0.4, Warren1: 46, Warren2: 1.0, Mitchell1: 45, Mitchell2: 0.5, Leah1: 19, Leah2: 0.1},
+        {date: today5.toDateString().slice(0, 10), Marley1: 20, Marley2: 0.7, Luna1: 40, Luna2: 0.5, Milo1: 34, Milo2: 1.0, Warren1: 34, Warren2: 0.4, Mitchell1: 45, Mitchell2: 0.5, Leah1: 45, Leah2: 0.5},
+        {date: today4.toDateString().slice(0, 10), Marley1: 60, Marley2: 0.2, Luna1: 20, Luna2: 0.1, Milo1: 57, Milo2: 0.2, Warren1: 23, Warren2: 0.2, Mitchell1: 23, Mitchell2: 0.2, Leah1: 23, Leah2: 0.2},
+        {date: today3.toDateString().slice(0, 10), Marley1: 30, Marley2: 0.3, Luna1: 16, Luna2: 0.1, Milo1: 34, Milo2: 0.1, Warren1: 67, Warren2: 1.2, Mitchell1: 12, Mitchell2: 0.1, Leah1: 35, Leah2: 0.3},
+        {date: today2.toDateString().slice(0, 10), Marley1: 35, Marley2: 0.5, Luna1: 35, Luna2: 0.4, Milo1: 13, Milo2: 0.8, Warren1: 23, Warren2: 0.3, Mitchell1: 34, Mitchell2: 0.4, Leah1: 36, Leah2: 0.4},
+        {date: today1.toDateString().slice(0, 10), Marley1: 50, Marley2: 0.6, Luna1: 15, Luna2: 0.3, Milo1: 35, Milo2: 0.4, Warren1: 12, Warren2: 0.1, Mitchell1: 13, Mitchell2: 0.1, Leah1: 57, Leah2: 0.5},
     ]
 
     // walks data by both user and dogs
@@ -157,10 +157,12 @@ function Graph() {
                         <YAxis />
                         <Tooltip />
                         <Legend />
-                        {/* <Line type="monotone" dataKey="userDuration" stroke="#8884d8" /> */}
                         <Line type="monotone" dataKey="Marley1" stroke="#ffc911" />
                         <Line type="monotone" dataKey="Luna1" stroke="#82ca9d" />
-                        {/* <Line type="monotone" dataKey="Dog1" stroke="#e2543c" /> */}
+                        <Line type="monotone" dataKey="Milo1" stroke="#e2543c" />
+                        <Line type="monotone" dataKey="Warren1" stroke="#85602f" />
+                        <Line type="monotone" dataKey="Mitchell1" stroke="#959789" />
+                        <Line type="monotone" dataKey="Leah1" stroke="#1e360a" />
                     </LineChart>
                 ) : (
                     <LineChart width={700} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
@@ -169,10 +171,12 @@ function Graph() {
                         <YAxis />
                         <Tooltip />
                         <Legend />
-                        {/* <Line type="monotone" dataKey="userDistance" stroke="#8884d8" /> */}
                         <Line type="monotone" dataKey="Marley2" stroke="#ffc911" />
                         <Line type="monotone" dataKey="Luna2" stroke="#82ca9d" />
-                        {/* <Line type="monotone" dataKey="Dog2" stroke="#e2543c" /> */}
+                        <Line type="monotone" dataKey="Milo2" stroke="#e2543c" />
+                        <Line type="monotone" dataKey="Warren2" stroke="#85602f" />
+                        <Line type="monotone" dataKey="Mitchell2" stroke="#959789" />
+                        <Line type="monotone" dataKey="Leah2" stroke="#1e360a" />
                     </LineChart>
                 )}
             </div>
