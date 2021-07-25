@@ -21,7 +21,6 @@ function DogCarousel({userId}){
     }, [dispatch])
     
     const doggos = useSelector((state) => Object.values(state.dogs));
-    console.log('DOG CAROUSEL DOGGOS VAR', doggos)
 
     const slides = [];
     let i = 0
@@ -47,11 +46,6 @@ function DogCarousel({userId}){
                         pagination 
                         spaceBetween={0} 
                         slidesPerView={5}
-                        // onInit={(swiper) => console.log('Swiper initialized', swiper)}
-                        // onSlideChange={(swiper) => {
-                        //     console.log('Swiper slide: ', swiper)
-                        // }}
-                        // onReachEnd={() => console.log("Swiper end")}
                     >{slides}</Swiper>
                 </div>
             </>

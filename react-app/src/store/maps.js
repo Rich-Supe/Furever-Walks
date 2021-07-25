@@ -7,9 +7,7 @@
 
 // export const getKey = () => async (dispatch) => {
 //   const res = await fetch('/api/maps/key');
-//   console.log("KEYYY from thunk:", res)
 //   const data = await res.json();
-//   console.log("KEYYY from thunk2:", res)
 //   dispatch(loadApiKey(data.googleMapsAPIKey));
 // };
 

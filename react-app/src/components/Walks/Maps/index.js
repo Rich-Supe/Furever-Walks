@@ -113,7 +113,6 @@ const MapContainer = ({handleCallback}) => {
     }
 
     // function getDirections(origin, destination) {
-    //         console.log("Getting directions")
     //         const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&key=${key}&mode=walking`;
     //     return fetch(url)
     //         .then((response) => response.json())
@@ -154,7 +153,6 @@ return (
         </div>
         <button className={styles.mapBtn} onClick={() => getDirections(marker1, marker2)}>SEARCH</button>
         {/* <button onClick={() => getDirections(myLatlng, SanFransisco)}>Search!</button> */}
-        {/* <button onClick={console.log(".................?")}>Search!</button> */}
     </div>
 );
 };

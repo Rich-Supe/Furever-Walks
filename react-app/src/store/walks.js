@@ -55,9 +55,7 @@ export const getWalk = (walkId) => async (dispatch) => {
 
 export const getWalksUser = (userId) => async (dispatch) => {
     const response = await fetch(`/api/walks/all/${userId}`)
-    console.log(`Userid from getWalk thunk____not okay`, userId)
     if (response.ok) {
-        console.log(`Userid from getWalk thunk____==-=-=--`, userId)
         const walks = await response.json();
         dispatch(setWalksUser(walks.walks));
     }
@@ -68,9 +66,7 @@ export const getWalksUser = (userId) => async (dispatch) => {
 
 // export const getWalksDog = (dogId) => async (dispatch) => {
 //     const response = await fetch(`/api/walks/all/${dogId}`)
-//     console.log(`Userid from getWalk thunk____not okay`, dogId)
 //     if (response.ok) {
-//         console.log(`Userid from getWalk thunk____==-=-=--`, dogId)
 //         const walks = await response.json();
 //         dispatch(setWalksDog(walks.walks));
 //     }
@@ -85,9 +81,7 @@ export const addWalkByDog = (dogId, walkId) => async (dispatch) => {
 
 export const getWalksByDog = (dogId) => async (dispatch) => {
     const response = await fetch(`/api/walks/all/dogs/${dogId}`)
-    console.log(`Userid from getWalk thunk____not okay`, dogId)
     if (response.ok) {
-        console.log(`Userid from getWalk thunk____==-=-=--`, dogId)
         const walks = await response.json();
         dispatch(setWalksByDogId(walks.walks));
     }
@@ -111,7 +105,6 @@ export const editWalk = (walkId, walk) => async (dispatch) => {
 }
 
 export const createWalk = (walk) => async (dispatch) => {
-    console.log("walk from createWalk thunk", walk)
     const response = await fetch(`/api/walks/`, {
         method: 'POST',
         headers: {
