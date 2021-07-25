@@ -60,15 +60,10 @@ def add_walk():
 
         string = request.data
         obj = string.decode()
-        print(type(obj))
         start = obj.index('walkingdogs') + 14
         end = len(obj) - 2
-        # print('start', start)
-        # print('end', obj[start:end])
         str = obj[start:end]
         arr = str.split(',')
-        # print('arrrrrr', arr)
-        # print('0 index', arr[0])
 
         for num in arr:
             dog = Dog.query.filter(Dog.id == num).first()

@@ -3,7 +3,7 @@ import { createWalk } from '../../../store/walks';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getDogs } from '../../../store/dogs';
+import { getDogs,isDogSelected } from '../../../store/dogs';
 
 function NewWalk({mapData}) {
     const errors = [];
@@ -24,7 +24,9 @@ function NewWalk({mapData}) {
     dogs.forEach((dog) => {
         dogIds[dog.id] = false;
     })
-    var walkingdogs = [];
+    console.log(dogs)
+    const walkingdogs = [];
+
     const checked = (dog) => {
         dogIds[dog.id] = !dogIds[dog.id];
         // console.log('checked value!!!', dogIds)
@@ -40,8 +42,26 @@ function NewWalk({mapData}) {
             }
             
         })
+        const dogId = dog.id
+        let checkStatus;
+        if (dogs[dogId - 1].status === undefined) {
+            checkStatus = true
+        } else if (dogs[dogId - 1].status === true) {
+            checkStatus = false
+        } else if (dogs[dogId - 1].status === false) {
+            checkStatus = true
+        }
+        // console.log('checkStatus', checkStatus)
+        // console.log(dogs)
+        // console.log(dogs[dogId - 1].status)
+        dispatch(isDogSelected(dogId, checkStatus))
         // console.log("line 40", walkingdogs)
         return walkingdogs;
+    }
+
+    const dogCheckboxSelected = (dogId) => {
+        const selected = dogs[dogId - 1].status
+        return selected;
     }
 
     const addWalk = async (e) => {
@@ -64,11 +84,11 @@ function NewWalk({mapData}) {
             user_id,
             walkingdogs
         }
-        const data = await dispatch(createWalk(payload))
-        // const payload2 = {
-        //     walkingdogs
-        // }
-        console.log('line 71', payload.walkingdogs)
+        await dispatch(createWalk(payload))
+        setName("")
+        setDuration(0)
+        setDistance(0)
+        setFinished(false)
     }
 
 
@@ -113,9 +133,9 @@ function NewWalk({mapData}) {
                     <input
                         type='checkbox'
                         name='status'
-                        // placeholder='Status'
                         onChange={() => setFinished(!finished)}
                         value={finished}
+                        checked={finished}
                     ></input>
                 </div>
                 <div>
@@ -137,7 +157,9 @@ function NewWalk({mapData}) {
                                 type='checkbox'
                                 name='dog'
                                 onChange={() => checked(dog)}
-                                value={dog}>
+                                value={dog}
+                                // checked={isDogChecked}
+                                >
                             </input>
                             
                         </div>
