@@ -113,7 +113,6 @@ function DogProfile({ dog }) {
                 </div>
                 <div>
                     <button className={styles.submitButton} type='submit'>SAVE CHANGES</button>
-                    <button className={styles.cancelButton}>CANCEL</button>
                 </div>
                 <div>
                     <button className={styles.deleteButton} onClick={submitDeleteDog}>DELETE DOG</button>

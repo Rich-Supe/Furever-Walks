@@ -31,10 +31,15 @@ function Walks(){
 
     return (
         <div className={styles.walksPage}>
-            {/* <h1>Walks</h1> */}
-            <div className={styles.walksCarouselContainer}><WalksCarousel /></div>
-            <div className={styles.walksFormContainer}><NewWalk mapData={mapData}/></div>
-            <div className={styles.walksMap}><Maps handleCallback={mapCallback}/></div>
+            <div className={styles.walksCarouselContainer}>
+                <WalksCarousel />
+            </div>
+            <div className={styles.walksFormContainer}>
+                <NewWalk mapData={mapData}/>
+            </div>
+            <div className={styles.walksMap}>
+                <Maps handleCallback={mapCallback}/>
+            </div>
         </div>
     )
 }

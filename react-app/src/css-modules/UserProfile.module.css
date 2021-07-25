@@ -4,16 +4,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 5% 0;
     
     box-shadow: 0 0 15px #edf2f7;
     border-radius: 20px;
     border: 1px solid #edf2f7;
 
-    height: 86%;
+    height: 94%;
     box-sizing: border-box;
     margin: 10% 5%;
-    padding-top: 40%;
+    padding-top: 15%;
 }
 
 .userProfile img {
@@ -33,6 +32,8 @@
     font-family: Dosis, Helvetica, sans-serif;
     padding: 5px;
     border-radius: 5px;
+    width: 150px;
+    font-size: 1em;
 }
 
 .userProfile button:hover {

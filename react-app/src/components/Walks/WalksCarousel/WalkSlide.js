@@ -2,6 +2,7 @@ import { getWalksUser } from '../../../store/walks';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import styles from '../../../css-modules/WalkSlide.module.css';
 
 function WalkSlide({ walk }) {
     const dispatch = useDispatch()
@@ -17,19 +18,17 @@ function WalkSlide({ walk }) {
     // returns array of walk objects
 
     return (
-        <div>
-            <ol className="swiper-slide">
-                {/* {userWalks.map((walk) =>  */}
-                    <li key={walk.id}>
-                        <div>Name: {walk.name}</div>
-                        <div>Date: {walk.date.slice(0, 12)}</div>
-                        <div>Distance: {walk.distance}</div>
-                        <div>Duration: {walk.duration}</div>
-                        <div>Rating: {walk.rating}</div>
-                        <div>Status: {walk.finished ? 'Completed': 'Planned'}</div>
-                    </li>
-                {/* )} */}
-            </ol>
+        <div className={styles.walkSlide}>
+            <ul>
+                <li key={walk.id}>
+                    <div>NAME: {walk.name}</div>
+                    <div>DATE: {walk.date.slice(0, 12)}</div>
+                    <div>DISTANCE: {walk.distance} mi</div>
+                    <div>DURATION: {walk.duration} mins</div>
+                    <div>RATING: {walk.rating}</div>
+                    <div>STATUS: {walk.finished ? 'Completed': 'Planned'}</div>
+                </li>
+            </ul>
         </div>
     )
 }
