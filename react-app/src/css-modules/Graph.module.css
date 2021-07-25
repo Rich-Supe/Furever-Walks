@@ -16,6 +16,7 @@
 .graphBox h1 {
     grid-area: h;
     text-align: center;
+    margin: 0;
 }
 
 .label {
@@ -25,5 +26,4 @@
 
 .graph {
     grid-area: graph;
-
 }

@@ -147,7 +147,7 @@ function Graph() {
             <div className={styles.graph}>
                 {showDuration ? (
                     <LineChart 
-                        width={950} 
+                        width={1000} 
                         height={300} 
                         data={data} 
                         margin={{ top: 5, right: 0, bottom: 5, left: 0 }}
@@ -156,7 +156,13 @@ function Graph() {
                         <XAxis dataKey="date" />
                         <YAxis />
                         <Tooltip />
-                        <Legend verticalAlign="top" align="left" height={36} layout="vertical"/>
+                        <Legend verticalAlign="top"
+                            layout="vertical"
+                            align="left"
+                            wrapperStyle={{
+                            paddingLeft: "10px",
+                            paddingTop: "10px"
+                        }}/>
                         <Line type="monotone" dataKey="Marley1" stroke="#ffc911" />
                         <Line type="monotone" dataKey="Luna1" stroke="#82ca9d" />
                         <Line type="monotone" dataKey="Milo1" stroke="#e2543c" />
@@ -175,7 +181,13 @@ function Graph() {
                         <XAxis dataKey="date" />
                         <YAxis />
                         <Tooltip />
-                        <Legend verticalAlign="top" align="left" height={36} layout="vertical"/>
+                        <Legend verticalAlign="top"
+                            layout="vertical"
+                            align="left"
+                            wrapperStyle={{
+                            paddingLeft: "10px",
+                            paddingTop: "10px"
+                        }}/>
                         <Line type="monotone" dataKey="Marley2" stroke="#ffc911" />
                         <Line type="monotone" dataKey="Luna2" stroke="#82ca9d" />
                         <Line type="monotone" dataKey="Milo2" stroke="#e2543c" />
