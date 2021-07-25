@@ -58,25 +58,26 @@ def add_walk():
             # routeData=form.routeData.data
             )
 
-        # dogslist = form.doglist.data !!!!!!!!
-        encoding = "utf-8"
-        # encoding = 'utf-8'
-        b'request.data.walkingdogs'.decode(encoding)
-# or
+        string = request.data
+        obj = string.decode()
+        print(type(obj))
+        start = obj.index('walkingdogs') + 14
+        end = len(obj) - 2
+        # print('start', start)
+        # print('end', obj[start:end])
+        str = obj[start:end]
+        arr = str.split(',')
+        # print('arrrrrr', arr)
+        # print('0 index', arr[0])
 
-# str(b'hello', encoding)
-        # print('backend@@######$$$$$$$&&&&&', request.data.walkingdogs )
-        # print('backend@@######$$$$$$$&&&&&', request.data.get("walkingdogs") )
-        # print('backend@@######$$$$$$$&&&&&', request.data["walkingdogs"] )
-        print('backend@@######$$$$$$$&&&&&', request.data.walkingdogs.decode(encoding) )
+        for num in arr:
+            dog = Dog.query.filter(Dog.id == num).first()
+            walk.dogwalk_walk.append(dog)
+            print('heres a dog', dog)
 
         db.session.add(walk)
         db.session.commit()
-        # print("################", )
-        # walk.dogwalk_walk.append(form.walkindogs.data)
-        # db.session.commit()
 
-        # return jsonify(walk.to_dict())
         return walk.to_dict()
     return {'message': form.errors}
 
