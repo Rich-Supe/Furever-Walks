@@ -15,7 +15,20 @@
     padding-top: 5%;
 }
 
-.newWalkForm {
+/* .newWalkForm div {
+} */
+
+.checkboxes {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkboxes__div {
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.checkboxes input {
 
 }
 
@@ -24,6 +37,7 @@
     width: 190px;
     height: 20px;
     padding: 10px 5px;
+    
 }
 
 .newWalkForm button {

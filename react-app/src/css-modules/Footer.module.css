@@ -8,7 +8,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    font-size: 1.4em;
+    font-size: 1.1em;
+    font-weight: 600;
+    max-height: 70px;
 }
 
 .footer div {
