@@ -27,3 +27,7 @@
 .graph {
     grid-area: graph;
 }
+
+svg {
+    width: 90%;
+}

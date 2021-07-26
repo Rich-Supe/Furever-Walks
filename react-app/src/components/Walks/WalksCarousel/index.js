@@ -41,12 +41,12 @@ function WalksCarousel(){
                     <h1>PREVIOUS WALKS</h1>
                     <Swiper id="mainWalk"
                         tag="section"
-                        wrapperTag="ul"
+                        wrapperTag="ol"
                         className={styles.swiperContainer}
                         navigation
                         pagination
-                        spaceBetween={50}
-                        slidesPerView={6}
+                        spaceBetween={30}
+                        slidesPerView={5}
                         // slidesPerColumn={2}
                         // pagination={{ clickable: true }}
                     >
