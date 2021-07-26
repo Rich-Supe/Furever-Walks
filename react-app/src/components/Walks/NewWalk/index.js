@@ -150,7 +150,7 @@ function NewWalk({ mapData }) {
                         value={duration}
                     ></input>
                 </div> */}
-                <div>
+                <div >
                     COMPLETE:
                     <input
                         type='checkbox'
@@ -170,10 +170,10 @@ function NewWalk({ mapData }) {
                     ></input>
                 </div> */}
                 <div>
-                    DOGS:
+                    <p className={styles.dogHeader}>DOGS:</p>
                     {dogs.map((dog) =>
-                        <div>
-                            {dog.name}
+                        <div className={styles.checkboxes}>
+                            <p>{dog.name}</p>
                             <input
                                 key={dog.id}
                                 type='checkbox'

@@ -17,19 +17,36 @@
 
 /* .newWalkForm div {
 } */
+.dogHeader {
+    display: inline-flex;
+    /* justify-content: center;
+    align-items: center; */
+    margin-left: 100px;
+    font-weight: 700;
+}
 
 .checkboxes {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 200px;
 }
 
 .checkboxes__div {
     display: inline-flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    flex-direction: row;
+
 }
 
 .checkboxes input {
+ max-width: 50px;
+ justify-self: center;
+ align-self: center;
+}
 
+.checkboxes p {
+    width: 30%;
 }
 
 .newWalkForm input {
