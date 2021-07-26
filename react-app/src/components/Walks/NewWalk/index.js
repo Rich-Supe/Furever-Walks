@@ -32,16 +32,16 @@ function NewWalk({mapData}) {
 
     const checked = (dog) => {
         dogIds[dog.id] = !dogIds[dog.id];
-        const entries = Object.entries(dogIds);
-        entries.forEach((entr) => {
-            if (entr[1] && !walkingdogs.includes(Number(entr[0]))){
-                walkingdogs.push(Number(entr[0]));
-            }
-            if (!entr[1] && walkingdogs.includes(Number(entr[0]))) {
-                walkingdogs.splice(walkingdogs.indexOf(Number(entr[0])), 1)
-            }
+        // const entries = Object.entries(dogIds);
+        // entries.forEach((entr) => {
+        //     if (entr[1] && !walkingdogs.includes(Number(entr[0]))){
+        //         walkingdogs.push(Number(entr[0]));
+        //     }
+        //     if (!entr[1] && walkingdogs.includes(Number(entr[0]))) {
+        //         walkingdogs.splice(walkingdogs.indexOf(Number(entr[0])), 1)
+        //     }
             
-        })
+        // })
         const dogId = dog.id
         let checkStatus;
         if (dogs[dogId - 1].status === undefined) {
@@ -55,10 +55,10 @@ function NewWalk({mapData}) {
         return walkingdogs;
     }
 
-    const dogCheckboxSelected = (dogId) => {
-        const selected = dogs[dogId - 1].status
-        return selected;
-    }
+    // const dogCheckboxSelected = (dogId) => {
+    //     const selected = dogs[dogId - 1].status
+    //     return selected;
+    // }
 
     const addWalk = async (e) => {
         e.preventDefault();
@@ -69,6 +69,11 @@ function NewWalk({mapData}) {
         // const dogsOnWalk = [];
         // we will add all the dogs on the walk to this array then send it in the payload
         
+        dogs.forEach((dog) => {
+            if(dog.status === true) {
+                walkingdogs.push(dog.id)
+            }
+        })
         // setDistance(mapData.distance)
         // setDuration(mapData.duration)
 

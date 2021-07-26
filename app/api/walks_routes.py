@@ -45,7 +45,7 @@ def add_walk():
     form = NewWalkForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     print('this is 47', form.data)
-    print('48', request.data)
+    print('488888888', request.data)
     if form.validate_on_submit():
         walk = Walk(
             name=form.name.data, 
@@ -64,8 +64,9 @@ def add_walk():
         end = len(obj) - 2
         str = obj[start:end]
         arr = str.split(',')
-
+        # print('888888888', arr)
         for num in arr:
+            # print('9999999999', num)
             dog = Dog.query.filter(Dog.id == num).first()
             walk.dogwalk_walk.append(dog)
             print('heres a dog', dog)
