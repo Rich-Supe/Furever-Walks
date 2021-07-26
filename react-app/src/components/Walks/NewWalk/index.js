@@ -115,6 +115,8 @@ function NewWalk({ mapData }) {
                     ))}
                 </ul>
                 <div>
+                    WALK NAME:
+
                     <input
                         type='text'
                         name='name'
@@ -149,7 +151,7 @@ function NewWalk({ mapData }) {
                     ></input>
                 </div> */}
                 <div>
-                    STATUS:
+                    COMPLETE:
                     <input
                         type='checkbox'
                         name='status'
