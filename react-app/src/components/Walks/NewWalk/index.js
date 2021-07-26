@@ -3,9 +3,9 @@ import { createWalk } from '../../../store/walks';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getDogs,isDogSelected } from '../../../store/dogs';
+import { getDogs, isDogSelected } from '../../../store/dogs';
 
-function NewWalk({mapData}) {
+function NewWalk({ mapData }) {
     const errors = [];
     const [name, setName] = useState('');
     const [distance, setDistance] = useState("0");
@@ -16,13 +16,13 @@ function NewWalk({mapData}) {
     const { id } = useParams();
     // let mapDistance = mapData.distance
     // let mapDuration = mapData.duration
-    
+
     useEffect(() => {
         dispatch(getDogs(id))
         // setDistance(mapData.distance)
         // setDuration(mapData.duration)
     }, [id])
-    
+
     const dogs = useSelector((state) => Object.values(state.dogs));
     const dogIds = {};
     dogs.forEach((dog) => {
@@ -40,7 +40,7 @@ function NewWalk({mapData}) {
         //     if (!entr[1] && walkingdogs.includes(Number(entr[0]))) {
         //         walkingdogs.splice(walkingdogs.indexOf(Number(entr[0])), 1)
         //     }
-            
+
         // })
         const dogId = dog.id
         let checkStatus;
@@ -60,6 +60,13 @@ function NewWalk({mapData}) {
     //     return selected;
     // }
 
+    // if(mapData !== null ) {
+    // console.log(mapData)
+    // console.log(mapData.distance.indexOf('m'))
+    // console.log(Number(mapData.distance.substring(0, mapData.distance.indexOf('mi'))))
+    // console.log(Number(mapData.duration.substring(0, mapData.duration.indexOf('mins'))))
+    // }
+
     const addWalk = async (e) => {
         e.preventDefault();
         const user_id = Number(id);
@@ -68,20 +75,22 @@ function NewWalk({mapData}) {
 
         // const dogsOnWalk = [];
         // we will add all the dogs on the walk to this array then send it in the payload
-        
+
         dogs.forEach((dog) => {
-            if(dog.status === true) {
+            if (dog.status === true) {
                 walkingdogs.push(dog.id)
             }
         })
+
+
         // setDistance(mapData.distance)
         // setDuration(mapData.duration)
 
         if (name.length < 1) errors.push('The walk must have a name.')
         const payload = {
             name,
-            distance,
-            duration,
+            distance: Number(mapData.distance.substring(0, mapData.distance.indexOf('mi'))),
+            duration: Number(mapData.duration.substring(0, mapData.duration.indexOf('mins'))),
             rating,
             finished,
             routeData,
@@ -114,7 +123,14 @@ function NewWalk({mapData}) {
                         value={name}
                     ></input>
                 </div>
-                <div>
+                {mapData !== null && (
+                    <div>
+                        <div>
+                            {`${mapData.distance} ${mapData.duration}`}
+                        </div>
+                    </div>
+                )}
+                {/* <div>
                     <input
                         type='number'
                         name='distance'
@@ -131,7 +147,7 @@ function NewWalk({mapData}) {
                         onChange={(e) => setDuration(Number(e.target.value))}
                         value={duration}
                     ></input>
-                </div>
+                </div> */}
                 <div>
                     STATUS:
                     <input
@@ -153,7 +169,7 @@ function NewWalk({mapData}) {
                 </div> */}
                 <div>
                     DOGS:
-                    {dogs.map((dog) => 
+                    {dogs.map((dog) =>
                         <div>
                             {dog.name}
                             <input
@@ -162,10 +178,10 @@ function NewWalk({mapData}) {
                                 name='dog'
                                 onChange={() => checked(dog)}
                                 value={dog}
-                                // checked={isDogChecked}
-                                >
+                            // checked={isDogChecked}
+                            >
                             </input>
-                            
+
                         </div>
                     )}
                 </div>
