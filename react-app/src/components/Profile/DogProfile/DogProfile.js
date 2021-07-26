@@ -6,8 +6,6 @@ import { editDog, deleteDog } from '../../../store/dogs';
 import { setModal } from '../../../store/modals';
 
 function DogProfile({ dog }) {
-    // console.log(dog)
-    // console.log(dog.id)
     const modalStatus = useSelector(state => state.modals.status)
     const dogId = dog.id
     const [errors, setErrors] = useState([]);
@@ -31,8 +29,6 @@ function DogProfile({ dog }) {
                 image_url,
                 id
             }
-            console.log(payload)
-            console.log(payload.dogId)
             await dispatch(editDog(payload))
             // setShowModal(modalStatus);
             dispatch(setModal(false))

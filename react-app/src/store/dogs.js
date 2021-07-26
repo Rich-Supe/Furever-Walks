@@ -72,9 +72,7 @@ export const getDogs = (userId) => async (dispatch) => {
 
 export const getDogsByWalk = (walkId) => async (dispatch) => {
     const response = await fetch(`/api/dogs/all/walks/${walkId}`)
-    // console.log(`Userid from getDog thunk____not okay`, walkId)
     if (response.ok) {
-        console.log(`Userid from getDog thunk____==-=-=--`, walkId)
         const dogs = await response.json();
         dispatch(setDogsByWalkId(dogs.dogs));
     }
@@ -84,7 +82,6 @@ export const getDogsByWalk = (walkId) => async (dispatch) => {
 }
 
 export const editDog = (payload) => async (dispatch) => {
-    console.log('here!')
     const dogId = payload.dogId;
     const userId = payload.id;
     const response = await fetch(`/api/dogs/${dogId}`, {
@@ -100,7 +97,6 @@ export const editDog = (payload) => async (dispatch) => {
 }
 
 export const createDog = (name, breed, age, image_url, user_id, dog_total_distance, dog_total_duration, dog_total_walks) => async (dispatch) => {
-    console.log(name, breed, age, image_url, user_id)
     const response = await fetch('/api/dogs/create', {
         method: 'POST',
         headers: {
@@ -122,7 +118,6 @@ export const createDog = (name, breed, age, image_url, user_id, dog_total_distan
         // return response;
     }
     else {
-        console.log('else')
         return ['An error occurred. Please try again.']
     }
 }
@@ -171,8 +166,6 @@ export default function reducer(state = initialState, action) {
         //     return newState;
         case REMOVE_DOG:  
             newState = {...state};
-            // console.log(newState)
-            // console.log(action.payload)
             // newState.dog = [...state.dog];
             // const index = newState.dog.findIndex((dog) => dog.id === action.payload);
             // newState.dog.splice(index, 1);
@@ -183,7 +176,6 @@ export default function reducer(state = initialState, action) {
             newState[action.payload.dogId]['status'] = action.payload.checkStatus
             return newState;
         default:
-            console.log('HELLLOOOO from default')
             return state;     
     }   
 }              

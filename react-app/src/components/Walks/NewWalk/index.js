@@ -14,28 +14,28 @@ function NewWalk({mapData}) {
     const [routeData, setRouteData] = useState({});
     const dispatch = useDispatch();
     const { id } = useParams();
-    console.log("Current map data from map component", mapData)
+    // let mapDistance = mapData.distance
+    // let mapDuration = mapData.duration
     
     useEffect(() => {
         dispatch(getDogs(id))
+        // setDistance(mapData.distance)
+        // setDuration(mapData.duration)
     }, [id])
+    
     const dogs = useSelector((state) => Object.values(state.dogs));
     const dogIds = {};
     dogs.forEach((dog) => {
         dogIds[dog.id] = false;
     })
-    console.log(dogs)
     const walkingdogs = [];
 
     const checked = (dog) => {
         dogIds[dog.id] = !dogIds[dog.id];
-        // console.log('checked value!!!', dogIds)
-        const entries = Object.entries(dogIds)
-        // console.log(entries)
+        const entries = Object.entries(dogIds);
         entries.forEach((entr) => {
             if (entr[1] && !walkingdogs.includes(Number(entr[0]))){
-                walkingdogs.push(Number(entr[0]))
-                // console.log('line 36', walkingdogs)
+                walkingdogs.push(Number(entr[0]));
             }
             if (!entr[1] && walkingdogs.includes(Number(entr[0]))) {
                 walkingdogs.splice(walkingdogs.indexOf(Number(entr[0])), 1)
@@ -51,11 +51,7 @@ function NewWalk({mapData}) {
         } else if (dogs[dogId - 1].status === false) {
             checkStatus = true
         }
-        // console.log('checkStatus', checkStatus)
-        // console.log(dogs)
-        // console.log(dogs[dogId - 1].status)
         dispatch(isDogSelected(dogId, checkStatus))
-        // console.log("line 40", walkingdogs)
         return walkingdogs;
     }
 
@@ -73,6 +69,9 @@ function NewWalk({mapData}) {
         // const dogsOnWalk = [];
         // we will add all the dogs on the walk to this array then send it in the payload
         
+        // setDistance(mapData.distance)
+        // setDuration(mapData.duration)
+
         if (name.length < 1) errors.push('The walk must have a name.')
         const payload = {
             name,
@@ -138,7 +137,7 @@ function NewWalk({mapData}) {
                         checked={finished}
                     ></input>
                 </div>
-                <div>
+                {/* <div>
                     <input
                         type='text'
                         name='routeData'
@@ -146,7 +145,7 @@ function NewWalk({mapData}) {
                         onChange={(e) => setRouteData(e.target.value)}
                         value={routeData}
                     ></input>
-                </div>
+                </div> */}
                 <div>
                     DOGS:
                     {dogs.map((dog) => 

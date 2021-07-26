@@ -14,7 +14,6 @@ function WalkSlide({ walk }) {
 
     // const walks = useSelector((state) => state.walks)
     // const userWalks = Object.values(walks).filter((value) => value.user_id == id)
-    // console.log('WALKS CAROUSEL USER WALKS VAR', userWalks)
     // returns array of walk objects
 
     return (

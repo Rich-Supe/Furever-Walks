@@ -15,7 +15,6 @@
 //     }, [dispatch])
 //     const walks = useSelector((state) => state.walks)
 //     const userWalks = Object.values(walks).filter((value) => value.user_id == id)
-//     console.log(userWalks)
 //         if (userWalks.length > 0){
 //             return (
 //                 <div>

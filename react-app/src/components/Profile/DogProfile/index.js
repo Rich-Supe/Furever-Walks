@@ -14,7 +14,6 @@ function DogProfileModal({ dog }) {
 
     useEffect(() => {
         setShowModal(modalStatus)
-        console.log(showModal)
     }, [modalStatus])
 
     const openModal = () => {

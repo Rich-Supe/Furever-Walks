@@ -12,7 +12,6 @@ function Walks(){
     const user = useSelector((state)=> state.session.user)
     let userId = user ? user.id : null
     const [ mapData, setMapData ] = useState(null)
-    // console.log("##############", userId)
     useEffect(()=>{
         dispatch(getWalksUser(2))
     },[dispatch])
@@ -22,12 +21,6 @@ function Walks(){
     function mapCallback (data){
         setMapData(data) 
     }
-
-    // console.log("---------", mapCallback, "---------")
-
-    // if (mapData) {
-    //     console.log("asdfasdfa;lj", mapData)
-    // }
 
     return (
         <div className={styles.walksPage}>

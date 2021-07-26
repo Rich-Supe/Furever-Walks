@@ -20,13 +20,8 @@ function WalksCarousel(){
     }, [dispatch])
 
     const walks = useSelector((state) => Object.values(state.walks))
-    console.log('WALKS FROM STORE', walks)
     const userWalks = walks.filter((walk) => walk.user_id == id)
-    console.log('WALKS CAROUSEL USER WALKS VAR', userWalks)
     // returns array of walk objects
-    userWalks?.forEach((obj) => {
-        console.log('LINE 27-----------', obj)
-    })
 
     const slides =[];
     let i = 0;

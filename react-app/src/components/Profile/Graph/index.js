@@ -65,13 +65,6 @@ function Graph() {
         const walksOnDay5 = walks.filter((walk) => walk.date == matchingDate(today5))
         const walksOnDay6 = walks.filter((walk) => walk.date == matchingDate(today6))
         const walksOnDay7 = walks.filter((walk) => walk.date == matchingDate(today7))
-        // console.log('WALKS ON DAY1---------!!!!!!!!!!', walksOnDay1)
-        // console.log('WALKS ON DAY2---------!!!!!!!!!!', walksOnDay2)
-        // console.log('WALKS ON DAY3---------!!!!!!!!!!', walksOnDay3)
-        // console.log('WALKS ON DAY4---------!!!!!!!!!!', walksOnDay4)
-        // console.log('WALKS ON DAY5---------!!!!!!!!!!', walksOnDay5)
-        // console.log('WALKS ON DAY6---------!!!!!!!!!!', walksOnDay6)
-        // console.log('WALKS ON DAY7---------!!!!!!!!!!', walksOnDay7)
         // returns an array of walk objects
 
     const data = [
@@ -156,13 +149,13 @@ function Graph() {
                         <XAxis dataKey="date" />
                         <YAxis />
                         <Tooltip />
-                        <Legend verticalAlign="top"
+                        {/* <Legend verticalAlign="top"
                             layout="vertical"
                             align="left"
                             wrapperStyle={{
                             paddingLeft: "10px",
                             paddingTop: "10px"
-                        }}/>
+                        }}/> */}
                         <Line type="monotone" dataKey="Marley1" stroke="#ffc911" />
                         <Line type="monotone" dataKey="Luna1" stroke="#82ca9d" />
                         <Line type="monotone" dataKey="Milo1" stroke="#e2543c" />
@@ -181,13 +174,13 @@ function Graph() {
                         <XAxis dataKey="date" />
                         <YAxis />
                         <Tooltip />
-                        <Legend verticalAlign="top"
+                        {/* <Legend verticalAlign="top"
                             layout="vertical"
                             align="left"
                             wrapperStyle={{
                             paddingLeft: "10px",
                             paddingTop: "10px"
-                        }}/>
+                        }}/> */}
                         <Line type="monotone" dataKey="Marley2" stroke="#ffc911" />
                         <Line type="monotone" dataKey="Luna2" stroke="#82ca9d" />
                         <Line type="monotone" dataKey="Milo2" stroke="#e2543c" />

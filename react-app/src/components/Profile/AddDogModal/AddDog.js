@@ -31,8 +31,6 @@ function AddDog({ setShowModal }) {
         if (data) {
             setErrors(data)
         }
-        console.log('data', data)
-        console.log('errors', errors)
         if (data === undefined) {
         setShowModal(false);
         }
