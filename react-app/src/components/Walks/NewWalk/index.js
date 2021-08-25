@@ -51,6 +51,7 @@ function NewWalk({ mapData }) {
         return walkingdogs;
     }
 
+    
     // const dogCheckboxSelected = (dogId) => {
     //     const selected = dogs[dogId - 1].status
     //     return selected;
