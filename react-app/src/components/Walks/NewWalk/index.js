@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import { getDogs, isDogSelected } from '../../../store/dogs';
 
 function NewWalk({ mapData }) {
-    const errors = [];
+    const [errors, setErrors] = useState([]);
     const [name, setName] = useState('');
     const [distance, setDistance] = useState("0");
     const [duration, setDuration] = useState("0");
@@ -24,31 +24,27 @@ function NewWalk({ mapData }) {
     }, [id])
 
     const dogs = useSelector((state) => Object.values(state.dogs));
+    const dogs2 = useSelector(state => state.dogs)
+    // console.log(dogs);
+    console.log(dogs2);
+
     const dogIds = {};
-    dogs.forEach((dog) => {
-        dogIds[dog.id] = false;
-    })
+    // dogs.forEach((dog) => {
+    //     dogIds[dog.id] = false;
+    // })
     const walkingdogs = [];
 
     const checked = (dog) => {
         dogIds[dog.id] = !dogIds[dog.id];
-        // const entries = Object.entries(dogIds);
-        // entries.forEach((entr) => {
-        //     if (entr[1] && !walkingdogs.includes(Number(entr[0]))){
-        //         walkingdogs.push(Number(entr[0]));
-        //     }
-        //     if (!entr[1] && walkingdogs.includes(Number(entr[0]))) {
-        //         walkingdogs.splice(walkingdogs.indexOf(Number(entr[0])), 1)
-        //     }
 
-        // })
         const dogId = dog.id
         let checkStatus;
-        if (dogs[dogId - 1].status === undefined) {
+        // console.log(dogs)
+        if(!dogs2[dogId].status) {
             checkStatus = true
-        } else if (dogs[dogId - 1].status === true) {
+        } else if (dogs2[dogId].status === true) {
             checkStatus = false
-        } else if (dogs[dogId - 1].status === false) {
+        } else if (dogs2[dogId].status === false) {
             checkStatus = true
         }
         dispatch(isDogSelected(dogId, checkStatus))
@@ -86,7 +82,17 @@ function NewWalk({ mapData }) {
         // setDistance(mapData.distance)
         // setDuration(mapData.duration)
 
-        if (name.length < 1) errors.push('The walk must have a name.')
+        // setErrors([]);
+        // console.log(mapData);
+        // if (mapData === null) {
+        //     const msg = 'Please select a route on the map.'
+        //     setErrors([...errors, msg])
+        // }
+        // else if (name.length < 1) {
+        //     const msg = 'The walk must have a name.'
+        //     setErrors([...errors, msg])
+        // } else {
+        console.log('success');
         const payload = {
             name,
             distance: Number(mapData.distance.substring(0, mapData.distance.indexOf('mi'))),
@@ -97,11 +103,15 @@ function NewWalk({ mapData }) {
             user_id,
             walkingdogs
         }
-        await dispatch(createWalk(payload))
+        const data = await dispatch(createWalk(payload))
+        if (data) {
+            setErrors(data);
+        }
         setName("")
         setDuration(0)
         setDistance(0)
         setFinished(false)
+        // }
     }
 
 
@@ -110,7 +120,7 @@ function NewWalk({ mapData }) {
             <h1>NEW WALK</h1>
             <form className={styles.newWalkForm} onSubmit={addWalk}>
                 <ul>
-                    {errors.map((error, idx) => (
+                    {errors.length > 0 && errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
                     ))}
                 </ul>
@@ -132,24 +142,6 @@ function NewWalk({ mapData }) {
                         </div>
                     </div>
                 )}
-                {/* <div>
-                    <input
-                        type='number'
-                        name='distance'
-                        placeholder='Distance'
-                        onChange={(e) => setDistance(Number(e.target.value))}
-                        value={distance}
-                    ></input>
-                </div>
-                <div>
-                    <input
-                        type='number'
-                        name='duration'
-                        placeholder='Duration'
-                        onChange={(e) => setDuration(Number(e.target.value))}
-                        value={duration}
-                    ></input>
-                </div> */}
                 <div >
                     COMPLETE:
                     <input

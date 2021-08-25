@@ -6,6 +6,16 @@ import datetime
 walk_routes = Blueprint('walks', __name__)
 
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
 # Create a blueprint that gets one walk
 @walk_routes.route('/<int:walk_id>', methods=['GET'])
 def get_walk(walk_id):
@@ -75,7 +85,7 @@ def add_walk():
         db.session.commit()
 
         return walk.to_dict()
-    return {'message': form.errors}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @walk_routes.route('/dogs/<int:dog_id>')
 def add_dog_to_walk(dogId, walkId):
