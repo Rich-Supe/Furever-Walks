@@ -7,13 +7,16 @@ import styles from '../../../css-modules/DemoForm.module.css'
 const DemoForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const email = 'demo@aa.io'
-  const password = 'password'
+  const email = 'demo@AA.com'
+  const password = 'Password'
 
   const onLogin = async (e) => {
     e.preventDefault();
-    await dispatch(login(email, password));
+    const user = await dispatch(login(email, password));
+    console.log('demo user?', user)
+    if (user === null) {
     history.push(`/users/1`)
+    }
   }
 
   return (
