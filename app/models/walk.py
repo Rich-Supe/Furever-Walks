@@ -11,7 +11,7 @@ class Walk(db.Model):
     distance = db.Column(db.Float, nullable=False)
     duration = db.Column(db.Integer, nullable=False)
     date = db.Column(db.Date, nullable=False)
-    rating = db.Column(db.Integer)
+    rating = db.Column(db.Integer, nullable=False)
     finished = db.Column(db.Boolean, default=False)
     routeData = db.Column(db.PickleType)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)

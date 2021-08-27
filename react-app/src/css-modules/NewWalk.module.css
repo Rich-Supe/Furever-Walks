@@ -17,6 +17,23 @@
 
 /* .newWalkForm div {
 } */
+
+.topInputSection {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.walkName,
+.complete,
+.rating {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
 .dogHeader {
     display: inline-flex;
     /* justify-content: center;
