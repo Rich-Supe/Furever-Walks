@@ -8,8 +8,9 @@ import { getDogs, isDogSelected } from '../../../store/dogs';
 function NewWalk({ mapData }) {
     const [errors, setErrors] = useState([]);
     const [name, setName] = useState('');
-    const [distance, setDistance] = useState("0");
-    const [duration, setDuration] = useState("0");
+    // const [distance, setDistance] = useState("0");
+    // const [duration, setDuration] = useState("0");
+    const [rating, setRating] = useState('');
     const [finished, setFinished] = useState(false);
     const [routeData, setRouteData] = useState({});
     const dispatch = useDispatch();
@@ -25,13 +26,8 @@ function NewWalk({ mapData }) {
 
     const dogs = useSelector((state) => Object.values(state.dogs));
     const dogs2 = useSelector(state => state.dogs)
-    // console.log(dogs);
-    console.log(dogs2);
 
     const dogIds = {};
-    // dogs.forEach((dog) => {
-    //     dogIds[dog.id] = false;
-    // })
     const walkingdogs = [];
 
     const checked = (dog) => {
@@ -39,8 +35,7 @@ function NewWalk({ mapData }) {
 
         const dogId = dog.id
         let checkStatus;
-        // console.log(dogs)
-        if(!dogs2[dogId].status) {
+        if (!dogs2[dogId].status) {
             checkStatus = true
         } else if (dogs2[dogId].status === true) {
             checkStatus = false
@@ -51,27 +46,9 @@ function NewWalk({ mapData }) {
         return walkingdogs;
     }
 
-    
-    // const dogCheckboxSelected = (dogId) => {
-    //     const selected = dogs[dogId - 1].status
-    //     return selected;
-    // }
-
-    // if(mapData !== null ) {
-    // console.log(mapData)
-    // console.log(mapData.distance.indexOf('m'))
-    // console.log(Number(mapData.distance.substring(0, mapData.distance.indexOf('mi'))))
-    // console.log(Number(mapData.duration.substring(0, mapData.duration.indexOf('mins'))))
-    // }
-
     const addWalk = async (e) => {
         e.preventDefault();
         const user_id = Number(id);
-        const rating = 0;
-        // const date = new Date();
-
-        // const dogsOnWalk = [];
-        // we will add all the dogs on the walk to this array then send it in the payload
 
         dogs.forEach((dog) => {
             if (dog.status === true) {
@@ -79,40 +56,39 @@ function NewWalk({ mapData }) {
             }
         })
 
-
-        // setDistance(mapData.distance)
-        // setDuration(mapData.duration)
-
-        // setErrors([]);
-        // console.log(mapData);
-        // if (mapData === null) {
-        //     const msg = 'Please select a route on the map.'
-        //     setErrors([...errors, msg])
-        // }
-        // else if (name.length < 1) {
-        //     const msg = 'The walk must have a name.'
-        //     setErrors([...errors, msg])
-        // } else {
-        console.log('success');
-        const payload = {
-            name,
-            distance: Number(mapData.distance.substring(0, mapData.distance.indexOf('mi'))),
-            duration: Number(mapData.duration.substring(0, mapData.duration.indexOf('mins'))),
-            rating,
-            finished,
-            routeData,
-            user_id,
-            walkingdogs
+        if (mapData === null) {
+            setErrors(['Please plan a walk route'])
+        } else {
+            const payload = {
+                name,
+                distance: Number(mapData.distance.substring(0, mapData.distance.indexOf('mi'))),
+                duration: Number(mapData.duration.substring(0, mapData.duration.indexOf('mins'))),
+                rating,
+                finished,
+                routeData,
+                user_id,
+                walkingdogs
+            }
+            const data = await dispatch(createWalk(payload))
+            if (data) {
+                console.log(data);
+                setErrors(data);
+            } else {
+                setName("")
+                // setDuration(0)
+                // setDistance(0)
+                setRating("")
+                setFinished(false)
+                setErrors([])
+                dogs.forEach(dog => {
+                    if (dogs2[dog.id].status) {
+                        dogs2[dog.id].status = false
+                    }
+                })
+                mapData.distance = ""
+                mapData.duration = ""
+            }
         }
-        const data = await dispatch(createWalk(payload))
-        if (data) {
-            setErrors(data);
-        }
-        setName("")
-        setDuration(0)
-        setDistance(0)
-        setFinished(false)
-        // }
     }
 
 
@@ -125,43 +101,53 @@ function NewWalk({ mapData }) {
                         <li key={idx}>{error}</li>
                     ))}
                 </ul>
-                <div>
-                    WALK NAME:
-
-                    <input
-                        type='text'
-                        name='name'
-                        placeholder='Name'
-                        onChange={(e) => setName(e.target.value)}
-                        value={name}
-                    ></input>
-                </div>
-                {mapData !== null && (
-                    <div>
+                <div className={styles.topInputSection}>
+                    <div className={styles.walkName}>
                         <div>
-                            {`${mapData.distance} ${mapData.duration}`}
+                            WALK NAME:
                         </div>
+                        <input
+                            type='text'
+                            name='name'
+                            placeholder='Name'
+                            onChange={(e) => setName(e.target.value)}
+                            value={name}
+                        ></input>
                     </div>
-                )}
-                <div >
-                    COMPLETE:
-                    <input
-                        type='checkbox'
-                        name='status'
-                        onChange={() => setFinished(!finished)}
-                        value={finished}
-                        checked={finished}
-                    ></input>
+                    {mapData !== null && (
+                        <div>
+                            <div>
+                                {`${mapData.distance} ${mapData.duration}`}
+                            </div>
+                        </div>
+                    )}
+                    <div className={styles.complete}>
+                        <div>
+                            COMPLETE:
+                        </div>
+                        <input
+                            type='checkbox'
+                            name='status'
+                            onChange={() => setFinished(!finished)}
+                            value={finished}
+                            checked={finished}
+                        ></input>
+                    </div>
+                    <div className={styles.rating}>
+                        <div>
+                            RATING:
+                        </div>
+                        <input
+                            type='number'
+                            name='rating'
+                            placeholder='Rating from 0 - 10'
+                            min='0'
+                            max='10'
+                            onChange={(e) => setRating(e.target.value)}
+                            value={rating}
+                        ></input>
+                    </div>
                 </div>
-                {/* <div>
-                    <input
-                        type='text'
-                        name='routeData'
-                        placeholder='Route Data'
-                        onChange={(e) => setRouteData(e.target.value)}
-                        value={routeData}
-                    ></input>
-                </div> */}
                 <div>
                     <p className={styles.dogHeader}>DOGS:</p>
                     {dogs.map((dog) =>
@@ -172,8 +158,7 @@ function NewWalk({ mapData }) {
                                 type='checkbox'
                                 name='dog'
                                 onChange={() => checked(dog)}
-                                value={dog}
-                            // checked={isDogChecked}
+                                checked={dogs2[dog.id].status || false}
                             >
                             </input>
 

@@ -114,11 +114,13 @@ export const createWalk = (walk) => async (dispatch) => {
     })
     if (response.ok) {
         const newWalk = await response.json();
-        if(newWalk.errors) {
-            return newWalk;
-        }
         dispatch(addWalk(newWalk));
         // return newWalk;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors
+        }
     }
     else {
         return ['An error occurred. Please try again.']
