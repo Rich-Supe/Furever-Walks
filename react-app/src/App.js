@@ -40,12 +40,12 @@ function App() {
         <Route path='/' exact={true} >
           <SplashPage />
         </Route>
-        <Route path='/users/:id' exact={true}>
+        <ProtectedRoute path='/users/:id' exact={true}>
             <Profile />
-        </Route>
-        <Route path='/users/walks/:id'>
+        </ProtectedRoute>
+        <ProtectedRoute path='/users/walks/:id'>
             <Walks />
-        </Route>
+        </ProtectedRoute>
         <Route>
             <Page404 />
         </Route>

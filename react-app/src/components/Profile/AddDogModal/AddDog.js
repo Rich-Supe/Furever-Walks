@@ -19,20 +19,24 @@ function AddDog({ setShowModal }) {
         const dog_total_distance = 0;
         const dog_total_duration = 0;
         const dog_total_walks = 0;
-        const data = await dispatch(createDog(
-            name,
-            breed,
-            age,
-            image_url,
-            user_id,
-            dog_total_distance,
-            dog_total_duration,
-            dog_total_walks))
-        if (data) {
-            setErrors(data)
-        }
-        if (data === undefined) {
-        setShowModal(false);
+        if (!Number(age)) {
+            setErrors(["Please enter a non-zero integer for the dog's age"])
+        } else {
+            const data = await dispatch(createDog(
+                name,
+                breed,
+                age,
+                image_url,
+                user_id,
+                dog_total_distance,
+                dog_total_duration,
+                dog_total_walks))
+            if (data) {
+                setErrors(data)
+            }
+            if (data === undefined) {
+                setShowModal(false);
+            }
         }
     }
 
