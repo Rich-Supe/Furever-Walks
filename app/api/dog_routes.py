@@ -1,7 +1,10 @@
 from flask import Blueprint, jsonify, request
 from app.forms import NewDogForm
 from app.models import Dog, db, Walk
+from sqlalchemy import text
 
+# sql = text('SELECT * FROM dogwalks_table')
+# print (sql)
 
 dog_routes = Blueprint('dogs', __name__)
 
@@ -37,7 +40,8 @@ def get_all_dogs(user_id):
 # Get all dogs by walkID
 @dog_routes.route('/all/walks/<int:walk_id>', methods=['GET'])
 def get_dogs_by_walk(walk_id):
-    dogs = Dog.query.join(Walk).filter(Walk.id==walk_id).all()
+    walk = Walk.query.get(walk_id)
+    dogs = walk.dogwalk_walk
     return {"dogs": [dog.to_dict() for dog in dogs]}
 
 

@@ -5,6 +5,7 @@ import dogs from './dogs';
 import walks from './walks';
 import maps from './maps';
 import modals from './modals'
+import dogData from './dogData'
 
 const rootReducer = combineReducers({
   session,
@@ -12,7 +13,7 @@ const rootReducer = combineReducers({
   walks,
   maps,
   modals,
-
+  dogData
 });
 
 
