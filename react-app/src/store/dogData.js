@@ -38,23 +38,17 @@ export default function reducer(state = initialState, action) {
     let newState;
     switch (action.type) {
         case SET_DOG_DATA:
-            console.log('action.payload1111', action.payload)
-            // console.log(action.payload['Tue Sep 14'])
             newState = { ...state }
             for (let key in action.payload) {
                 if (newState[action.payload[key]]) {
-                    console.log('zzzzzzzzzzzzz', newState[action.payload[key]])
                     for (let key2 in action.payload[key]) {
                         if(!newState[key][action.payload[key][key2]]) {
-                            console.log('4823094023402840328no new')
                             newState[key][action.payload[key][key2]] = action.payload[key][key2]
                         } else {
-                            console.log('43248230948230480234283new')
                             newState[key][action.payload[key][key2]] += action.payload[key][key2]
                         }
                     }
                 } else {
-                    console.log('qqqqqqqqqqqq', action.payload[key])
                     newState[key] = action.payload[key]
                 }
             }

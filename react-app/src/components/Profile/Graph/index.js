@@ -22,7 +22,7 @@ function Graph() {
     // console.log('USER FROM STORE-----', user);
     // returns an object (user)
 
-    const dogs = useSelector(state => Object.values(state.dogs));
+    const dogs = useSelector(state => (state.dogs));
     // console.log('DOGS FROM STORE-----', dogs);
     // returns an array of object (dogs)
 
@@ -71,10 +71,33 @@ function Graph() {
     // dispatch(getDogData(walksOnDay2))
 
     const update = () => {
-        dispatch(getDogData(today1.toDateString().slice(0, 10), walksOnDay1))
+        // dispatch(getDogData(today1.toDateString().slice(0, 10), walksOnDay1))
+        // dispatch(getDogData(today2.toDateString().slice(0, 10), walksOnDay2))
+        // dispatch(getDogData(today3.toDateString().slice(0, 10), walksOnDay3))
+        // dispatch(getDogData(today4.toDateString().slice(0, 10), walksOnDay4))
+        // dispatch(getDogData(today5.toDateString().slice(0, 10), walksOnDay5))
+        // dispatch(getDogData(today6.toDateString().slice(0, 10), walksOnDay6))
+        dispatch(getDogData(today7.toDateString().slice(0, 10), walksOnDay7))
+        dispatch(getDogData(today6.toDateString().slice(0, 10), walksOnDay6))
+        dispatch(getDogData(today5.toDateString().slice(0, 10), walksOnDay5))
+        dispatch(getDogData(today4.toDateString().slice(0, 10), walksOnDay4))
+        dispatch(getDogData(today3.toDateString().slice(0, 10), walksOnDay3))
         dispatch(getDogData(today2.toDateString().slice(0, 10), walksOnDay2))
-        // dispatch(getDogData(today3, walksOnDay3))
+        dispatch(getDogData(today1.toDateString().slice(0, 10), walksOnDay1))
     }
+
+    const dogData = useSelector(state => state.dogData);
+    const data1 = dogData[today1.toDateString().slice(0, 10)]
+    // const data1key
+    const data2 = dogData[today2.toDateString().slice(0, 10)]
+    const data3 = dogData[today3.toDateString().slice(0, 10)]
+    const data4 = dogData[today4.toDateString().slice(0, 10)]
+    const data5 = dogData[today5.toDateString().slice(0, 10)]
+    const data6 = dogData[today6.toDateString().slice(0, 10)]
+    const data7 = dogData[today7.toDateString().slice(0, 10)]
+    console.log('data11111,ddq', data1)
+    console.log('data222222,ddq', data2)
+    console.log('data333333,ddq', data3)
 
     const data = [
         { date: today7.toDateString().slice(0, 10), Marley1: 35, Marley2: 0.5, Luna1: 15, Luna2: 1.0, Milo1: 12, Milo2: 0.7, Warren1: 24, Warren2: 0.3, Mitchell1: 23, Mitchell2: 0.2, Leah1: 13, Leah2: 0.3 },
@@ -85,6 +108,38 @@ function Graph() {
         { date: today2.toDateString().slice(0, 10), Marley1: 35, Marley2: 0.5, Luna1: 35, Luna2: 0.4, Milo1: 13, Milo2: 0.8, Warren1: 23, Warren2: 0.3, Mitchell1: 34, Mitchell2: 0.4, Leah1: 36, Leah2: 0.4 },
         { date: today1.toDateString().slice(0, 10), Marley1: 50, Marley2: 0.6, Luna1: 15, Luna2: 0.3, Milo1: 35, Milo2: 0.4, Warren1: 12, Warren2: 0.1, Mitchell1: 13, Mitchell2: 0.1, Leah1: 57, Leah2: 0.5 },
     ]
+
+    const distData = []
+
+    const loadData = () => {
+        for (let date in dogData) {
+            console.log(date)
+            const resObj = {}
+            resObj['date'] = date
+            for (let data in dogData[date]) {
+                console.log('daaaaa', dogData[date][data])
+                if(data.includes('dis')) {
+                    const dogId = data.slice(4,5)
+                    const dogName = dogs[dogId].name
+                    resObj[dogName] = dogData[date][data]
+                }
+            }
+            distData.push(resObj)
+        }
+        console.log(distData)
+        console.log(data)
+    }
+    // if (data1) {
+    //     console.log('zzsdfads')
+    //     console.log(Object.values(data1))
+    //     for (let key in data1) {
+    //         console.log('keyjsdfklafs')
+    //         if (key.includes('dis')) {
+    //             distData.push({ date: today1.toDateString().slice(0, 10), [key]: data1[key] })
+    //         }
+    //     }
+    // }
+    // console.log('112', distData)
 
     // walks data by both user and dogs
     // const data = [
@@ -134,6 +189,7 @@ function Graph() {
                             onChange={() => setShowDuration(true)} checked={showDuration}
                         />
                         <button onClick={update}>update</button>
+                        <button onClick={loadData}>load</button>
                     </label>
                 </div>
                 <div>
