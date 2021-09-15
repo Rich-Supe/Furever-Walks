@@ -7,15 +7,16 @@ import { getWalksUser, getWalksByDog } from '../../../store/walks';
 import { getDogs, getDogsByWalk } from '../../../store/dogs';
 import styles from '../../../css-modules/Graph.module.css';
 import { getDogData } from '../../../store/dogData'
+import { createDistGraphData, createDurGraphData } from '../../../store/graph'
 
 function Graph() {
     const dispatch = useDispatch();
     const { id } = useParams();
     const [showDuration, setShowDuration] = useState(true);
 
-    useEffect(() => {
-        dispatch(getDogs(id))
-        dispatch(getWalksUser(id))
+    useEffect(async () => {
+        await dispatch(getDogs(id))
+        await dispatch(getWalksUser(id))
     }, [dispatch])
 
     const user = useSelector(state => state.session.user);
@@ -23,6 +24,7 @@ function Graph() {
     // returns an object (user)
 
     const dogs = useSelector(state => (state.dogs));
+    const dogsObj = useSelector(state => Object.values(state.dogs));
     // console.log('DOGS FROM STORE-----', dogs);
     // returns an array of object (dogs)
 
@@ -87,17 +89,6 @@ function Graph() {
     }
 
     const dogData = useSelector(state => state.dogData);
-    const data1 = dogData[today1.toDateString().slice(0, 10)]
-    // const data1key
-    const data2 = dogData[today2.toDateString().slice(0, 10)]
-    const data3 = dogData[today3.toDateString().slice(0, 10)]
-    const data4 = dogData[today4.toDateString().slice(0, 10)]
-    const data5 = dogData[today5.toDateString().slice(0, 10)]
-    const data6 = dogData[today6.toDateString().slice(0, 10)]
-    const data7 = dogData[today7.toDateString().slice(0, 10)]
-    console.log('data11111,ddq', data1)
-    console.log('data222222,ddq', data2)
-    console.log('data333333,ddq', data3)
 
     const data = [
         { date: today7.toDateString().slice(0, 10), Marley1: 35, Marley2: 0.5, Luna1: 15, Luna2: 1.0, Milo1: 12, Milo2: 0.7, Warren1: 24, Warren2: 0.3, Mitchell1: 23, Mitchell2: 0.2, Leah1: 13, Leah2: 0.3 },
@@ -109,25 +100,38 @@ function Graph() {
         { date: today1.toDateString().slice(0, 10), Marley1: 50, Marley2: 0.6, Luna1: 15, Luna2: 0.3, Milo1: 35, Milo2: 0.4, Warren1: 12, Warren2: 0.1, Mitchell1: 13, Mitchell2: 0.1, Leah1: 57, Leah2: 0.5 },
     ]
 
-    const distData = []
+    const distData = [];
+    const durData = [];
+    const updatedDistData = useSelector(state => state.graph.dist)
+    const updatedDurData = useSelector(state => state.graph.dur)
 
     const loadData = () => {
         for (let date in dogData) {
             console.log(date)
-            const resObj = {}
-            resObj['date'] = date
+            const distObj = {}
+            const durObj = {}
+            distObj['date'] = date
+            durObj['date'] = date
             for (let data in dogData[date]) {
                 console.log('daaaaa', dogData[date][data])
-                if(data.includes('dis')) {
-                    const dogId = data.slice(4,5)
+                if (data.includes('dis')) {
+                    const dogId = data.slice(4, 5)
                     const dogName = dogs[dogId].name
-                    resObj[dogName] = dogData[date][data]
+                    distObj[dogName] = dogData[date][data]
+                }
+                if (data.includes('dur')) {
+                    const dogId = data.slice(4, 5)
+                    const dogName = dogs[dogId].name
+                    durObj[dogName] = dogData[date][data]
                 }
             }
-            distData.push(resObj)
+            distData.push(distObj)
+            durData.push(durObj)
         }
-        console.log(distData)
-        console.log(data)
+        // console.log(distData)
+        // console.log(data)
+        dispatch(createDistGraphData(distData))
+        dispatch(createDurGraphData(durData))
     }
     // if (data1) {
     //     console.log('zzsdfads')
@@ -208,7 +212,7 @@ function Graph() {
                     <LineChart
                         width={1000}
                         height={300}
-                        data={data}
+                        data={updatedDurData}
                         margin={{ top: 5, right: 0, bottom: 5, left: 0 }}
                     >
                         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
@@ -222,20 +226,28 @@ function Graph() {
                             paddingLeft: "10px",
                             paddingTop: "10px"
                         }}/> */}
-                        <Line type="monotone" dataKey="Marley1" stroke="#ffc911" />
+
+                        {dogsObj.map(dog => {
+                            { console.log('pppp0p0p0p0p0p0p0p0', dog.name) }
+                            return <Line type="monotone" dataKey={`${dog.name}`} stroke={'#'+Math.floor(Math.random()*16777215).toString(16)} key={dog.id} />
+                        })
+                        }
+
+                        {/* <Line type="monotone" dataKey="Marley1" stroke="#ffc911" />
                         <Line type="monotone" dataKey="Luna1" stroke="#82ca9d" />
                         <Line type="monotone" dataKey="Milo1" stroke="#e2543c" />
                         <Line type="monotone" dataKey="Warren1" stroke="#85602f" />
                         <Line type="monotone" dataKey="Mitchell1" stroke="#959789" />
-                        <Line type="monotone" dataKey="Leah1" stroke="#1e360a" />
+                        <Line type="monotone" dataKey="Leah1" stroke="#1e360a" /> */}
                     </LineChart>
                 ) : (
                     <LineChart
                         width={950}
                         height={300}
-                        data={data}
+                        data={updatedDistData}
                         margin={{ top: 5, right: 0, bottom: 5, left: 0 }}
                     >
+                        {console.log('zzzzz', distData)}
                         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
                         <XAxis dataKey="date" />
                         <YAxis />
@@ -247,12 +259,17 @@ function Graph() {
                             paddingLeft: "10px",
                             paddingTop: "10px"
                         }}/> */}
-                        <Line type="monotone" dataKey="Marley2" stroke="#ffc911" />
+                        {dogsObj.map(dog => {
+                            { console.log('pppp0p0p0p0p0p0p0p0', dog.name) }
+                            return <Line type="monotone" dataKey={`${dog.name}`} stroke={'#'+Math.floor(Math.random()*16777215).toString(16)} key={dog.id} />
+                        })
+                        }
+                        {/* <Line type="monotone" dataKey="Marley2" stroke="#ffc911" />
                         <Line type="monotone" dataKey="Luna2" stroke="#82ca9d" />
                         <Line type="monotone" dataKey="Milo2" stroke="#e2543c" />
                         <Line type="monotone" dataKey="Warren2" stroke="#85602f" />
                         <Line type="monotone" dataKey="Mitchell2" stroke="#959789" />
-                        <Line type="monotone" dataKey="Leah2" stroke="#1e360a" />
+                        <Line type="monotone" dataKey="Leah2" stroke="#1e360a" /> */}
                     </LineChart>
                 )}
             </div>
