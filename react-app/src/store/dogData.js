@@ -12,9 +12,7 @@ export const getDogData = (date, walksArray) => async (dispatch) => {
     walksArray.forEach(async (walk) => {
         const response = await fetch(`/api/dogs/all/walks/${walk.id}`)
         if (response.ok) {
-            // console.log('21312313', walk)
             const dogsOnWalk = await response.json();
-            // console.log('zzzzzzzzzz', dogsOnWalk.dogs)
             dogsOnWalk.dogs.forEach(dog => {
                 if (totals[`dog-${dog.id}-dis`]) {
                     totals[`dog-${dog.id}-dis`] += walk.distance
@@ -24,11 +22,9 @@ export const getDogData = (date, walksArray) => async (dispatch) => {
                     totals[`dog-${dog.id}-dur`] = walk.duration
                 }
             })
-            console.log(totals)
         }
     })
     final[key] = totals
-    console.log(final)
     await dispatch(setDogData(final))
 }
 
