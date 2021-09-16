@@ -58,7 +58,7 @@ function NewWalk({ mapData }) {
         })
 
         if (mapData === null) {
-            setErrors(['Please plan a walk route'])
+            setErrors(['Please plan a walk route by clicking on the Map'])
         } else {
             const payload = {
                 name,
@@ -72,8 +72,9 @@ function NewWalk({ mapData }) {
             }
             const data = await dispatch(createWalk(payload))
             if (data) {
-                console.log(data);
+                console.log("is this working?", data);
                 setErrors(data);
+                history.push(`users/walks/${id}`)
             } else {
                 setName("")
                 // setDuration(0)
@@ -97,7 +98,7 @@ function NewWalk({ mapData }) {
 
     return (
         <div className={styles.newWalkContainer}>
-            <h1>NEW WALK</h1>
+            <h1 id='newWalkHeader'>NEW WALK</h1>
             <form className={styles.newWalkForm} onSubmit={addWalk}>
                 <ul>
                     {errors.length > 0 && errors.map((error, idx) => (
@@ -115,6 +116,7 @@ function NewWalk({ mapData }) {
                             placeholder='Name'
                             onChange={(e) => setName(e.target.value)}
                             value={name}
+                            required={true}
                         ></input>
                     </div>
                     {mapData !== null && (
@@ -134,6 +136,7 @@ function NewWalk({ mapData }) {
                             onChange={() => setFinished(!finished)}
                             value={finished}
                             checked={finished}
+                            // required={true}
                         ></input>
                     </div>
                     <div className={styles.rating}>
@@ -148,6 +151,7 @@ function NewWalk({ mapData }) {
                             max='10'
                             onChange={(e) => setRating(e.target.value)}
                             value={rating}
+                            required={true}
                         ></input>
                     </div>
                 </div>

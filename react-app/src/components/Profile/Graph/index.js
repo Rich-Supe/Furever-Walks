@@ -76,25 +76,25 @@ function Graph() {
         await dispatch(getDogData(today3.toDateString().slice(0, 10), walksOnDay3))
         await dispatch(getDogData(today2.toDateString().slice(0, 10), walksOnDay2))
         await dispatch(getDogData(today1.toDateString().slice(0, 10), walksOnDay1))
-        console.log('updated')
+        // console.log('updated')
     }
 
     const loadData = async () => {
         const distData = [];
         const durData = [];
-        console.log('loaded')
-        console.log('dogdata', dogData)
+        // console.log('loaded')
+        // console.log('dogdata', dogData)
         for (let date in dogData) {
-            console.log('date exists')
-            console.log('date', date)
+            // console.log('date exists')
+            // console.log('date', date)
             const distObj = {}
             const durObj = {}
             distObj['date'] = date
             durObj['date'] = date
             for (let data in dogData[date]) {
-                console.log('data exists')
+                // console.log('data exists')
                 if (data.includes('dis')) {
-                    console.log('distances')
+                    // console.log('distances')
                     const dogId = data.slice(4, 5)
                     const dogName = dogs[dogId].name
                     distObj[dogName] = dogData[date][data]
@@ -188,6 +188,7 @@ function Graph() {
                         }}/> */}
 
                         {dogsObj.map(dog => {
+                            console.log('dog from line mapping', dog)
                             return <Line type="monotone" dataKey={`${dog.name}`} stroke={'#' + Math.floor(Math.random() * 16777215).toString(16)} key={dog.id} />
                         })
                         }

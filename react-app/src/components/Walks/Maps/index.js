@@ -22,17 +22,24 @@ const MapContainer = ({handleCallback}) => {
     // const NewYork = {lat: 37.756008006000215, lng: -122.4073820010392}
     let marker1 = null
     let marker2 = null
+    let marker3 = null
     let distance = null
     let duration = null
     // let count = 0;
 
-    function placeMarkerAndPanTo(latLng, map) {
+    async function placeMarkerAndPanTo(latLng, map) {
         // console.log("COORD from current marker placer:", latLng.lat(), latLng.lng())
-        new window.google.maps.Marker({
+        
+        if (marker1 !== null && marker2 !== null && marker3 !== null) {
+            console.log("Markers already exist")
+            return
+        }
+
+         await new window.google.maps.Marker({
             position: latLng,
             map: map,
             icon: dogFlagIcon,
-            draggable: true,
+            // draggable: true,
         });
         map.panTo(latLng);
         };
@@ -42,10 +49,19 @@ const MapContainer = ({handleCallback}) => {
         // setCount(count ++);
         // console.log(count)
         if (marker1 === null) {
+            console.log('placed 1')
             marker1 = ({ lat: e.latLng.lat(), lng: e.latLng.lng() });
         } else if (marker2 === null) {
+            console.log('placed 2')
             marker2 = ({ lat: e.latLng.lat(), lng: e.latLng.lng() });
-        }
+            console.log(marker2)
+        }  else if (marker3 === null) {
+            console.log('placed 3')
+            marker3 = ({ lat: e.latLng.lat(), lng: e.latLng.lng() });
+            console.log(marker3)
+        } 
+        // else if (marker1 === null && marker2 === null) {
+
         // count ++;
         // console.log(count)
         // if (marker1 !== null && marker2 !== null) {
