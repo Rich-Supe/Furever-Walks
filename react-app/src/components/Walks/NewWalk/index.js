@@ -2,10 +2,11 @@ import styles from '../../../css-modules/NewWalk.module.css';
 import { createWalk } from '../../../store/walks';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { getDogs, isDogSelected } from '../../../store/dogs';
 
 function NewWalk({ mapData }) {
+    const history = useHistory();
     const [errors, setErrors] = useState([]);
     const [name, setName] = useState('');
     // const [distance, setDistance] = useState("0");
@@ -87,6 +88,8 @@ function NewWalk({ mapData }) {
                 })
                 mapData.distance = ""
                 mapData.duration = ""
+                //later on, clear the map instead of redirect
+                history.push('/')
             }
         }
     }
