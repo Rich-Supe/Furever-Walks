@@ -21,9 +21,17 @@
 
 }
 
+.dogName {
+    margin-bottom: 10px;
+    margin-top: 0px;
+    text-shadow: 1px 1px 1px black;
+}
+
 .dogProfileImage {
-    height: 200px;
+    height: 160px;
     max-width: 200px;
+    /* height: 80%;
+    width: 100%; */
     object-fit: contain;
     border-radius: 5px;
 }

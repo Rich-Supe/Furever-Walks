@@ -6,33 +6,33 @@ function Footer() {
 
     return (
         <div className={styles.footer}>
-            <div>
+            <div className={styles.personDiv}>
                 <p>Esther Kang</p>
                     &nbsp;
-                    <img src={linkedin} alt='LinkedIn' onClick={()=> window.open("https://www.linkedin.com/in/estherhrkang/")}/>
+                    <img className={styles.icon} src={linkedin} alt='LinkedIn' onClick={()=> window.open("https://www.linkedin.com/in/estherhrkang/")}/>
                     &nbsp;
-                    <img src={github} alt='GitHub' onClick={()=> window.open("https://github.com/estherhrkang")}/>
+                    <img className={styles.icon} src={github} alt='GitHub' onClick={()=> window.open("https://github.com/estherhrkang")}/>
             </div>
             <div>
                 <p>Jimson Ma</p>
                     &nbsp;
-                    <img src={linkedin} alt='LinkedIn' onClick={()=> window.open("https://www.linkedin.com/in/jimson-ma-462197213/")}/>
+                    <img className={styles.icon} src={linkedin} alt='LinkedIn' onClick={()=> window.open("https://www.linkedin.com/in/jimson-ma-462197213/")}/>
                     &nbsp;
-                    <img src={github} alt='GitHub' onClick={()=> window.open("https://github.com/jimsonm")}/>
+                    <img className={styles.icon} src={github} alt='GitHub' onClick={()=> window.open("https://github.com/jimsonm")}/>
             </div>
             <div>
                 <p>Richard Supe</p>
                     &nbsp;
-                    <img src={linkedin} alt='LinkedIn' onClick={()=> window.open("https://www.linkedin.com/in/richard-supe/")}/>
+                    <img className={styles.icon} src={linkedin} alt='LinkedIn' onClick={()=> window.open("https://www.linkedin.com/in/richard-supe/")}/>
                     &nbsp;
-                    <img src={github} alt='GitHub' onClick={()=> window.open("https://github.com/Rich-Supe")}/>
+                    <img className={styles.icon} src={github} alt='GitHub' onClick={()=> window.open("https://github.com/Rich-Supe")}/>
             </div>
             <div>
                 <p>Victoria Tarane</p>
                     &nbsp;
-                    <img src={linkedin} alt='LinkedIn' onClick={()=> window.open("https://www.linkedin.com/in/victoria-tarane-54a86b5b/")}/>
+                    <img className={styles.icon} src={linkedin} alt='LinkedIn' onClick={()=> window.open("https://www.linkedin.com/in/victoria-tarane-54a86b5b/")}/>
                     &nbsp;
-                    <img src={github} alt='GitHub' onClick={()=> window.open("https://github.com/victoriatarane")}/>
+                    <img className={styles.icon} src={github} alt='GitHub' onClick={()=> window.open("https://github.com/victoriatarane")}/>
             </div>
         </div>
     )

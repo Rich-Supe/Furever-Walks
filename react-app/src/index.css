@@ -9,6 +9,7 @@ body {
     width: 100%;
     margin: 0;
     font-size: 1.3em;
+    overflow-x: hidden;
 }
 
 #root {

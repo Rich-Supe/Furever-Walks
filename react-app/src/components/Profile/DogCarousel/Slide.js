@@ -11,9 +11,9 @@ function Slide({ dog }) {
             <div className={styles.dogImage}>
                 {/* <img src={dog.image} alt={dog.name} /> */}
                 {/* <p>{dog.name}</p> */}
-                <p>
+                <div>
                     <DogProfileModal dog={dog}/>
-                </p>
+                </div>
             </div>
         </div>
     )

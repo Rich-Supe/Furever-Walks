@@ -27,9 +27,9 @@ function DogProfileModal({ dog }) {
 
     return (
         <div className={styles.dogProfileModal}>
-            <div>
+            <h3 className={styles.dogName}>
                 {dog.name}
-            </div>
+            </h3>
             <img
                 src={dogImageURL}
                 alt='DogProfileImage'

@@ -38,21 +38,22 @@ function DogCarousel({userId}){
             <>
                 <div className={styles.dogCarousel}>
                     <h1>MY DOGS <AddDogModal /></h1>
-                    <Swiper id="main" 
+                    <Swiper id="main"
+                        // className={styles.swiper}
                         tag="section" 
                         wrapperTag="ul" 
                         className={styles.swiperContainer}
                         navigation 
                         pagination 
-                        spaceBetween={0} 
-                        slidesPerView={5}
+                        spaceBetween={10} 
+                        slidesPerView={3}
                     >{slides}</Swiper>
                 </div>
             </>
         )
     } else {
         return (
-            <h1>No doggos :(</h1>
+            <h1>No doggos :(, Please add some!</h1>
         )
     }
 }

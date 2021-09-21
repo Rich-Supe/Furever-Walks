@@ -1,10 +1,21 @@
 .dogCarousel {
-    
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* ali */
 }
 
 .swiperContainer {
     box-shadow: 0 0 15px #edf2f7;
     border-radius: 20px;
     border: 1px solid #edf2f7;
+    padding-right: 30px;
     z-index: 0 !important;
+    width: 85%;
+    /* border: 2px solid red; */
 }
+
+/* .swiperContainer {
+
+} */

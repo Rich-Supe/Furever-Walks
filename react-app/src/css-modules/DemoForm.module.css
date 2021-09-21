@@ -1,7 +1,7 @@
 .demoFormContainer {
-    width: 60%;
+    width: 90%;
     height: auto;
-    margin: 10% 15%;
+    /* margin: 10% 15%; */
     padding: 5%;
     
     font-family: Dosis, Helvetica, sans-serif;
@@ -20,6 +20,6 @@
 .demoFormContainer:hover {
     cursor: pointer;
     font-size: 155%;
-    width: 63%;
-    height: auto;
+    /* width: 63%; */
+    /* height: auto; */
 }
