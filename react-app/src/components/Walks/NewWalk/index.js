@@ -98,7 +98,7 @@ function NewWalk({ mapData }) {
 
     return (
         <div className={styles.newWalkContainer}>
-            <h1 id='newWalkHeader'>NEW WALK</h1>
+            <h1 id='newWalkHeader' className={styles.header}>NEW WALK</h1>
             <form className={styles.newWalkForm} onSubmit={addWalk}>
                 <ul>
                     {errors.length > 0 && errors.map((error, idx) => (
@@ -106,9 +106,19 @@ function NewWalk({ mapData }) {
                     ))}
                 </ul>
                 <div className={styles.topInputSection}>
+                        {mapData !== null && (
+                            <div>
+                                <div className={styles.mapData}>
+                                    <p className={styles.dataP}>Distance: {mapData.distance}</p>
+                                    <p className={styles.dataP}>Duration: {mapData.duration}</p>
+                                    {/* {`Length: ${mapData.distance} Minutes: ${mapData.duration}`} */}
+                                </div>
+
+                            </div>
+                        )}
                     <div className={styles.walkName}>
                         <div>
-                            WALK NAME:
+                            NAME:
                         </div>
                         <input
                             type='text'
@@ -117,26 +127,6 @@ function NewWalk({ mapData }) {
                             onChange={(e) => setName(e.target.value)}
                             value={name}
                             required={true}
-                        ></input>
-                    </div>
-                    {mapData !== null && (
-                        <div>
-                            <div>
-                                {`${mapData.distance} ${mapData.duration}`}
-                            </div>
-                        </div>
-                    )}
-                    <div className={styles.complete}>
-                        <div>
-                            COMPLETE:
-                        </div>
-                        <input
-                            type='checkbox'
-                            name='status'
-                            onChange={() => setFinished(!finished)}
-                            value={finished}
-                            checked={finished}
-                            // required={true}
                         ></input>
                     </div>
                     <div className={styles.rating}>
@@ -154,25 +144,40 @@ function NewWalk({ mapData }) {
                             required={true}
                         ></input>
                     </div>
+                    <div className={styles.complete}>
+                        <div>
+                            COMPLETED:
+                        </div>
+                        <input
+                            type='checkbox'
+                            name='status'
+                            onChange={() => setFinished(!finished)}
+                            value={finished}
+                            checked={finished}
+                            // required={true}
+                        ></input>
+                    </div>
                 </div>
                 <div>
                     <p className={styles.dogHeader}>DOGS:</p>
-                    {dogs.map((dog) =>
-                        <div className={styles.checkboxes}>
-                            <p>{dog.name}</p>
-                            <input
-                                key={dog.id}
-                                type='checkbox'
-                                name='dog'
-                                onChange={() => checked(dog)}
-                                checked={dogs2[dog.id].status || false}
-                            >
-                            </input>
+                    <div className={styles.dogs}>
+                        {dogs.map((dog) =>
+                            <div className={styles.checkboxes}>
+                                <p>{dog.name}</p>
+                                <input
+                                    key={dog.id}
+                                    type='checkbox'
+                                    name='dog'
+                                    onChange={() => checked(dog)}
+                                    checked={dogs2[dog.id].status || false}
+                                >
+                                </input>
 
-                        </div>
-                    )}
+                            </div>
+                        )}
+                    </div>
                 </div>
-                <div>
+                <div className={styles.btnDiv}>
                     <button type='submit'>ADD WALK</button>
                 </div>
             </form>

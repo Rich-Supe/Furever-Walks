@@ -22,5 +22,5 @@
 
 .walksCarouselContainer {
     grid-area: carousel;
-    margin: 3%;
+    margin: 0px, 3%;
 }

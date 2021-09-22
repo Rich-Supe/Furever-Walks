@@ -37,7 +37,7 @@ function DogCarousel({userId}){
         return (
             <>
                 <div className={styles.dogCarousel}>
-                    <h1>MY DOGS <AddDogModal /></h1>
+                    <h1 className={styles.h1}>MY DOGS <AddDogModal /></h1>
                     <Swiper id="main"
                         // className={styles.swiper}
                         tag="section" 
@@ -45,7 +45,7 @@ function DogCarousel({userId}){
                         className={styles.swiperContainer}
                         navigation 
                         pagination 
-                        spaceBetween={10} 
+                        spaceBetween={0} 
                         slidesPerView={3}
                     >{slides}</Swiper>
                 </div>

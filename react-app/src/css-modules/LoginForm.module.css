@@ -75,7 +75,7 @@
 
     .loginForm button:after{
     position: absolute;
-    content: "";
+    /* content: ""; */
     top: 0;
     left: 0;
     width: 0;
@@ -87,6 +87,7 @@
     .loginForm button:hover{
     color: #fff;
     cursor: pointer;
+    background: #ffc911;
 }
 
 .loginForm button:hover:after{

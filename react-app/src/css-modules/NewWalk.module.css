@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
     
     box-shadow: 0 0 15px #edf2f7;
     border-radius: 20px;
@@ -15,13 +16,55 @@
     padding-top: 5%;
 }
 
-/* .newWalkForm div {
-} */
+.header {
+    margin: 0px;
+    padding: 0px;
+}
+
+.newWalkForm {
+    width: 100%;
+    height: auto;
+}
 
 .topInputSection {
-    display: inline-flex;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    /* margin-right: 5%; */
+    display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+}
+
+.topInputSection div {
+    margin: 10px 20px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topInputSection input {
+    margin: 0px 20px;
+}
+
+.mapData {
+    font-size: 1.2em;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    margin: 0px !important;
+    color: #3296fa;
+}
+
+.dataP {
+    margin: 0px;
+    padding: 0px;
 }
 
 .walkName,
@@ -36,23 +79,37 @@
 
 .dogHeader {
     display: inline-flex;
-    /* justify-content: center;
-    align-items: center; */
-    margin-left: 100px;
+    justify-content: center;
+    align-items: center; 
+    /* margin-left: 100px; */
+    width: 100%;
     font-weight: 700;
+    font-size: 1.2em;
+    margin: 0px;
+    
+}
+
+.dogs {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
 }
 
 .checkboxes {
     display: flex;
-    flex-direction: row;
+    flex-direction: wrap;
     justify-content: space-evenly;
-    width: 200px;
+    width: 150px;
 }
 
 .checkboxes__div {
     display: inline-flex;
     justify-content: flex-start;
     flex-direction: row;
+    margin: 0px;
+    padding: 0px;
 
 }
 
@@ -74,6 +131,15 @@
     
 }
 
+.btnDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
 .newWalkForm button {
     border: #FFC911;
     background-color: #FFC911;
@@ -84,7 +150,10 @@
     width: 150px;
     font-size: 1em;
     margin: 20px 0;
+    border: 1px solid white;
 }
+
+
 
 .newWalkForm button:hover {
     border: 1px solid #FFC911;

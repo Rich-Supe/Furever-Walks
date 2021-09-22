@@ -1,6 +1,6 @@
 .walksCarouselContainer {
     max-width: 100vw;
-
+    margin-top: 0px;
 }
 
 .swiperContainer {
@@ -8,4 +8,10 @@
     border-radius: 20px;
     border: 1px solid #edf2f7;
     padding: 2%;
+}
+
+.h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

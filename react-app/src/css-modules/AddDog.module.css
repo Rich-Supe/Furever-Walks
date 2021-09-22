@@ -1,8 +1,12 @@
 .addDogForm {
     width: 60%;
     height: auto;
-    margin: 15%;
-    padding: 7%;
+    /* margin: 15%; */
+    padding: 4%;
+    padding-top: 0px;
+    position: absolute;
+    top: 22%;
+    left: 20%;
     
     font-family: Dosis, Helvetica, sans-serif;
     color: #ffc911;
@@ -15,7 +19,7 @@
     align-items: center;
 
     background-color: white;
-    opacity: 0.9;
+    opacity: 0.99;
     box-shadow: 0px 5px 20px lightgrey;
     border-radius: 20px;
 }
@@ -46,8 +50,11 @@
     background-color: #FFC911;
     color: white;
     font-family: Dosis, Helvetica, sans-serif;
-    padding: 5px;
+    padding: 2px;
     border-radius: 5px;
+    height: 2em;
+    width: 7em;
+    font-size: .5em;
 }
 
 .addDogForm .submitButton:hover {

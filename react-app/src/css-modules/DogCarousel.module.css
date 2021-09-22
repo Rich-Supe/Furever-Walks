@@ -16,6 +16,12 @@
     /* border: 2px solid red; */
 }
 
+.h1 {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* .swiperContainer {
 
 } */

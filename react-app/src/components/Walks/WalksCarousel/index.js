@@ -38,7 +38,7 @@ function WalksCarousel(){
         return (
             <>
                 <div className={styles.walksCarouselContainer}>
-                    <h1>PREVIOUS WALKS</h1>
+                    <h1 className={styles.h1}>PREVIOUS WALKS</h1>
                     <Swiper id="mainWalk"
                         tag="section"
                         wrapperTag="ol"
