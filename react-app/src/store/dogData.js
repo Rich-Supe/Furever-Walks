@@ -5,7 +5,7 @@ const setDogData = (data) => ({
     payload: data
 });
 
-export const getDogData = (date, walksArray) => async (dispatch) => {
+export const getDogData = (date, walksArray, userId) => async (dispatch) => {
     const key = date
     const totals = {}
     const final = {}
@@ -24,6 +24,21 @@ export const getDogData = (date, walksArray) => async (dispatch) => {
             })
         }
     })
+    const response = await fetch(`/api/dogs/all/${userId}`)
+    if (response.ok) {
+        const res = await response.json();
+        const dogs = res.dogs
+        // console.log(dogs);
+        dogs.forEach(dog => {
+            console.log(dog);
+            if (totals[`dog-${dog.id}-dis`] === undefined) {
+                totals[`dog-${dog.id}-dis`] = 0;
+            }
+            if (totals[`dog-${dog.id}-dur`] === undefined) {
+                totals[`dog-${dog.id}-dur`] = 0;
+            }
+        })
+    }
     final[key] = totals
     await dispatch(setDogData(final))
 }

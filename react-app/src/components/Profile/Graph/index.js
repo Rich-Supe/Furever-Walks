@@ -69,13 +69,13 @@ function Graph() {
     const walksOnDay7 = walks.filter((walk) => walk.date == matchingDate(today7))
 
     const update = async () => {
-        await dispatch(getDogData(today7.toDateString().slice(0, 10), walksOnDay7))
-        await dispatch(getDogData(today6.toDateString().slice(0, 10), walksOnDay6))
-        await dispatch(getDogData(today5.toDateString().slice(0, 10), walksOnDay5))
-        await dispatch(getDogData(today4.toDateString().slice(0, 10), walksOnDay4))
-        await dispatch(getDogData(today3.toDateString().slice(0, 10), walksOnDay3))
-        await dispatch(getDogData(today2.toDateString().slice(0, 10), walksOnDay2))
-        await dispatch(getDogData(today1.toDateString().slice(0, 10), walksOnDay1))
+        await dispatch(getDogData(today7.toDateString().slice(0, 10), walksOnDay7, id))
+        await dispatch(getDogData(today6.toDateString().slice(0, 10), walksOnDay6, id))
+        await dispatch(getDogData(today5.toDateString().slice(0, 10), walksOnDay5, id))
+        await dispatch(getDogData(today4.toDateString().slice(0, 10), walksOnDay4, id))
+        await dispatch(getDogData(today3.toDateString().slice(0, 10), walksOnDay3, id))
+        await dispatch(getDogData(today2.toDateString().slice(0, 10), walksOnDay2, id))
+        await dispatch(getDogData(today1.toDateString().slice(0, 10), walksOnDay1, id))
         // console.log('updated')
     }
 
@@ -142,8 +142,8 @@ function Graph() {
                 <button class="btn btn--action" onClick={() => loadDurGraph()}>load dur</button> */}
                 {/* <a href="#" class="coolBeans">Distance</a> */}
                 <div className={styles.flexCenter}>
-                <button className={styles.btnflip} data-back="👣" data-front="Distance" onClick={() => loadDistGraph()}></button>
-                <button className={styles.btnflip} data-back="🕒" data-front="Duration" onClick={() => loadDurGraph()}></button>
+                    <button className={styles.btnflip} data-back="👣" data-front="Distance" onClick={() => loadDistGraph()}></button>
+                    <button className={styles.btnflip} data-back="🕒" data-front="Duration" onClick={() => loadDurGraph()}></button>
                 </div>
                 {/* <div>
                     <label>
@@ -193,7 +193,7 @@ function Graph() {
                         })
                         }
                     </LineChart>
-}
+                }
                 {!showDuration && displayGraph &&
                     <LineChart
                         width={1000}
