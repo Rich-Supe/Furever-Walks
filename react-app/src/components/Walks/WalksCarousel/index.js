@@ -21,6 +21,7 @@ function WalksCarousel(){
 
     const walks = useSelector((state) => Object.values(state.walks))
     const userWalks = walks.filter((walk) => walk.user_id == id)
+    userWalks.reverse();
     // returns array of walk objects
 
     const slides =[];
@@ -46,7 +47,7 @@ function WalksCarousel(){
                         navigation
                         pagination
                         spaceBetween={30}
-                        slidesPerView={5}
+                        slidesPerView={3}
                         // slidesPerColumn={2}
                         // pagination={{ clickable: true }}
                     >
