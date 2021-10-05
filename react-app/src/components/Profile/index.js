@@ -13,12 +13,14 @@ function Profile() {
             <div className={styles.userProfileContainer}>
                 <UserProfile />
             </div>
-            <div className={styles.graphContainer}>
-                <Graph />
-            </div>
-            <div className={styles.dogCarouselContainer}>
-                <DogCarousel userId={id}/>
-            </div>
+            {/* <div className={styles.right}> */}
+                <div className={styles.graphContainer}>
+                    <Graph />
+                </div>
+                <div className={styles.dogCarouselContainer}>
+                    <DogCarousel userId={id}/>
+                </div>
+            {/* </div> */}
         </div>
     );
 }

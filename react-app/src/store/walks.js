@@ -105,6 +105,11 @@ export const editWalk = (walkId, walk) => async (dispatch) => {
 }
 
 export const createWalk = (walk) => async (dispatch) => {
+    // console.log("walk from reducer", walk)
+    // if (walk.walkingdogs.length === 0) {
+    //     return ['You must select at least one dog.']
+    // }
+
     const response = await fetch(`/api/walks/`, {
         method: 'POST',
         headers: {
@@ -123,7 +128,7 @@ export const createWalk = (walk) => async (dispatch) => {
         }
     }
     else {
-        return ['An error occurred. Please try again.']
+        return ['An error occurred. Please fill out all fields try again.']
     }
 }
 

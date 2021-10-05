@@ -19,9 +19,32 @@
     grid-area: graph;
     margin: 5%;
     margin-bottom: 0;
+    /* margin-top: -4%; */
 }
 
 .dogCarouselContainer {
     grid-area: dogCarousel;
     margin: 3%;
 }
+
+
+/* .profile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100vw;
+    height: auto;
+}
+
+.userProfileContainer {
+    margin: 2%;
+    width: 30%;
+}
+
+
+.right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+} */

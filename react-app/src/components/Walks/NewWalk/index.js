@@ -57,9 +57,16 @@ function NewWalk({ mapData }) {
             }
         })
 
+        
         if (mapData === null) {
-            setErrors(['Please plan a walk route by clicking on the Map'])
-        } else {
+            setErrors(['Please plan a walk route by selecting a start and destination on the map followed by search.'])
+        }
+        
+        else if (walkingdogs.length === 0) {
+            setErrors(['Please select at least one dog to walk with.'])
+        }
+
+        else {
             const payload = {
                 name,
                 distance: Number(mapData.distance.substring(0, mapData.distance.indexOf('mi'))),

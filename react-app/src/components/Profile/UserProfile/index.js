@@ -22,8 +22,8 @@ function UserProfile(){
                     <li>USERNAME: {user?.username}</li>
                     <li>EMAIL: {user?.email}</li>
                     <li>BIO: {user?.bio}</li>
-                    <li>TOTAL DISTANCE: {user?.user_total_distance}</li>
-                    <li>TOTAL DURATION: {user?.user_total_duration}</li>
+                    {/* <li>TOTAL DISTANCE: {user?.user_total_distance}</li>
+                    <li>TOTAL DURATION: {user?.user_total_duration}</li> */}
                 </ul>
             )}
             {!showForm && 

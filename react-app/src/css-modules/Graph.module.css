@@ -47,16 +47,24 @@ svg {
     text-decoration: none;
     font-family: 'Open Sans';
     text-transform: uppercase;
+    /* height: 6em;
+    width: 6em; */
+    border-radius: 40px;
+
 }
 .btnflip:hover:after {
     cursor: pointer;
     opacity: 1;
     transform: translateY(0) rotateX(0);
+    /* height: 6em;
+    width: 6em; */
 }
 .btnflip:hover:before {
     cursor: pointer;
     opacity: 0;
     transform: translateY(50%) rotateX(90deg);
+    /* height: 6em;
+    width: 6em; */
 }
 .btnflip:after {
     top: 0;
@@ -70,6 +78,9 @@ svg {
     background: #adadaf;
     content: attr(data-back);
     transform: translateY(-50%) rotateX(90deg);
+    border-radius: 40px;
+    /* height: 6em;
+    width: 6em; */
 }
 .btnflip:before {
     top: 0;
@@ -84,6 +95,9 @@ svg {
     background: #323237;
     content: attr(data-front);
     transform: translateY(0) rotateX(0);
+    border-radius: 40px;
+    /* height: 6em;
+    width: 6em; */
 }
 
 .flexCenter {
