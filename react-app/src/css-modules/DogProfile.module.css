@@ -39,6 +39,11 @@
     border-radius: 5px;
 }
 
+.dogProfileImage:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 2px 2px gold;
+}
+
 .editDogForm input {
     border: none;
     width: 220px;
